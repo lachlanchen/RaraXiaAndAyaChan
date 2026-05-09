@@ -1,0 +1,27 @@
+# Non-secret Xiaoyunque defaults for LALACHAN.
+# Copy values into .env as needed. Keep XYQ_ACCESS_KEY only in .env.
+
+XYQ_ACCESS_KEY_NAME=LazyingArt
+XYQ_ACCESS_KEY_EXPIRES_AT=2027-04-26 09:51
+XYQ_SKILL_INSTALL_COMMAND=npx skills add https://gitee.com/Pippit-dev/pippit-skills.git -y -g
+XYQ_CHROME_DEBUG_URL=http://127.0.0.1:9222
+XYQ_CHROME_PROFILE_DIR=/home/lachlan/.cache/xyq-chrome
+XYQ_DEFAULT_MODE=agent
+XYQ_SHORT_MODE=duanpian
+XYQ_AGENT_MODE_LABEL=Agent 模式
+XYQ_DUANPIAN_MODE_LABEL=沉浸式短片
+XYQ_DUANJU_MODE_LABEL=短剧 Agent
+XYQ_LONG2_MODE_LABEL=智能长视频 2.0
+XYQ_DUANPIAN_DEFAULT_SECONDS=15
+XYQ_AGENT_DEFAULT_DURATION=longest_available_over_60s
+XYQ_DUANJU_URL=https://xyq.jianying.com/novel/list?enter_from=small_tool
+XYQ_CHATGPT_SCRIPT_LINK=https://chatgpt.com/c/69fc0bcd-4f2c-83ea-9117-46fc128a2496
+XYQ_DUANJU_CHATGPT_DRAFT=/home/lachlan/ProjectsLFS/LALACHAN/Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.md
+XYQ_DUANJU_CHATGPT_SCRIPT_UPLOAD=/home/lachlan/ProjectsLFS/LALACHAN/Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.txt
+XYQ_REFERENCE_IMAGE_DISPLAY=/home/lachlan/ProjectsLFS/LALACHAN/display.png
+XYQ_REFERENCE_IMAGE_LIGHTMIND_GLASSES=/home/lachlan/ProjectsLFS/LALACHAN/display.png
+XYQ_REFERENCE_IMAGE_NOTEBOOK=/home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
+XYQ_REFERENCE_IMAGE_TRIO=/home/lachlan/ProjectsLFS/LALACHAN/Trio.png
+XYQ_TRIO_ASSET_ID=
+XYQ_LIGHTMIND_SITE=https://lightmind.art
+XYQ_NOTEBOOK_SITE=https://buy.layzing.art
