@@ -91,6 +91,20 @@ scripts/xyq_chrome/watch_thread_dom_download.py \
   --reload-every 600
 ```
 
+If the watcher sees the video element but direct candidate downloads fail with protected `everphoto` HTTP errors, pull the active video URL from the logged-in page and download with browser-like headers:
+
+```bash
+out='outputs/xyq-2026-06-03-typhoon/typhoon_pingpong_shark_duanpian_4x3_15s.mp4'
+url=$(scripts/xyq_cdp_browser.py --cdp-url http://127.0.0.1:9344 eval \
+  4A2881C4526B7E299804F8117A02A9C5 \
+  '(() => ({url: document.querySelector("video")?.currentSrc || document.querySelector("video")?.src || ""}))()' \
+  | jq -r .url)
+curl -fL --retry 3 --retry-delay 2 \
+  -H 'Referer: https://xyq.jianying.com/' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36' \
+  "$url" -o "$out"
+```
+
 ## Validation Notes
 
 - The ratio menu screenshot `outputs/xyq-2026-06-03-typhoon/ratio-menu-after-43.png` shows `4:3` checked.
@@ -100,4 +114,20 @@ scripts/xyq_chrome/watch_thread_dom_download.py \
 
 ## Result
 
-Generation was submitted at 2026-06-03 22:20:34. Initial status was `排队等待中`, with estimated wait around 30 minutes. The watcher copies the MP4 to `Videos/` and Nutstore when the video appears.
+Generation was submitted at 2026-06-03 22:20:34. Initial status was `排队等待中`, with estimated wait around 30 minutes. The account charged 120 points, reducing the visible balance from 869 to 749.
+
+Generated video:
+
+```text
+outputs/xyq-2026-06-03-typhoon/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
+Videos/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
+/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
+```
+
+`ffprobe` result:
+
+```text
+width=1112
+height=836
+duration=15.084s
+```
