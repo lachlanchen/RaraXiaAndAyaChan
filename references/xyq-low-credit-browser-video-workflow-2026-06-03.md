@@ -121,7 +121,7 @@ Generated video:
 ```text
 outputs/xyq-2026-06-03-typhoon/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
 Videos/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
-/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/typhoon_pingpong_shark_duanpian_4x3_15s.mp4
+/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/typhoon_pingpong_shark_duanpian_4x3_15s_2026_06_03_22_46_26_COMPLETED.mp4
 ```
 
 `ffprobe` result:
