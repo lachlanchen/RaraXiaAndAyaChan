@@ -163,6 +163,9 @@ def mask_inpaint_rect(frame: np.ndarray, rect: tuple[int, int, int, int], args: 
         return frame
 
     repaired = cv2.inpaint(frame, mask, args.inpaint_radius, cv2.INPAINT_TELEA)
+    if not args.mask_soften:
+        return repaired
+
     softened = cv2.GaussianBlur(repaired, (0, 0), sigmaX=args.sigma_x, sigmaY=args.sigma_y)
     alpha = cv2.GaussianBlur(
         mask.astype(np.float32) / 255.0,
@@ -351,6 +354,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--mask-dilate-y", type=int, default=7)
     parser.add_argument("--mask-dilate-iterations", type=int, default=2)
     parser.add_argument("--mask-feather", type=int, default=3)
+    parser.add_argument(
+        "--mask-soften",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Blur the repaired mask area after inpainting; disable to avoid dark soft patches.",
+    )
     parser.add_argument("--crf", type=int, default=18)
     parser.add_argument("--preset", default="medium")
     parser.add_argument("--verbose", action="store_true")

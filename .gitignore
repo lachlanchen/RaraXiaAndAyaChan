@@ -1,0 +1,34 @@
+.aginti/.env
+.aginti/.env.*
+!.aginti/.env.example
+.aginti-sessions/
+.sessions/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Private browser / agent state
+.aginti/
+.cache/
+.config/
+
+# Large local media and render outputs
+Videos/
+Promotion/
+outputs/
+artifacts/
+diagnosis/
+*.mp4
+*.mov
+*.webm
+*.avi
+*.mkv
+*.part
+*.partial
+
+# Local image/QR output experiments not part of the public story archive
+qr-codes/
+logos-material/

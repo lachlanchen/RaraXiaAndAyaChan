@@ -66,6 +66,7 @@ scripts/xyq_chrome/test_modes.py
 scripts/xyq_chrome/prepare_duanju_from_chatgpt.py
 scripts/xyq_chrome/chatgpt_thread_prompt.py
 scripts/xyq_cdp_browser.py
+scripts/xyq_chrome/watch_thread_dom_download.py
 ```
 
 Method:
@@ -80,6 +81,7 @@ Method:
 - Can prepare `短剧 Agent` directly from the saved ChatGPT conversation draft, upload the `.txt` script to the `/novel/list` workspace, and set `Trio.png` as the default uploaded character reference asset.
 - Can send a synopsis into the existing ChatGPT `小云雀剧本` thread through the same Chrome driver and save the new assistant answer to Markdown.
 - Can drive the current already-open Xiaoyunque tab by page id, set Tiptap prompts safely, click the bottom `+` upload menu, choose `从资产库选择`, select old generated videos, and save screenshots.
+- Can watch a submitted Xiaoyunque browser thread through CDP, record queue/generation/download status, and copy completed or manually downloaded videos to `Videos/` and Nutstore.
 
 Documentation:
 
@@ -92,6 +94,9 @@ references/2026-05-09-xiaoyunque-prompts-methods.md
 references/2026-05-09-user-prompt-history.md
 references/xyq-lala-aya-sasa-defaults.md
 references/xyq-mode-test-results.md
+references/xyq-blackhole-90s-regeneration-workflow-2026-05-18.md
+references/xyq-browser-video-generation-skill.md
+references/xyq-hokkaido-dolphin-shark-web-run-2026-06-02.md
 ```
 
 ## Prompt Assets
@@ -171,3 +176,54 @@ Browser state:
 - Asset-library reference video: `资产 #7637271291062632985`
 - Final prompt includes the no-subtitles instruction and short Chinese dialogue.
 - Stopped with the final create arrow enabled, not clicked.
+
+## 2026-05-18 Blackhole 90s Long Video Regeneration
+
+Regenerated the failed `0:13` blackhole video as a full long video through the
+logged-in Xiaoyunque web UI. The successful path used a fresh `Agent 模式`
+conversation, not the API and not `沉浸式短片`.
+
+Saved runbook:
+
+```bash
+references/xyq-blackhole-90s-regeneration-workflow-2026-05-18.md
+```
+
+Saved prompts:
+
+```bash
+references/prompts/2026-05-18-blackhole-photon-race-agent-90s-regenerate.md
+references/prompts/2026-05-18-blackhole-photon-race-agent-90s-followup.md
+references/prompts/2026-05-18-blackhole-photon-race-agent-90s-confirm.md
+```
+
+Key notes:
+
+- `Trio.png` was treated as a hard gate. The task was not submitted until the
+  attachment list showed `Trio.png` with `success-jcmK32`.
+- The original notebook PNG stalled in upload, so a smaller JPG was created
+  with `ffmpeg` at `outputs/xyq-90s-regenerate-check/patchwork-notebook-upload.jpg`.
+- The successful task produced a 9-shot storyboard at about `98s`, then rendered
+  all 9 shot videos with 0 failures and composed the final `1:38` video.
+- The local automated download was interrupted after the user downloaded the
+  final video manually; the partial local file was renamed with `.partial.mp4`.
+
+## 2026-06-02 Hokkaido Dolphin/Shark Browser Run
+
+Generated a `沉浸式短片` with five uploaded reference images, `Seedance 2.0 Fast`,
+and `15秒` through the logged-in Xiaoyunque web UI. The user later paid VIP, and
+the submitted task moved to `优先处理中` before rendering.
+
+Saved runbook:
+
+```bash
+references/xyq-hokkaido-dolphin-shark-web-run-2026-06-02.md
+references/xyq-browser-video-generation-skill.md
+```
+
+Final user-downloaded files were copied from `~/Downloads` to:
+
+```bash
+/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/v03c76g10004d8ffveiljhtdlimp.346.mp4
+/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/v03c76g10004d8fg02iljht3aq91.142.mp4
+```
