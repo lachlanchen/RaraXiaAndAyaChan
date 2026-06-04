@@ -1,40 +1,45 @@
+[English](README.md) | [简体中文](i18n/README.zh-CN.md) | [繁體中文](i18n/README.zh-TW.md) | [日本語](i18n/README.ja.md) | [한국어](i18n/README.ko.md) | [Français](i18n/README.fr.md) | [Español](i18n/README.es.md) | [Deutsch](i18n/README.de.md) | [Italiano](i18n/README.it.md) | [Português](i18n/README.pt.md) | [العربية](i18n/README.ar.md)
+
 # RaraXiaAndAyaChan
 
-**Languages:** [English](README.md) | [简体中文](i18n/README.zh-CN.md) | [繁體中文](i18n/README.zh-TW.md) | [日本語](i18n/README.ja.md) | [한국어](i18n/README.ko.md) | [Français](i18n/README.fr.md) | [Español](i18n/README.es.md) | [Deutsch](i18n/README.de.md) | [Italiano](i18n/README.it.md) | [Português](i18n/README.pt.md) | [العربية](i18n/README.ar.md)
+[![Creative AI](https://img.shields.io/badge/creative--AI-storytelling-8A2BE2)](https://github.com/lachlanchen/RaraXiaAndAyaChan)
+[![Video Prompts](https://img.shields.io/badge/video--prompts-Seedance%20%2F%20Xiaoyunque-0969da)](references/prompts/)
+[![Support](https://img.shields.io/badge/support-buy.lazying.art-111111)](https://buy.lazying.art)
 
-> A multilingual story lab by [Lachlan Chen](https://github.com/lachlanchen): Rara Xia, Aya Chan, and Sasa Kun travel through moon bases, comet storms, black holes, supernovae, magic forests, cozy mountains, and tiny food misunderstandings.
+An open multilingual story archive for **Rara Xia**, **Aya Chan**, and **Sasa Kun**, a small trio traveling through moon bases, comet storms, black holes, supernovae, magic forests, cozy mountains, ocean adventures, and tiny food misunderstandings.
 
 ![Rara Xia, Aya Chan, and Sasa Kun](Trio.png)
 
-## About
+## What This Is
 
-`RaraXiaAndAyaChan` is an open creative archive for a cute cinematic adventure series. It stores the story bibles, episode drafts, Xiaoyunque / Seedance prompts, reusable browser-generation notes, and production scripts used to develop short AI animation episodes.
+`RaraXiaAndAyaChan` is a creative production archive for a cute cinematic AI-animation series. It keeps the reusable story worlds, episode drafts, Xiaoyunque / Seedance prompts, browser-generation notes, and local production scripts used to develop short animated episodes.
 
-The series follows three recurring characters:
+The repository is meant to be readable by humans and useful to agents: stories are grouped into arcs, prompts are saved for reuse, and workflow notes record how videos were generated and verified.
 
-- **Rara Xia / 啦啦侠**: a warm-hearted giant panda with heroic confidence and snack-first logic.
-- **Aya Chan / 阿芽酱**: a clever red panda who keeps the team emotionally grounded and comedically honest.
-- **Sasa Kun / 飒飒君**: a curious boy whose experiments often solve the problem after causing a new one.
+## Main Characters
 
-Recurring props:
+| Character | Role | Personality |
+| --- | --- | --- |
+| **Rara Xia / 啦啦侠** | Giant panda hero | Warm-hearted, confident, snack-first, accidentally brave |
+| **Aya Chan / 阿芽酱** | Red panda heroine | Clever, observant, emotionally steady, sharp with gentle jokes |
+| **Sasa Kun / 飒飒君** | Curious boy | Inventive, chaotic, often causes the problem and then solves it |
 
-- **LightMind AI glasses**: playful futuristic glasses for HUDs, translation, navigation, and jokes.
-- **Patchwork notebook**: a handmade notebook that becomes a menu, star map, spell book, travel guide, or mission tool.
+## Signature Props
 
-Project home / support shop:
-
-```text
-https://buy.lazying.art
-```
+| Prop | Use in the series |
+| --- | --- |
+| **LightMind AI glasses** | Translation, navigation, playful HUDs, jokes, and sci-fi moments |
+| **Patchwork notebook** | Menu, star map, spell book, travel guide, mission tool, or magical interface |
 
 ## Story Worlds
 
-- **Universe Adventure, 40 Episodes**: a connected space saga with aliens, comets, star keys, black-hole companies, farms in the galaxy, mystery U disks, battles, and jokes.
-- **Magic Forest Tales**: warm fantasy scenes with glowing fruit, tiny spirits, and gentle chaos.
-- **Food Misunderstandings**: hamburg vs hamburger, bucket vs baguette, sushi etiquette, lychee rain, hot water care, and other small disasters.
-- **Science Adventure Shorts**: photon spheres, event horizons, supernovae, Europa oceans, Moon bases, and cosmic flights explained through cute cinematic action.
+- **Universe Adventure**: a connected space saga with aliens, comets, star keys, black-hole companies, mystery U disks, galaxy farms, battles, and jokes.
+- **Magic Forest Tales**: warm fantasy scenes with glowing fruit, tiny spirits, soft light, and gentle chaos.
+- **Food Misunderstandings**: hamburg vs hamburger, bucket vs baguette, sushi etiquette, lychee rain, hot-water care, and other small disasters.
+- **Science Adventure Shorts**: event horizons, photon spheres, supernovae, Europa oceans, Moon bases, and cosmic flights explained through cute cinematic action.
+- **Travel And Cozy Worlds**: Hokkaido swims, Alps food jokes, tea restaurants, beaches, typhoons, roller coasters, and quiet friendship scenes.
 
-## Repository Guide
+## Repository Map
 
 ```text
 Lala-Aya-Sasa-draft/                 Story drafts, series bibles, episode scripts
@@ -44,9 +49,10 @@ references/prompts/                  Ready-to-use video prompts
 references/                          Production notes, workflows, runbooks
 scripts/                             Reusable local tooling
 i18n/                                Multilingual README pages
+.aginti/skills/                      Agent skill handoff material
 ```
 
-Raw generated videos, local credentials, temporary browser state, and bulky render outputs are intentionally not part of the public archive.
+Generated videos, credentials, browser profiles, and temporary render state should stay out of the public archive unless intentionally published as examples.
 
 ## Featured Reading
 
@@ -56,26 +62,37 @@ Raw generated videos, local credentials, temporary browser state, and bulky rend
 - [Prompt Archive](references/prompts/)
 - [Xiaoyunque Browser Video Workflow](references/xyq-browser-video-generation-skill.md)
 
+## Workflow Notes
+
+This repo includes practical notes for browser-driven Xiaoyunque work:
+
+- prompt drafting and asset numbering;
+- reference image upload workflows;
+- mode, model, duration, and ratio validation;
+- subtitle removal and video cleanup scripts;
+- Nutstore / AutoPublish handoff notes.
+
 ## Topics
 
 `ai-video` · `storytelling` · `multilingual` · `animation-prompts` · `xiaoyunque` · `seedance` · `creative-ai` · `characters` · `chinese-dialogue` · `science-fantasy` · `lightmind`
 
 ## License And Use
 
-This repository is a public creative archive. Please credit **Lachlan Chen** and link back to this repository when remixing prompts, drafts, or story structures. Product references such as LightMind and the handmade notebook point to the creator ecosystem around:
+This repository is a public creative archive. Please credit **Lachlan Chen** and link back to this repository when remixing prompts, drafts, or story structures.
+
+Product references such as LightMind and the handmade notebook connect to the creator ecosystem around:
 
 ```text
 https://buy.lazying.art
 ```
 
----
-
-## Support / Donation Panel
+## Support
 
 | Support path | Link | What it supports |
 | --- | --- | --- |
 | Buy a handmade notebook | <https://buy.lazying.art> | Story development, prompt experiments, production time |
-| Follow the creator | <https://github.com/lachlanchen> | New tools, scripts, and open creative archives |
+| Sponsor the creator | <https://github.com/sponsors/lachlanchen> | Open tools, scripts, and creative archives |
+| Follow the creator | <https://github.com/lachlanchen> | New projects and reusable workflows |
 | Share the series | <https://github.com/lachlanchen/RaraXiaAndAyaChan> | More readers, translators, remixers, and collaborators |
 
 Made with curiosity, bilingual jokes, space dust, and warm tea.
