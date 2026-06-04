@@ -49,7 +49,6 @@ references/prompts/                  Ready-to-use video prompts
 references/                          Production notes, workflows, runbooks
 scripts/                             Reusable local tooling
 i18n/                                Multilingual README pages
-.aginti/skills/                      Agent skill handoff material
 ```
 
 Generated videos, credentials, browser profiles, and temporary render state should stay out of the public archive unless intentionally published as examples.
@@ -86,7 +85,7 @@ Product references such as LightMind and the handmade notebook connect to the cr
 https://buy.lazying.art
 ```
 
-## Support
+## Support / Donation Panel
 
 | Support path | Link | What it supports |
 | --- | --- | --- |

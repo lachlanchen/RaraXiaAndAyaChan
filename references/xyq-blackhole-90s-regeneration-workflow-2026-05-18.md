@@ -1,7 +1,7 @@
 # Xiaoyunque 90s Long Video Regeneration Workflow
 
-Date: 2026-05-18  
-Thread: `d4997b86-9eed-4efa-80a0-24b81e5ccc67`  
+Date: 2026-05-18
+Thread: `d4997b86-9eed-4efa-80a0-24b81e5ccc67`
 Page: `https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=d4997b86-9eed-4efa-80a0-24b81e5ccc67&source=home_prompt&entrance_from=home`
 
 ## Result
