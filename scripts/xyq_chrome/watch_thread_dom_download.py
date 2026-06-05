@@ -25,14 +25,15 @@ import websocket
 
 STATUS_RE = (
     r"(排队等待中|优先处理中|生成中|大约还需\s*\d+\s*分钟|还需\s*\d+\s*分钟|"
-    r"下载|完成|失败|内部错误|"
+    r"下载|完成|生成失败|任务失败|内部错误|"
     r"积分不足|余额不足|审核|合规|开会员加速|重新生成)"
 )
 
 PROBE_JS = rf"""
 (() => {{
   const text = document.body ? (document.body.innerText || '') : '';
-  const status = (text.match(/{STATUS_RE}/g) || []).slice(-100);
+  const tail = text.slice(-2500);
+  const status = (tail.match(/{STATUS_RE}/g) || []).slice(-100);
   const videos = [...document.querySelectorAll('video')].map((v, i) => ({{
     i,
     src: v.currentSrc || v.src || '',
@@ -63,7 +64,7 @@ PROBE_JS = rf"""
     videos,
     anchors,
     resources,
-    tail: text.slice(-1200)
+    tail
   }};
 }})()
 """
@@ -213,6 +214,8 @@ def main() -> int:
             continue
 
         try:
+            if poll == 1:
+                page.eval("performance.clearResourceTimings(); true")
             if time.time() - last_reload > args.reload_every:
                 page.navigate(args.thread_url)
                 last_reload = time.time()
