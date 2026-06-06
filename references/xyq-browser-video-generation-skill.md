@@ -138,6 +138,16 @@ tail -80 outputs/xyq-run/watch.log
 ```
 
 The watcher can see `排队等待中`, `优先处理中`, `生成中`, and `下载`. Direct media URLs can be protected and may return `403`; this is normal.
+When the active `video.currentSrc` fails through direct HTTP but browser-context
+`fetch(..., {credentials: 'include'})` returns `200 video/mp4`, the watcher can
+trigger an in-page blob download, wait for the file in `~/Downloads`, and copy
+it to the requested output path.
+
+For the recent lessons and exact failure modes, see:
+
+```text
+references/xyq-smooth-video-generation-experience-2026-06-06.md
+```
 
 ## Manual Download Fallback
 
