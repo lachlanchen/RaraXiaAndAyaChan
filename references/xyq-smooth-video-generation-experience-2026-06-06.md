@@ -98,3 +98,53 @@ ffmpeg -y -loglevel error -i Videos/result.mp4 \
   from queue to `生成中`.
 - A visible video can appear before direct download works; use browser-context
   fetch/blob download rather than retrying external HTTP blindly.
+
+## 2026-06-07 Driver And Login Check
+
+For the Mars 2D atom chip factory run, the correct controlled Chrome endpoint
+was still:
+
+```text
+http://127.0.0.1:9222
+```
+
+The active CDP page was:
+
+```text
+Page ID: 1C53666076DB42C93A3CD8E44BDB6D07
+Title: 小云雀网页版
+URL: https://xyq.jianying.com/home?tab_name=integrated-agent&agent_name=pippit_video_part_agent&thread_id=6191b607-cd9a-4c2e-a980-87e9e4496874
+```
+
+Login was confirmed from visible page text:
+
+```text
+Account: user40912720974
+Membership: 基础会员
+Credits: 707
+```
+
+Reusable check:
+
+```bash
+curl -fsS http://127.0.0.1:9222/json/version
+scripts/xyq_cdp_browser.py list-pages
+scripts/xyq_cdp_browser.py bring-to-front PAGE_ID
+scripts/xyq_cdp_browser.py visible PAGE_ID
+scripts/xyq_cdp_browser.py eval PAGE_ID \
+  "(() => ({url: location.href, title: document.title, text: document.body.innerText.slice(0, 2000)}))()"
+```
+
+Problems observed:
+
+- The visible page could be logged in even when the compose toolbar was partly
+  hidden or summarized as `Auto`; use DOM probes plus screenshots before
+  submitting.
+- Navigating to the compose URL can create a fresh `thread_id`. Record the
+  final URL after navigation and again after submit.
+- The submit arrow stays disabled until prompt text and uploads are fully
+  accepted. Re-check upload state and button class before clicking.
+- Do not open a new tab just to recover loading. Reload the same controlled tab
+  with `navigate` or `Ctrl+L` then `Enter`.
+- Do not use the Xiaoyunque API for these browser-first runs unless explicitly
+  requested.

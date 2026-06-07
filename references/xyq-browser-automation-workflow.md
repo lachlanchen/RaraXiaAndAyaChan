@@ -71,6 +71,23 @@ scripts/xyq_chrome/xyq_cdp.py --state
 ps -eo pid,ppid,stat,etime,cmd | rg 'remote-debugging-port=9222|xyq-chrome'
 ```
 
+Quick logged-in session proof used on `2026-06-07`:
+
+```bash
+scripts/xyq_cdp_browser.py list-pages
+scripts/xyq_cdp_browser.py bring-to-front PAGE_ID
+scripts/xyq_cdp_browser.py visible PAGE_ID
+scripts/xyq_cdp_browser.py eval PAGE_ID \
+  "(() => ({url: location.href, title: document.title, text: document.body.innerText.slice(0, 2000)}))()"
+```
+
+Known good endpoint from that run:
+
+```text
+CDP: http://127.0.0.1:9222
+Logged-in indicators: user40912720974, 基础会员, visible credit count
+```
+
 If it is not alive, restart it:
 
 ```bash
