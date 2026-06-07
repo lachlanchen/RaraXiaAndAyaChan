@@ -148,3 +148,9 @@ Problems observed:
   with `navigate` or `Ctrl+L` then `Enter`.
 - Do not use the Xiaoyunque API for these browser-first runs unless explicitly
   requested.
+
+Detailed runbook for the successful seven-image Mars chip factory video:
+
+```text
+references/xyq-mars-chip-browser-run-2026-06-07.md
+```
