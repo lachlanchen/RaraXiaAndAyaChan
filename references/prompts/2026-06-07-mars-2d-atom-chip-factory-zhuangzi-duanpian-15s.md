@@ -18,10 +18,16 @@
 
 参考图顺序：
 1. words card 小白屏学习卡
+   /home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
 2. LazyingArtRobot，机器人庄子
+   /home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png
 3. LightMind AI 眼镜
-4. 阿芽酱拼皮笔记本
-5. R1 服装参考
-6. R3 服装参考
-7. Trio 三人角色参考
-
+   /home/lachlan/ProjectsLFS/LALACHAN/display.png
+4. 拼皮笔记本
+   /home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
+5. 啦啦侠 服装参考
+   /home/lachlan/ProjectsLFS/LALACHAN/R1.jpg.jpeg
+6. 飒飒君 服装参考
+   /home/lachlan/ProjectsLFS/LALACHAN/R3.jpg.jpeg
+7. 啦啦侠 －－ 阿芽酱 －－ 飒飒君 三人角色参考
+   /home/lachlan/ProjectsLFS/LALACHAN/Trio.png

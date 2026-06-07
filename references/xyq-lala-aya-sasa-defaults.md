@@ -148,6 +148,35 @@ Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.txt
 - Always include `不要字幕`.
 - If generation is already on the way, stop interacting with publish/recharge controls and record only.
 
+2026-06-07 update for extended seven-image reference order:
+
+Use this exact order when a run includes the words card widget and LazyingArt
+robot in addition to the usual Lala/Aya/Sasa references. Include the paths in
+documentation and prompt drafts to avoid mixing up R1/R3 or the Trio image.
+
+```text
+1. words card 小白屏学习卡
+   /home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
+
+2. LazyingArtRobot，机器人庄子
+   /home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png
+
+3. LightMind AI 眼镜
+   /home/lachlan/ProjectsLFS/LALACHAN/display.png
+
+4. 拼皮笔记本
+   /home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
+
+5. 啦啦侠 服装参考
+   /home/lachlan/ProjectsLFS/LALACHAN/R1.jpg.jpeg
+
+6. 飒飒君 服装参考
+   /home/lachlan/ProjectsLFS/LALACHAN/R3.jpg.jpeg
+
+7. 啦啦侠 －－ 阿芽酱 －－ 飒飒君 三人角色参考
+   /home/lachlan/ProjectsLFS/LALACHAN/Trio.png
+```
+
 脚本与草稿保存规则：
 
 - 每次我们自己生成或改写的提示词、剧本、分镜，都保存到 `references/prompts/` 或 `Lala-Aya-Sasa-draft/`。
