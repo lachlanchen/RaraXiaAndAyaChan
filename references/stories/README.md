@@ -9,6 +9,8 @@ Use these categories when adding new stories:
 
 - `Red Sand Paper Kite`: continuous red-sand / VoidAbyss-adjacent series.
 - `Daily Custom`: one-off daily prompts that do not need to follow a canon.
+- `Mars Japan Sanxingdui`: source-synthesis stories that combine one page-like
+  unit from Mars, Japanese history, and Sanxingdui references.
 - `Chip Factory Adventures`: educational chip-manufacturing and silicon-design
   stories.
 - `Robot, Drone, And AR Lab`: robotics, drones, dexterous hands, AR glasses, and
@@ -43,6 +45,16 @@ Series reference:
 
 - `references/series/daily-custom/README.md`
 
+## Mars + Japan + Sanxingdui
+
+These stories use a repeatable source-synthesis method: read one compact unit
+from a Mars source, one from Japanese history, and one from Sanxingdui, then
+write a new original story from the extracted motifs.
+
+Series reference:
+
+- `references/series/mars-japan-sanxingdui/series-bible.md`
+
 ## New Series
 
 Chip education series:
@@ -73,4 +85,3 @@ references/prompts/YYYY-MM-DD-short-title-duanpian-15s.md
 ```
 
 For a planned canon episode, also add a short entry in the relevant series bible.
-

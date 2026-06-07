@@ -21,6 +21,15 @@ Path: `references/series/daily-custom/`
 Purpose: standalone funny daily videos. These can use any setting, but should
 still keep the trio's character voices and recurring props stable.
 
+### Mars + Japan + Sanxingdui
+
+Path: `references/series/mars-japan-sanxingdui/`
+
+Purpose: generate original stories by reading one page-like unit from a Mars
+source, one from Japanese history, and one from Sanxingdui, then transforming
+their motifs into a smooth imaginative LALACHAN scene. This is the preferred
+method when the user asks for Mars + Japan + Sanxingdui continuation stories.
+
 ### Chip Factory Adventures
 
 Path: `references/series/chip-factory-adventures/`
@@ -75,4 +84,3 @@ Every educational video should still be a story first:
 4. Aya Chan makes the careful interpretation.
 5. The concept helps solve the scene.
 6. End with a cliffhanger or tiny joke.
-

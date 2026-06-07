@@ -24,6 +24,14 @@ Topics include NVIDIA-style AI accelerators, Apple silicon, Foxconn-style smart
 manufacturing, MediaTek NPUs, Arm, RISC-V, wafers, yield, masks, packaging,
 memory, and AI factories.
 
+### Mars + Japan + Sanxingdui
+
+Original story-synthesis series. Each future episode can read one page-like unit
+from a Mars source, one from Japanese history, and one from Sanxingdui, then
+combine only the extracted motifs into a new LALACHAN story. This keeps the
+series imaginative and copyright-safe while making the source research routine
+repeatable.
+
 ### Robot, Drone, And AR Lab
 
 Educational comedy series about robotics, drones, dexterous hands, AR glasses,
@@ -52,4 +60,3 @@ Before writing a daily story, decide whether it is:
 - a chip education episode;
 - a robot/drone/AR education episode;
 - or a new series that deserves its own folder.
-
