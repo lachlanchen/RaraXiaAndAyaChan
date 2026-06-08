@@ -21,7 +21,8 @@ through `图7`, not by filename or local path.
 Meaning:
 
 - 图1: generated words card / 小白屏学习卡. Use as a physical desktop learning
-  widget in the scene, not as a subtitle overlay.
+  widget in the scene, not as a subtitle overlay. It is a style reference; each
+  new episode should display a fresh story-relevant word or concept.
 - 图2: robot `庄子`. White robot body with LazyingArt panda logo on chest.
 - 图3 / `display.png`: LightMind AI glasses product reference. Use when characters
   wear AR/AI glasses or when a futuristic display appears.
@@ -72,6 +73,8 @@ Visual notes:
 Content rule:
 
 - One main word or concept per episode.
+- Generate a new word for every new story/video. Do not reuse the previous
+  episode's word unless the user asks for continuity.
 - English in large readable type.
 - Japanese below with furigana if helpful.
 - Optional third language only when it fits the story.
@@ -93,7 +96,7 @@ When using the word card in Xiaoyunque prompts:
 ```text
 Place a small physical desktop e-ink word-card widget on the lab table. The card
 is part of the scene, not a subtitle. It displays one readable learning word in
-English and Japanese with furigana.
+English and Japanese with furigana. Choose a new word that matches this episode.
 ```
 
 If the model tends to create subtitles, add:
@@ -105,7 +108,7 @@ If the model tends to create subtitles, add:
 For Xiaoyunque prompts, prefer this reference mapping:
 
 ```text
-参考图顺序：图1 是小白屏学习卡；图2 是机器人庄子；图3 是 LightMind AI 眼镜；
+参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是机器人庄子；图3 是 LightMind AI 眼镜；
 图4 是拼皮笔记本；图5 是啦啦侠服装参考；图6 是飒飒君服装参考；
 图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
 ```

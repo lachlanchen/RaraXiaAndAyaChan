@@ -11,7 +11,7 @@ LALACHAN image set:
 
 | Image | File | Meaning |
 | --- | --- | --- |
-| 图1 | `artifacts/images/2026-06-07T02-10-31-891Z/image.png` | words card / 小白屏学习卡 |
+| 图1 | `artifacts/images/2026-06-07T02-10-31-891Z/image.png` | words card / 小白屏学习卡; show a fresh word each episode |
 | 图2 | `LazyingArtRobot.png` | robot `庄子`; keep LazyingArt logo on chest |
 | 图3 | `display.png` | LightMind AI glasses |
 | 图4 | `patchwork-leather-notebook-luxury-clean-v2.png` | handmade patchwork notebook |
@@ -21,6 +21,7 @@ LALACHAN image set:
 
 Prompt text should refer to these only as `图1` through `图7`. Do not include
 `/home`, `ProjectsLFS`, `artifacts/`, `.png`, `.jpg`, or `.jpeg` in the prompt.
+For `图1`, choose a new story-relevant word/concept every time.
 
 ## Pre-Submit Contract
 
@@ -104,7 +105,7 @@ rg -n '/home|ProjectsLFS|artifacts|\.png|\.jpg|\.jpeg' \
 The corrected prompt pattern is:
 
 ```text
-参考图顺序：图1 是小白屏学习卡；图2 是 LazyingArtRobot，机器人庄子；
+参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是 LazyingArtRobot，机器人庄子；
 图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠服装参考；
 图6 是飒飒君服装参考；图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
