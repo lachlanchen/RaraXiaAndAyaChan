@@ -21,7 +21,19 @@ LALACHAN image set:
 
 Prompt text should refer to these only as `图1` through `图7`. Do not include
 `/home`, `ProjectsLFS`, `artifacts/`, `.png`, `.jpg`, or `.jpeg` in the prompt.
-For `图1`, choose a new story-relevant word/concept every time.
+For `图1`, choose a new story-relevant word/concept every time. The visible card
+content must include English, Japanese, and Japanese furigana.
+
+Two implementation paths are valid:
+
+- Generate a new words-card image first with AgInTi/image generation and upload
+  that new card as `图1`.
+- Upload the existing words-card as the `图1` style/example reference, then give
+  Xiaoyunque the exact English/Japanese/furigana content and let it render the
+  card in-scene.
+
+Use either path, or both, as long as the final prompt and uploaded materials make
+the fresh words card clear.
 
 ## Pre-Submit Contract
 
@@ -108,6 +120,7 @@ The corrected prompt pattern is:
 参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是 LazyingArtRobot，机器人庄子；
 图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠服装参考；
 图6 是飒飒君服装参考；图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
+本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文含义：简短解释。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
 ```
 

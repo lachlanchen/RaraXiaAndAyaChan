@@ -76,7 +76,8 @@ Content rule:
 - Generate a new word for every new story/video. Do not reuse the previous
   episode's word unless the user asks for continuity.
 - English in large readable type.
-- Japanese below with furigana if helpful.
+- Japanese below it.
+- Furigana for the Japanese reading.
 - Optional third language only when it fits the story.
 - Keep it short enough that the card remains visually credible.
 
@@ -91,12 +92,26 @@ meaning: good chips / total chips
 
 ## Prompt Usage
 
+There are two valid implementation paths:
+
+1. Pre-generate a new words-card image first, for example with AgInTi image
+   generation, using the existing card only as style reference. Upload that new
+   generated image as `图1`.
+2. Upload the existing words-card as `图1` as a style/example reference, then
+   give Xiaoyunque the exact card content and ask it to render the new card in
+   the scene.
+
+Both methods are acceptable. Use whichever works better for the run, or combine
+them if needed. Prefer pre-generation when the exact visible text matters.
+
 When using the word card in Xiaoyunque prompts:
 
 ```text
 Place a small physical desktop e-ink word-card widget on the lab table. The card
 is part of the scene, not a subtitle. It displays one readable learning word in
 English and Japanese with furigana. Choose a new word that matches this episode.
+Card content: English = TOPIC_WORD; Japanese = 日本語; Furigana = ふりがな;
+Chinese meaning = 简短中文解释.
 ```
 
 If the model tends to create subtitles, add:
@@ -111,4 +126,5 @@ For Xiaoyunque prompts, prefer this reference mapping:
 参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是机器人庄子；图3 是 LightMind AI 眼镜；
 图4 是拼皮笔记本；图5 是啦啦侠服装参考；图6 是飒飒君服装参考；
 图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
+本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文含义：简短解释。
 ```
