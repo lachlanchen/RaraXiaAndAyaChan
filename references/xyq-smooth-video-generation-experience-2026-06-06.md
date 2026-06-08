@@ -25,23 +25,31 @@ sleep 8
 scripts/xyq_cdp_browser.py visible PAGE_ID
 ```
 
-5. Set the pre-submit contract and prove it before generation:
+5. If the old thread is stale or already completed, use the page `创作` /
+   new-session control in the same controlled tab, then record the new thread
+   URL. Avoid accumulating extra tabs.
+6. Set the pre-submit contract and prove it before generation:
 
 - `沉浸式短片`
 - normal `Seedance 2.0 Fast`, no `VIP` label
 - `15秒`
 - `4:3` ratio unless the user requests another ratio
-- all five image references uploaded
+- all required image references uploaded, normally the seven-image set:
+  words card, robot `庄子`, LightMind glasses, patchwork notebook, `R1`,
+  `R3`, and `Trio`
 - prompt contains `不要字幕，不要生成任何字幕、说明文字、下三分之一文字或画面文字。`
+- prompt contains no local filesystem paths or filenames; use uploaded-image
+  labels such as `图1` through `图7`
 
-6. The compact ratio toolbar may only show `比例`; open the dropdown and check
+7. The compact ratio toolbar may only show `比例`; open the dropdown and check
    the active item or tooltip, for example `比例: 4:3`.
-7. Upload images through `upload-images-verify`; wait until every upload card is
+8. Upload images through `upload-images-verify`; wait until every upload card is
    success. One stuck `uploading` card keeps the submit button disabled.
-8. Fill the prompt with `type-prompt`, not only DOM value replacement.
-9. If JavaScript `.click()` does not submit, use a real coordinate click on the
+9. Fill the prompt with `type-prompt`, not only DOM value replacement. The
+   prompt should describe references by upload order, not by local path.
+10. If JavaScript `.click()` does not submit, use a real coordinate click on the
    enabled arrow button after verifying its current rectangle.
-10. Watch the submitted thread with `watch_thread_dom_download.py`.
+11. Watch the submitted thread with `watch_thread_dom_download.py`.
 
 ## Download Lessons
 
@@ -98,6 +106,10 @@ ffmpeg -y -loglevel error -i Videos/result.mp4 \
   from queue to `生成中`.
 - A visible video can appear before direct download works; use browser-context
   fetch/blob download rather than retrying external HTTP blindly.
+- Local image paths are only for the upload command. If paths are pasted into
+  the prompt, the model may treat them as visible text or confusing story
+  content. Run `rg -n '/home|ProjectsLFS|artifacts|\.png|\.jpg|\.jpeg'
+  references/prompts/PROMPT.md || true` before submission.
 
 ## 2026-06-07 Driver And Login Check
 
@@ -153,4 +165,10 @@ Detailed runbook for the successful seven-image Mars chip factory video:
 
 ```text
 references/xyq-mars-chip-browser-run-2026-06-07.md
+```
+
+Detailed runbook for the corrected seven-image upload-only/no-path prompt:
+
+```text
+references/xyq-uploaded-images-no-path-workflow-2026-06-09.md
 ```

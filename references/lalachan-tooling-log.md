@@ -96,6 +96,7 @@ references/xyq-lala-aya-sasa-defaults.md
 references/xyq-mode-test-results.md
 references/xyq-blackhole-90s-regeneration-workflow-2026-05-18.md
 references/xyq-browser-video-generation-skill.md
+references/xyq-uploaded-images-no-path-workflow-2026-06-09.md
 references/xyq-hokkaido-dolphin-shark-web-run-2026-06-02.md
 ```
 
@@ -226,4 +227,54 @@ Final user-downloaded files were copied from `~/Downloads` to:
 ```bash
 /home/lachlan/Nutstore Files/AutoPublish/AutoPublish/v03c76g10004d8ffveiljhtdlimp.346.mp4
 /home/lachlan/Nutstore Files/AutoPublish/AutoPublish/v03c76g10004d8fg02iljht3aq91.142.mp4
+```
+
+## 2026-06-09 Seven-Image Upload-Only Correction
+
+Corrected the Xiaoyunque short-video workflow after a prompt accidentally used
+local file paths as visible prompt text. The fixed workflow uploads the seven
+reference images directly through the browser file input, then refers to them
+only as `图1` through `图7` in the prompt.
+
+Saved runbook:
+
+```bash
+references/xyq-uploaded-images-no-path-workflow-2026-06-09.md
+```
+
+Reference order:
+
+```text
+图1 artifacts/images/2026-06-07T02-10-31-891Z/image.png  words card
+图2 LazyingArtRobot.png                                  robot 庄子
+图3 display.png                                          LightMind AI glasses
+图4 patchwork-leather-notebook-luxury-clean-v2.png       patchwork notebook
+图5 R1.jpg.jpeg                                          啦啦侠服装参考
+图6 R3.jpg.jpeg                                          飒飒君服装参考
+图7 Trio.png                                             三人角色参考
+```
+
+Key commands:
+
+```bash
+scripts/xyq_cdp_browser.py upload-images-verify PAGE_ID \
+  artifacts/images/2026-06-07T02-10-31-891Z/image.png \
+  LazyingArtRobot.png display.png patchwork-leather-notebook-luxury-clean-v2.png \
+  R1.jpg.jpeg R3.jpg.jpeg Trio.png \
+  --screenshot outputs/xyq-run/after-upload-seven.png --timeout 180
+
+rg -n '/home|ProjectsLFS|artifacts|\.png|\.jpg|\.jpeg' references/prompts/PROMPT.md || true
+```
+
+Successful corrected output:
+
+```bash
+outputs/xyq-2026-06-09-cleanroom-riceball-uploaded-only/mars_cleanroom_riceball_alarm_15s_uploaded_images_only.mp4
+Videos/mars_cleanroom_riceball_alarm_15s_uploaded_images_only.mp4
+```
+
+Verified metadata:
+
+```text
+15.125s, H.264/AAC, 1112x836, 6015704 bytes
 ```

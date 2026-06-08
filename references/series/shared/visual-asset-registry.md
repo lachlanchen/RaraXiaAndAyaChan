@@ -4,26 +4,33 @@ This registry records recurring image references for LALACHAN video prompts.
 
 ## Core Trio And Products
 
-Use these five images for most Xiaoyunque character videos:
+Use these seven uploaded images for most current Xiaoyunque character videos.
+The paths are for browser upload only; prompts should refer to them as `图1`
+through `图7`, not by filename or local path.
 
 ```text
-/home/lachlan/ProjectsLFS/LALACHAN/display.png
-/home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
-/home/lachlan/ProjectsLFS/LALACHAN/R1.jpg.jpeg
-/home/lachlan/ProjectsLFS/LALACHAN/R3.jpg.jpeg
-/home/lachlan/ProjectsLFS/LALACHAN/Trio.png
+图1 /home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
+图2 /home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png
+图3 /home/lachlan/ProjectsLFS/LALACHAN/display.png
+图4 /home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
+图5 /home/lachlan/ProjectsLFS/LALACHAN/R1.jpg.jpeg
+图6 /home/lachlan/ProjectsLFS/LALACHAN/R3.jpg.jpeg
+图7 /home/lachlan/ProjectsLFS/LALACHAN/Trio.png
 ```
 
 Meaning:
 
-- `display.png`: LightMind AI glasses product reference. Use when characters
+- 图1: generated words card / 小白屏学习卡. Use as a physical desktop learning
+  widget in the scene, not as a subtitle overlay.
+- 图2: robot `庄子`. White robot body with LazyingArt panda logo on chest.
+- 图3 / `display.png`: LightMind AI glasses product reference. Use when characters
   wear AR/AI glasses or when a futuristic display appears.
-- `patchwork-leather-notebook-luxury-clean-v2.png`: Aya Chan's handmade
+- 图4 / `patchwork-leather-notebook-luxury-clean-v2.png`: Aya Chan's handmade
   notebook. Use as book, menu, map, score, chart, protocol card, factory log, or
   repair manual.
-- `R1.jpg.jpeg` and `R3.jpg.jpeg`: updated costume references for Lala Xia and
+- 图5 and 图6 / `R1.jpg.jpeg` and `R3.jpg.jpeg`: updated costume references for Lala Xia and
   Sasa Kun.
-- `Trio.png`: trio character consistency reference.
+- 图7 / `Trio.png`: trio character consistency reference.
 
 ## New Robot Character
 
@@ -51,6 +58,7 @@ Story role:
 ```text
 /home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg
 /home/lachlan/ProjectsLFS/LALACHAN/words_card_arabic.JPG
+/home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
 ```
 
 Visual notes:
@@ -94,3 +102,10 @@ If the model tends to create subtitles, add:
 不要字幕。画面里只能出现作为真实道具存在的单词卡，不要生成任何旁白字幕或说明文字。
 ```
 
+For Xiaoyunque prompts, prefer this reference mapping:
+
+```text
+参考图顺序：图1 是小白屏学习卡；图2 是机器人庄子；图3 是 LightMind AI 眼镜；
+图4 是拼皮笔记本；图5 是啦啦侠服装参考；图6 是飒飒君服装参考；
+图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
+```
