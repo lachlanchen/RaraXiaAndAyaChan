@@ -89,4 +89,5 @@ as optional supporting material for future long-form prompts.
 - The generated organoid-screen close-up is saved locally as optional support, but it was not visible in the composer after the nine accepted attachments.
 - Prompt entered from `references/prompts/2026-06-09-aginti-autonomous-lab-organoid-secret-15s-short-mode.md`.
 - Final screenshot before submit: `outputs/xyq-2026-06-09-aginti-autonomous-lab/final-pre-submit.png`.
-- Create button was ready, but not clicked.
+- Create button was ready, then submitted on 2026-06-09 after user confirmation.
+- Submitted thread URL: `https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=3dc92cb6-18ea-46af-9347-7669aea5838b&agent_name=pippit_video_part_agent`.
