@@ -72,6 +72,11 @@ submitted. The earlier 15s thread was left running.
 - Pre-submit screenshot: `outputs/xyq-2026-06-09-aginti-autonomous-lab-v2/before-submit.png`
 - Post-submit screenshot: `outputs/xyq-2026-06-09-aginti-autonomous-lab-v2/after-submit.png`
 - Submitted thread URL: `https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=520dd393-8af7-4c84-9f9b-f6f5c651a4ea&agent_name=pippit_nest_agent`
+- Continued generation after storyboard confirmation with `继续生成视频。`
+- Completed page screenshot: `outputs/xyq-2026-06-09-aginti-autonomous-lab-v2/completed-30s-after-download.png`
+- Downloaded source file: `/home/lachlan/Downloads/final_video (3).mp4`
+- Copied output file: `Videos/aginti_autonomous_lab_ai_glasses_30s.mp4`
+- Verified output: `30.467s`, `1112x836`, H.264 video, AAC audio, `42899652` bytes
 
 Uploaded reference order:
 
