@@ -14,6 +14,7 @@ Generate a 30-second Xiaoyunque video from the saved story prompt:
 - Submitted thread: `https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=6ebfd06e-1603-414f-acc3-a628f2ddde2b&agent_name=pippit_nest_agent`
 - Workflow: `创作 Agent` / `integrated-agent`
 - Reason: `沉浸式短片` was locked to `15秒` and showed `Seedance 2.0 Fast VIP`; for 30-second work, use Agent mode instead.
+- Credit balance changed from `437` to `63` during this run.
 
 ## Uploaded References
 
@@ -68,3 +69,22 @@ python3 scripts/xyq_chrome/watch_thread_dom_download.py \
 - Do not paste local paths into Xiaoyunque. Upload files, then refer to them as `图1`, `图2`, etc.
 - If the Agent asks for continuation after storyboard/material creation, reply in the same thread with `继续生成视频。`
 - If the page appears stuck loading, focus the browser address bar and press Enter, then re-run `list-pages` and `visible`.
+
+## Outcome
+
+- Xiaoyunque generated a `34秒` storyboard, then rendered a `30.467s` final MP4.
+- Final video copied to: `Videos/aginti_asura_eternal_medicine_30s_2026-06-10.mp4`
+- Download source: `/home/lachlan/Downloads/final_video (3).mp4`
+- `ffprobe` result: `1112x836`, duration `30.467000`.
+
+The watcher did not detect a direct video URL from the artifact grid. The reliable fallback was:
+
+1. Open the `final_video.mp4` artifact card.
+2. Click the page `下载` button.
+3. Copy the newest downloaded `final_video (*.mp4)` from `~/Downloads`.
+
+During continuation, Xiaoyunque reported a reference-image limit:
+
+- Generated assets initially used `10` reference images.
+- It automatically cleared image paths for minor props `P3` and `P4`.
+- It rendered successfully with `8` references.
