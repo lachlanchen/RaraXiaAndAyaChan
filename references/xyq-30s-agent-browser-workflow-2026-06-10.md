@@ -54,4 +54,5 @@ python3 scripts/xyq_chrome/watch_thread_dom_download.py \
 - Agent mode may first produce a storyboard or assets before final rendering.
 - Keep page control in the existing logged-in tab when possible.
 - If Xiaoyunque appears to load forever, focus the address bar and press Enter in the controlled browser, then reattach to the same tab.
+- After clicking `下载`, verify the new file in `~/Downloads` by modified time, size, `ffprobe`, and hash before copying. Do not assume the newest-looking `final_video (*.mp4)` is from the current run until it differs from previous downloads.
 - Verify final local output with `ffprobe` and record the copied path.

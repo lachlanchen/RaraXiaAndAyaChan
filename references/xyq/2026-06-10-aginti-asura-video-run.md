@@ -72,16 +72,22 @@ python3 scripts/xyq_chrome/watch_thread_dom_download.py \
 
 ## Outcome
 
-- Xiaoyunque generated a `34秒` storyboard, then rendered a `30.467s` final MP4.
+- Xiaoyunque generated a `34秒` storyboard, then rendered a `34.320s` final MP4.
 - Final video copied to: `Videos/aginti_asura_eternal_medicine_30s_2026-06-10.mp4`
-- Download source: `/home/lachlan/Downloads/final_video (3).mp4`
-- `ffprobe` result: `1112x836`, duration `30.467000`.
+- Correct download source: `/home/lachlan/Downloads/final_video (4).mp4`
+- Correct `ffprobe` result: `1112x836`, duration `34.320000`.
+- Correct SHA256: `d9f920b80ec55265047ca7021cf19a679fc0487db652d5dc07f87f235cf1c5fd`.
 
 The watcher did not detect a direct video URL from the artifact grid. The reliable fallback was:
 
 1. Open the `final_video.mp4` artifact card.
 2. Click the page `下载` button.
-3. Copy the newest downloaded `final_video (*.mp4)` from `~/Downloads`.
+3. Copy the freshly downloaded `final_video (*.mp4)` from `~/Downloads`.
+4. Verify the downloaded file by modified time, size, `ffprobe`, and hash before copying.
+
+Correction note: the first local copy accidentally used stale `/home/lachlan/Downloads/final_video (3).mp4`, which was the previous AgInTi lab video. The correct file was `/home/lachlan/Downloads/final_video (4).mp4`. The LALACHAN `Videos/` copy and LazyEdit DATA source were replaced with `final_video (4).mp4`. Wrong LazyEdit derivative files were moved to:
+
+- `/home/lachlan/DiskMech/Projects/lazyedit/DATA/aginti_asura_eternal_medicine_30s_2026-06-10/_wrong_source_20260610_1112/`
 
 During continuation, Xiaoyunque reported a reference-image limit:
 
