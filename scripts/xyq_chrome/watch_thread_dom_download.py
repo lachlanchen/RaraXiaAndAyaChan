@@ -242,6 +242,20 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def has_blocking_status(status: str, tail: str) -> bool:
+    blocking_tokens = ("失败", "内部错误", "审核", "合规")
+    if any(token in status for token in blocking_tokens):
+        return True
+
+    has_insufficient = "积分不足" in status or "余额不足" in status
+    if not has_insufficient:
+        return False
+
+    has_queue = "排队等待中" in status or "还需" in status or "优先处理中" in status
+    is_channel_upsell = "切换通道积分不足" in tail
+    return not (has_queue and is_channel_upsell)
+
+
 def main() -> int:
     args = build_parser().parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -295,7 +309,7 @@ def main() -> int:
             flush=True,
         )
 
-        if any(token in status for token in ("失败", "内部错误", "积分不足", "余额不足", "审核", "合规")):
+        if has_blocking_status(status, str(data.get("tail") or "")):
             print("blocking status seen; not retrying automatically", flush=True)
             return 43
 
