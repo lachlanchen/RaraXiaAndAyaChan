@@ -203,6 +203,51 @@ def wait_for_browser_download(filename: str, min_bytes: int, timeout: float = 12
     return None
 
 
+def newest_downloaded_mp4_since(since: float, min_bytes: int) -> Path | None:
+    downloads = Path.home() / "Downloads"
+    if any(downloads.glob("*.crdownload")):
+        return None
+    candidates = [
+        path
+        for path in downloads.glob("*.mp4")
+        if path.stat().st_mtime >= since - 3 and path.stat().st_size >= min_bytes
+    ]
+    if not candidates:
+        return None
+    latest = max(candidates, key=lambda path: path.stat().st_mtime)
+    size = latest.stat().st_size
+    time.sleep(1)
+    if latest.exists() and latest.stat().st_size == size:
+        return latest
+    return None
+
+
+def click_page_download_button(page: CdpPage) -> dict[str, Any]:
+    expression = """
+(() => {
+  const buttons = [...document.querySelectorAll('button')];
+  const visible = buttons.filter(button => {
+    const r = button.getBoundingClientRect();
+    const text = (button.innerText || button.textContent || button.title || button.getAttribute('aria-label') || '').trim();
+    return text === '下载' && r.width > 0 && r.height > 0 && !button.disabled;
+  });
+  const button =
+    visible.find(b => String(b.className || '').includes('artifactPreviewDownloadButton')) ||
+    visible[visible.length - 1];
+  if (!button) return {ok: false, reason: 'download button not found'};
+  const r = button.getBoundingClientRect();
+  const x = r.x + r.width / 2;
+  const y = r.y + r.height / 2;
+  button.dispatchEvent(new MouseEvent('mouseover', {bubbles: true, clientX: x, clientY: y}));
+  button.dispatchEvent(new MouseEvent('mousedown', {bubbles: true, clientX: x, clientY: y}));
+  button.dispatchEvent(new MouseEvent('mouseup', {bubbles: true, clientX: x, clientY: y}));
+  button.click();
+  return {ok: true, text: button.innerText, x: Math.round(r.x), y: Math.round(r.y)};
+})()
+"""
+    return page.eval(expression)
+
+
 def ffprobe(path: Path) -> str:
     if not shutil.which("ffprobe"):
         return ""
@@ -225,6 +270,20 @@ def ffprobe(path: Path) -> str:
         stderr=subprocess.PIPE,
     )
     return result.stdout.strip()
+
+
+def finish_from_file(source: Path, output: Path, copy_to: list[Path]) -> None:
+    if source.resolve() != output.resolve():
+        shutil.copy2(source, output)
+    probe = ffprobe(output)
+    if probe:
+        print(probe, flush=True)
+    for folder in copy_to:
+        folder.mkdir(parents=True, exist_ok=True)
+        target = folder / output.name
+        shutil.copy2(output, target)
+        print(f"copied: {target}", flush=True)
+    print(f"DONE output={output}", flush=True)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -281,6 +340,7 @@ def main() -> int:
     seen: set[str] = set()
     start = time.time()
     last_reload = start
+    page_download_attempts = 0
 
     for poll in range(1, args.max_polls + 1):
         if not page_exists(page_id, args.cdp_url):
@@ -330,6 +390,12 @@ def main() -> int:
             print("blocking status seen; not retrying automatically", flush=True)
             return 43
 
+        downloaded = newest_downloaded_mp4_since(start, args.min_bytes)
+        if downloaded and ("完成" in status or "下载" in status or videos):
+            print(f"found browser download: {downloaded}", flush=True)
+            finish_from_file(downloaded, output, args.copy_to)
+            return 0
+
         urls = [
             video.get("src") or ""
             for video in videos
@@ -368,16 +434,7 @@ def main() -> int:
                         if not downloaded:
                             print(f"browser download not found: {download_name}", flush=True)
                             continue
-                        shutil.copy2(downloaded, output)
-                        probe = ffprobe(output)
-                        if probe:
-                            print(probe, flush=True)
-                        for folder in args.copy_to:
-                            folder.mkdir(parents=True, exist_ok=True)
-                            target = folder / output.name
-                            shutil.copy2(output, target)
-                            print(f"copied: {target}", flush=True)
-                        print(f"DONE output={output}", flush=True)
+                        finish_from_file(downloaded, output, args.copy_to)
                         return 0
                 continue
             if "video" not in content_type.lower() and ".mp4" not in url.lower():
@@ -392,16 +449,27 @@ def main() -> int:
                 print(f"download too small: {output.stat().st_size}", flush=True)
                 continue
 
-            probe = ffprobe(output)
-            if probe:
-                print(probe, flush=True)
-            for folder in args.copy_to:
-                folder.mkdir(parents=True, exist_ok=True)
-                target = folder / output.name
-                shutil.copy2(output, target)
-                print(f"copied: {target}", flush=True)
-            print(f"DONE output={output}", flush=True)
+            finish_from_file(output, output, args.copy_to)
             return 0
+
+        if videos and ("完成" in status or "下载" in status) and page_download_attempts < 3:
+            page_download_attempts += 1
+            click_time = time.time()
+            try:
+                clicked = click_page_download_button(page)
+            except Exception as exc:  # noqa: BLE001 - keep polling if the UI shifts.
+                print(f"page download click failed: {type(exc).__name__}: {exc}", flush=True)
+                clicked = {"ok": False}
+            print(f"page download click: {json.dumps(clicked, ensure_ascii=False)}", flush=True)
+            if clicked.get("ok"):
+                deadline = time.time() + 120
+                while time.time() < deadline:
+                    downloaded = newest_downloaded_mp4_since(click_time, args.min_bytes)
+                    if downloaded:
+                        print(f"found browser download: {downloaded}", flush=True)
+                        finish_from_file(downloaded, output, args.copy_to)
+                        return 0
+                    time.sleep(1)
 
         time.sleep(args.interval)
 

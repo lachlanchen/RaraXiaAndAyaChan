@@ -186,20 +186,24 @@ references/xyq-smooth-video-generation-experience-2026-06-06.md
 
 ## Manual Download Fallback
 
-If Xiaoyunque exposes the result but direct download fails, use browser/manual download, then copy from `~/Downloads`:
+If Xiaoyunque exposes the result but direct download fails, use browser/manual
+download, then copy from `~/Downloads`. Always quote the path because
+Xiaoyunque often downloads names like `final_video (5).mp4`:
 
 ```bash
-find ~/Downloads -maxdepth 1 -type f -name '*.mp4' -printf '%T@ %s %p\n' | sort -nr | head
-cp -v ~/Downloads/FILE.mp4 "/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/"
+latest="$(find ~/Downloads -maxdepth 1 -type f -name '*.mp4' -printf '%T@ %p\0' \
+  | sort -z -nr | head -z -n 1 | cut -z -d' ' -f2- | tr -d '\0')"
+ffprobe -v error -show_entries format=duration,size -show_entries stream=width,height "$latest"
+cp -v "$latest" "/home/lachlan/Nutstore Files/AutoPublish/AutoPublish/"
 ```
 
 For two newest downloads:
 
 ```bash
 DEST="/home/lachlan/Nutstore Files/AutoPublish/AutoPublish"
-find ~/Downloads -maxdepth 1 -type f -name '*.mp4' -printf '%T@ %p\n' \
-  | sort -nr | head -2 | cut -d' ' -f2- \
-  | while IFS= read -r f; do cp -v "$f" "$DEST/"; done
+find ~/Downloads -maxdepth 1 -type f -name '*.mp4' -printf '%T@ %p\0' \
+  | sort -z -nr | head -z -n 2 | cut -z -d' ' -f2- \
+  | while IFS= read -r -d '' f; do cp -v "$f" "$DEST/"; done
 ```
 
 ## Evidence To Save
