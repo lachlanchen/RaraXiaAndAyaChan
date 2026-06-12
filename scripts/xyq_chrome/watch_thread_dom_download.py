@@ -251,9 +251,26 @@ def has_blocking_status(status: str, tail: str) -> bool:
     if not has_insufficient:
         return False
 
-    has_queue = "排队等待中" in status or "还需" in status or "优先处理中" in status
+    has_queue = (
+        "排队等待中" in status
+        or "还需" in status
+        or "优先处理中" in status
+        or "进行中" in status
+        or "生成中" in status
+    )
     is_channel_upsell = "切换通道积分不足" in tail
-    return not (has_queue and is_channel_upsell)
+    if has_queue and is_channel_upsell:
+        return False
+
+    # The thread keeps old messages in the tail. After a user recharges, an
+    # earlier insufficient-points message may still match the status regex while
+    # the latest state has moved on. Do not stop on stale payment blockers.
+    latest_insufficient = max(tail.rfind("积分不足"), tail.rfind("余额不足"))
+    latest_payment = max(tail.rfind("支付成功"), tail.rfind("充值成功"))
+    if latest_payment > latest_insufficient and has_queue:
+        return False
+
+    return True
 
 
 def main() -> int:
