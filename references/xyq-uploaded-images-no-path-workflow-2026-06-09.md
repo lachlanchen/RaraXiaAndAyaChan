@@ -40,7 +40,7 @@ the fresh words card clear.
 For the usual short-video workflow, verify all of these before submission:
 
 - `沉浸式短片`
-- normal `Seedance 2.0 Fast`, not `Seedance 2.0 Fast VIP`
+- normal `Seedance 2.0`, not Fast and not VIP, unless Fast is explicitly requested
 - `15秒`
 - `4:3` unless the user explicitly asks for another ratio
 - seven uploaded image chips/cards, all with `success` upload state

@@ -55,6 +55,7 @@ https://xyq.jianying.com/novel/list?enter_from=small_tool
 
 - 用户明确说 `短片`、`duanpian`、`沉浸式短片`、`15秒`、`快速测试` 时，使用 `沉浸式短片`。
 - `沉浸式短片` 默认时长固定按 `15s` 设计，不额外写更长时长。
+- `沉浸式短片` 默认使用普通 `Seedance 2.0`，非 Fast，非 VIP；只有用户明确要求 Fast 时才选择 `Seedance 2.0 Fast`。
 - 用户没有指定模式时，默认使用 `Agent 模式`。
 - `Agent 模式` 默认按更长视频处理，目标为 `1分钟以上` 或平台允许的最长稳定长度。
 - 用户明确说 `智能长视频 2.0` 或 `zhineng changshipin 2.0` 时，从首页模式下拉选择 `智能长视频 2.0`。
