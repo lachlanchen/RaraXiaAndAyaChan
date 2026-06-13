@@ -157,7 +157,7 @@ documentation and prompt drafts to avoid mixing up R1/R3 or the Trio image.
 
 ```text
 1. words card 小白屏学习卡
-   /home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
+   /home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg
 
 2. LazyingArtRobot，机器人庄子
    /home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png

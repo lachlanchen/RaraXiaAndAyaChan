@@ -71,7 +71,7 @@ For ordinary LALACHAN short videos:
 Default uploaded image order:
 
 ```text
-artifacts/images/2026-06-07T02-10-31-891Z/image.png
+words-card.jpg
 LazyingArtRobot.png
 display.png
 patchwork-leather-notebook-luxury-clean-v2.png
@@ -129,7 +129,7 @@ important.
 
 ```bash
 scripts/xyq_cdp_browser.py upload-images-verify PAGE_ID \
-  artifacts/images/2026-06-07T02-10-31-891Z/image.png \
+  words-card.jpg \
   LazyingArtRobot.png \
   display.png \
   patchwork-leather-notebook-luxury-clean-v2.png \

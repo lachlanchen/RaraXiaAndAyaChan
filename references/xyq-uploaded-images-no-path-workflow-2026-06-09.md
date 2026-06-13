@@ -11,7 +11,7 @@ LALACHAN image set:
 
 | Image | File | Meaning |
 | --- | --- | --- |
-| 图1 | `artifacts/images/2026-06-07T02-10-31-891Z/image.png` | words card / 小白屏学习卡; show a fresh word each episode |
+| 图1 | `words-card.jpg` | words card / 小白屏学习卡 style reference; show a fresh word each episode |
 | 图2 | `LazyingArtRobot.png` | robot `庄子`; keep LazyingArt logo on chest |
 | 图3 | `display.png` | LightMind AI glasses |
 | 图4 | `patchwork-leather-notebook-luxury-clean-v2.png` | handmade patchwork notebook |
@@ -40,7 +40,7 @@ the fresh words card clear.
 For the usual short-video workflow, verify all of these before submission:
 
 - `沉浸式短片`
-- normal `Seedance 2.0`, not Fast and not VIP, unless Fast is explicitly requested
+- `Seedance 2.0 Fast` non-VIP for the current low-credit default, unless the user explicitly requests normal non-Fast or higher quality
 - `15秒`
 - `4:3` unless the user explicitly asks for another ratio
 - seven uploaded image chips/cards, all with `success` upload state
@@ -89,7 +89,7 @@ upload command only; they are not prompt content.
 
 ```bash
 scripts/xyq_cdp_browser.py upload-images-verify PAGE_ID \
-  artifacts/images/2026-06-07T02-10-31-891Z/image.png \
+  words-card.jpg \
   LazyingArtRobot.png \
   display.png \
   patchwork-leather-notebook-luxury-clean-v2.png \

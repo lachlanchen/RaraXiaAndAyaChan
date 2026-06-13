@@ -9,7 +9,7 @@ The paths are for browser upload only; prompts should refer to them as `图1`
 through `图7`, not by filename or local path.
 
 ```text
-图1 /home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
+图1 /home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg
 图2 /home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png
 图3 /home/lachlan/ProjectsLFS/LALACHAN/display.png
 图4 /home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
@@ -20,9 +20,11 @@ through `图7`, not by filename or local path.
 
 Meaning:
 
-- 图1: generated words card / 小白屏学习卡. Use as a physical desktop learning
-  widget in the scene, not as a subtitle overlay. It is a style reference; each
-  new episode should display a fresh story-relevant word or concept.
+- 图1: `words-card.jpg` / 小白屏学习卡. Use as the default physical desktop learning
+  widget style reference in the scene, not as a subtitle overlay. Each new
+  episode should display a fresh story-relevant word or concept. Use a
+  pre-generated card image as 图1 only when that new card was intentionally made
+  for the episode.
 - 图2: robot `庄子`. White robot body with LazyingArt panda logo on chest.
 - 图3 / `display.png`: LightMind AI glasses product reference. Use when characters
   wear AR/AI glasses or when a futuristic display appears.
@@ -59,7 +61,7 @@ Story role:
 ```text
 /home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg
 /home/lachlan/ProjectsLFS/LALACHAN/words_card_arabic.JPG
-/home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png
+/home/lachlan/ProjectsLFS/LALACHAN/artifacts/images/2026-06-07T02-10-31-891Z/image.png  # generated example, not the default upload
 ```
 
 Visual notes:
