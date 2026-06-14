@@ -23,6 +23,7 @@ Prompt text should refer to these only as `图1` through `图7`. Do not include
 `/home`, `ProjectsLFS`, `artifacts/`, `.png`, `.jpg`, or `.jpeg` in the prompt.
 For `图1`, choose a new story-relevant word/concept every time. The visible card
 content must include English, Japanese, and Japanese furigana.
+The most reliable prompt style is to describe it as a real prop: `图1 是小白屏学习卡风格参考，可作为场景边缘、桌面、道具架或实验台上的小道具，卡片内容是 English: WORD；Japanese: 日本語；Furigana: ふりがな；中文：中文含义。它只是场景里的真实道具，不是字幕。`
 
 Two implementation paths are valid:
 
@@ -39,9 +40,9 @@ the fresh words card clear.
 
 For the usual short-video workflow, verify all of these before submission:
 
-- `沉浸式短片`
+- target `30秒` by default unless the user explicitly asks for 15s/cheapest/quick test
+- use a 30s-capable Agent/integrated workflow when `沉浸式短片` is capped at `15秒`
 - `Seedance 2.0 Fast` non-VIP for the current low-credit default, unless the user explicitly requests normal non-Fast or higher quality
-- `15秒`
 - `4:3` unless the user explicitly asks for another ratio
 - seven uploaded image chips/cards, all with `success` upload state
 - prompt includes `不要字幕，不要生成任何字幕、说明文字、下三分之一文字或画面文字。`
@@ -117,10 +118,11 @@ rg -n '/home|ProjectsLFS|artifacts|\.png|\.jpg|\.jpeg' \
 The corrected prompt pattern is:
 
 ```text
-参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是 LazyingArtRobot，机器人庄子；
+参考图顺序：图1 是小白屏学习卡风格参考，可作为场景边缘、桌面、道具架或实验台上的小道具。
+本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文：简短含义。
+它只是场景里的真实道具，不是字幕。图2 是 LazyingArtRobot，机器人庄子；
 图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠服装参考；
 图6 是飒飒君服装参考；图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
-本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文含义：简短解释。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
 ```
 
@@ -145,7 +147,7 @@ scripts/xyq_chrome/watch_thread_dom_download.py \
   --page-id PAGE_ID \
   --thread-url "THREAD_URL" \
   --output-dir outputs/xyq-run \
-  --filename result_15s.mp4 \
+  --filename result_30s.mp4 \
   --copy-to Videos \
   --interval 30 --max-polls 240 --reload-every 300
 ```
