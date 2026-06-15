@@ -15,11 +15,12 @@ LALACHAN image set:
 | 图2 | `LazyingArtRobot.png` | robot `庄子`; keep LazyingArt logo on chest |
 | 图3 | `display.png` | LightMind AI glasses |
 | 图4 | `patchwork-leather-notebook-luxury-clean-v2.png` | handmade patchwork notebook |
-| 图5 | `R1.jpg.jpeg` | 啦啦侠 clothing reference |
-| 图6 | `R3.jpg.jpeg` | 飒飒君 clothing reference |
-| 图7 | `Trio.png` | three-character identity reference: 啦啦侠, 阿芽酱, 飒飒君 |
+| 图5 | `raraxia.jpeg` | individual 啦啦侠 / Rara Xia reference |
+| 图6 | `ayachan.png` | individual 阿芽酱 / Aya Chan reference |
+| 图7 | `sasakun.jpeg` | individual 飒飒君 / Sasa Kun reference |
+| 图8 | `Trio.png` | three-character identity reference: 啦啦侠, 阿芽酱, 飒飒君 |
 
-Prompt text should refer to these only as `图1` through `图7`. Do not include
+Prompt text should refer to these only as `图1` through `图8`. Do not include
 `/home`, `ProjectsLFS`, `artifacts/`, `.png`, `.jpg`, or `.jpeg` in the prompt.
 For `图1`, choose a new story-relevant word/concept every time. The visible card
 content must include English, Japanese, and Japanese furigana.
@@ -44,7 +45,7 @@ For the usual short-video workflow, verify all of these before submission:
 - use a 30s-capable Agent/integrated workflow when `沉浸式短片` is capped at `15秒`
 - `Seedance 2.0 Fast` non-VIP for the current low-credit default, unless the user explicitly requests normal non-Fast or higher quality
 - `4:3` unless the user explicitly asks for another ratio
-- seven uploaded image chips/cards, all with `success` upload state
+- eight uploaded image chips/cards, all with `success` upload state
 - prompt includes `不要字幕，不要生成任何字幕、说明文字、下三分之一文字或画面文字。`
 - prompt contains no local paths or filenames
 - submit arrow is enabled
@@ -83,7 +84,7 @@ workflow, create a fresh composer from the page itself. Use the visible
 `创作` / new-session button in the existing controlled tab, then verify the new
 thread URL. Do not keep opening extra tabs just to start a new job.
 
-## Upload The Seven Images
+## Upload The Eight Images
 
 Upload through the page file input. The path arguments are for the browser
 upload command only; they are not prompt content.
@@ -94,10 +95,11 @@ scripts/xyq_cdp_browser.py upload-images-verify PAGE_ID \
   LazyingArtRobot.png \
   display.png \
   patchwork-leather-notebook-luxury-clean-v2.png \
-  R1.jpg.jpeg \
-  R3.jpg.jpeg \
+  raraxia.jpeg \
+  ayachan.png \
+  sasakun.jpeg \
   Trio.png \
-  --screenshot outputs/xyq-run/after-upload-seven.png \
+  --screenshot outputs/xyq-run/after-upload-eight.png \
   --timeout 180
 ```
 
@@ -121,8 +123,8 @@ The corrected prompt pattern is:
 参考图顺序：图1 是小白屏学习卡风格参考，可作为场景边缘、桌面、道具架或实验台上的小道具。
 本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文：简短含义。
 它只是场景里的真实道具，不是字幕。图2 是 LazyingArtRobot，机器人庄子；
-图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠服装参考；
-图6 是飒飒君服装参考；图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
+图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠单人参考；
+图6 是阿芽酱单人参考；图7 是飒飒君单人参考；图8 是啦啦侠、阿芽酱、飒飒君三人角色参考。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
 ```
 
@@ -208,9 +210,9 @@ size: 6015704 bytes
 
 The earlier run pasted absolute local paths into the prompt. That is wrong. The
 model cannot access local filesystem paths as images; it may treat them as
-visible text, prop labels, or confusing story material. The corrected run first
-uploaded the seven images through the browser file input and then referenced
-them only as `图1` to `图7`.
+visible text, prop labels, or confusing story material. The corrected future
+workflow uploads the eight images through the browser file input and references
+them only as `图1` to `图8`.
 
 ## Skill Update
 

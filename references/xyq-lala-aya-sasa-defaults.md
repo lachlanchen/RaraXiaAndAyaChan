@@ -140,9 +140,10 @@ Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.txt
 6. 如有参考视频，再一起上传参考视频。
 7. 提交任务后，通过 Chrome Driver 检查页面状态、分镜确认和积分提示。
 
-2026-05-09 update for short-video reference assets:
+2026-05-09 historical update for short-video reference assets:
 
-- For `沉浸式短片`, use five image references when available: `display.png`, `patchwork-leather-notebook-luxury-clean-v2.png`, `R1.jpg.jpeg`, `R3.jpg.jpeg`, `Trio.png`.
+- This older five-image setup has been replaced by the current eight-image
+  setup below. Do not use deleted `R1.jpg.jpeg` or `R3.jpg.jpeg` in new runs.
 - Attach old generated trio videos through the bottom `+ -> 从资产库选择` menu.
 - Do not use `@引用素材` as the default path for old reference videos.
 - The old videos should be used as real reference assets for voices, character identity, expressions, and action rhythm.
@@ -150,11 +151,11 @@ Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.txt
 - Always include `不要字幕`.
 - If generation is already on the way, stop interacting with publish/recharge controls and record only.
 
-2026-06-07 update for extended seven-image reference order:
+2026-06-15 update for current eight-image reference order:
 
-Use this exact order when a run includes the words card widget and LazyingArt
-robot in addition to the usual Lala/Aya/Sasa references. Include the paths in
-documentation and prompt drafts to avoid mixing up R1/R3 or the Trio image.
+Use this exact order for new Xiaoyunque browser uploads. Include the paths in
+documentation and prompt drafts only for local upload commands. In the final
+Xiaoyunque prompt, refer to them as `图1` through `图8`, not as paths.
 
 ```text
 1. words card 小白屏学习卡
@@ -169,13 +170,16 @@ documentation and prompt drafts to avoid mixing up R1/R3 or the Trio image.
 4. 拼皮笔记本
    /home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png
 
-5. 啦啦侠 服装参考
-   /home/lachlan/ProjectsLFS/LALACHAN/R1.jpg.jpeg
+5. 啦啦侠 / Rara Xia 单人参考
+   /home/lachlan/ProjectsLFS/LALACHAN/raraxia.jpeg
 
-6. 飒飒君 服装参考
-   /home/lachlan/ProjectsLFS/LALACHAN/R3.jpg.jpeg
+6. 阿芽酱 / Aya Chan 单人参考
+   /home/lachlan/ProjectsLFS/LALACHAN/ayachan.png
 
-7. 啦啦侠 －－ 阿芽酱 －－ 飒飒君 三人角色参考
+7. 飒飒君 / Sasa Kun 单人参考
+   /home/lachlan/ProjectsLFS/LALACHAN/sasakun.jpeg
+
+8. 啦啦侠 －－ 阿芽酱 －－ 飒飒君 三人角色参考
    /home/lachlan/ProjectsLFS/LALACHAN/Trio.png
 ```
 
