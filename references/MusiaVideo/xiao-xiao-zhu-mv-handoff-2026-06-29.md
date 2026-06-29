@@ -40,7 +40,7 @@ Duration: about `92.0s`.
 
 ## Visual Concept
 
-Cute comfort bedroom-pop MV. `小小猪` is an affectionate cloud-pig rest mascot. The LALACHAN four buddies are tired from homework, messages, reports, and alarms. A comic deadline storm chases them, but they turn it into pillows, stars, and a warm rest world.
+Cute comfort bedroom-pop MV. `小小猪` is an affectionate cloud-pig rest mascot. Aya Chan / 阿芽酱 is the red panda lead singer and camera center. The LALACHAN four buddies are tired from homework, messages, reports, and alarms. A comic deadline storm chases them, but they turn it into pillows, stars, and a warm rest world.
 
 ## Generation Setup
 
@@ -73,4 +73,3 @@ export LAZYSKILLS_ROOT="${LAZYSKILLS_ROOT:-/home/lachlan/ProjectsLFS/LazySkills}
   --audio "$MUSIA_ROOT/../MusiaSongs/audio/xiao-xiao-zhu-zh-Hans.mp3" \
   --output "$LALACHAN_ROOT/Videos/xiao_xiao_zhu_mv_song_locked_2026-06-29.mp4"
 ```
-
