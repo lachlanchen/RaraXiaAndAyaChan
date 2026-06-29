@@ -334,3 +334,13 @@ scripts/musia_mv_finalize.sh \
 ```
 
 This creates an MP4 with the XYQ video stream and the exact selected Musia audio, using AAC at 192 kbps and `-shortest`.
+
+## 2026-06-29 Hikari Ame Full MV Run Notes
+
+The full-song Hikari Ame MV run used `创作 Agent`, uploaded the Musia MP3 plus all character/prop assets, corrected the Xiaoyunque storyboard from 78s back to a 68s song-matched plan, confirmed a 748-credit render, downloaded `final_video.mp4` through the artifact preview panel, and created a song-locked final with the exact Musia audio.
+
+Details:
+
+```text
+references/MusiaVideo/hikari-ame-full-mv-browser-generation-2026-06-29.md
+```
