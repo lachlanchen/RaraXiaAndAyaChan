@@ -86,6 +86,17 @@ The CLI creates normal LazyEdit videos, process jobs, publish jobs, and queue re
 
 Avoid manual browser publishing unless the CLI or AutoPublish code is broken and you are debugging the platform automation itself.
 
+For Xiaoyunque/LALACHAN generation tasks, the default post-generation path is:
+
+1. Auto-download the final MP4 from the logged-in Xiaoyunque browser.
+2. Verify the local MP4 with `ffprobe`.
+3. Copy the verified file to `/home/lachlan/ProjectsLFS/LALACHAN/Videos`.
+4. Submit the file to LazyEdit, preferably through the CLI. Nutstore
+   AutoPublish import is an acceptable fallback.
+5. If the user did not explicitly request YouTube, Instagram, Shipinhao, or
+   another real platform, use `--no-publish` so LazyEdit imports/processes the
+   video without posting it.
+
 ## Environment Setup
 
 Run from the LazyEdit repo:
@@ -153,7 +164,7 @@ This prevents publishing the wrong `final_video (N).mp4` or stale copied file.
 
 ## Logo Preflight
 
-For real publishes, burn the existing LazyEdit Studio logo at the top-left unless the user explicitly says no logo.
+For real publishes, burn the existing LazyEdit Studio logo unless the user explicitly says no logo. Current LALACHAN/MV default is top-right.
 
 Check current logo settings:
 
@@ -167,7 +178,7 @@ Required state:
 {
   "enabled": true,
   "logoPath": "...",
-  "position": "top-left"
+  "position": "top-right"
 }
 ```
 
@@ -176,6 +187,89 @@ Do not invent or replace the logo. Use the configured webapp logo. Normal logo-b
 ```text
 _subtitles_logo.mp4
 ```
+
+## Quality-Preserving Portrait Blur-Fill
+
+For 4:3 or horizontal LALACHAN videos that need a vertical mobile version, use a blurred duplicate background and keep the original picture sharp as the foreground. Leave enough lower blurred space for subtitles.
+
+Preferred current path: use LazyEdit's built-in portrait blur-fill and normal subtitle/logo reburn. This keeps the webapp queue, subtitle correction, logo placement, and platform package in one system. Manual blur-fill scripts are now a fallback for recovery or one-off layout experiments.
+
+Use a high-quality portrait master:
+
+```bash
+cd /home/lachlan/ProjectsLFS/LALACHAN
+
+scripts/portrait_blurfill_subtitle_space.sh INPUT.mp4 OUTPUT_portrait_hq.mp4 \
+  --fg-y 576 \
+  --crf 10 \
+  --preset slow \
+  --scale-flags lanczos \
+  --audio-mode copy
+```
+
+For 16:9 music videos converted to `1080x1920`, `--fg-y 576` gives a better top/foreground/bottom balance than the older `--fg-y 240` layout.
+
+Do not publish a normal CRF 18 portrait encode if the user says quality dropped. For AI-generated animation, use CRF 10 to 12 and `lanczos` scaling. Always inspect frames before publishing:
+
+```bash
+ffmpeg -hide_banner -loglevel error -y -ss 3 -i OUTPUT_portrait_hq.mp4 \
+  -frames:v 1 outputs/portrait-checks/check_03s.jpg
+```
+
+If LazyEdit's normal subtitle/logo burn visibly reduces quality, create a one-pass high-quality publish master with the already-corrected subtitles and the normal configured logo:
+
+```bash
+scripts/hq_subtitle_logo_master.sh OUTPUT_portrait_hq.mp4 corrected.srt OUTPUT_publish_hq.mp4 \
+  --logo /home/lachlan/DiskMech/Projects/lazyedit/DATA/ui_assets/logos/logo-w-text-the-art-of-lazying.png \
+  --logo-height 288 \
+  --logo-x 38 \
+  --logo-y 38 \
+  --font-size 44 \
+  --margin-v 280 \
+  --crf 10 \
+  --preset slow \
+  --audio-mode copy
+```
+
+Then import/publish `OUTPUT_publish_hq.mp4` with `--no-burn-subtitles`. The file already contains the normal logo and burned subtitles, so LazyEdit should not burn again:
+
+```bash
+python scripts/lazyedit_publish.py \
+  --video-id VIDEO_ID \
+  --use-current-settings \
+  --platforms youtube,instagram,shipinhao \
+  --metadata-prompt-file temp/metadata_brief.md \
+  --no-burn-subtitles \
+  --no-process \
+  --guided-monitor \
+  --wait
+```
+
+Before using `--no-burn-subtitles`, verify the MP4 itself really contains the subtitles and logo. If it does not, use the normal LazyEdit burn path instead.
+
+## Publish Categories
+
+Use these canonical categories in metadata and one-shot publish options:
+
+```text
+simplelife
+lazyingart
+musia
+lalachan
+lalamv
+```
+
+Use `lalamv` for LALACHAN character music videos and song-driven MVs. It routes to:
+
+```text
+YouTube playlist: LalaMV
+Shipinhao collection: LalaMV
+Instagram: metadata/caption only, no stable category UI
+```
+
+Use `musia` for pure music/art-track posts without the LALACHAN characters. `music` is only a backwards-compatible alias for `musia`.
+
+Platform caveat: YouTube playlist selection/creation is best effort. If YouTube creates a playlist but does not expose it for immediate selection, continue the upload instead of failing the whole publish. Shipinhao collection selection requires the collection to exist in the visible picker; if `LalaMV` is not visible, publish can continue without a collection and the limitation should be reported.
 
 ## Subtitle and Language Defaults
 
@@ -217,6 +311,39 @@ Correction should follow a human middle path:
 - Use context to infer likely phrases when Whisper output is abnormal, fragmented, or inconsistent.
 
 For example, if the script says a character is rescuing zongzi and the ASR produces a broken unrelated phrase, correct toward the likely zongzi sentence only when the surrounding lines support it.
+
+## Singing and Music Identification Rule
+
+If the video contains singing, do not treat Whisper output as enough context.
+
+Before subtitle correction and metadata generation, identify the song when possible:
+
+- Read the raw and polished transcript for distinctive lyric fragments.
+- Search the web for those fragments plus `歌词`, `lyrics`, or the likely language.
+- Compare multiple fragments, not only one line.
+- Confirm the song title and artist only when several fragments or a reliable source match.
+- Use the identified song as context for ASR correction and metadata.
+
+For copyrighted songs, do not paste full lyrics into public responses or internal handoff notes. Use the song title, artist, and short non-lyric descriptors as context. For subtitles, prefer marking longer sung sections as song fragments rather than hallucinating full lyrics when the audio is unclear.
+
+Recommended subtitle strategy for singing videos:
+
+- Keep clear spoken commentary exactly as speech.
+- For clearly identified long lyric sections, annotate as `[歌曲：《Title》片段]` or use a short allowed lyric excerpt only where necessary.
+- Do not invent lyrics from the script or model memory.
+- If a short line is clearly recognized and needed for timing, use it cautiously.
+- If the song is not confidently identified, mark as `[唱歌片段，歌词不清]`.
+
+Recommended metadata strategy for singing videos:
+
+- Mention the song title and artist when identified.
+- Mention the live setting, atmosphere, and performance style.
+- Do not claim the singer wrote the song unless known.
+- Do not describe the video as multilingual just because ASR produced false Japanese, Korean, Spanish, or English fragments.
+
+Bridge-video lesson:
+
+The video `IMG_4379_2026_06_09_07_35_11_COMPLETED` was initially corrected from Whisper alone. Later lyric search showed the singer was likely singing fragments of 《夏天的风》 and 《十年》. Future singing videos should perform this search before publish so subtitles and metadata use the actual song context instead of raw ASR artifacts.
 
 ## Metadata Context Philosophy
 
@@ -564,6 +691,12 @@ Missing subtitles after publish:
 - Cause: subtitle burning was off, `--no-burn-subtitles` was used, or a non-processed output was published.
 - Fix: use current settings, verify `burnSubtitles=true`, and process with the `burn` step.
 
+Singing video subtitles or metadata look bizarre:
+
+- Cause: Whisper hallucinated multilingual text from music, reverb, or unclear singing.
+- Fix: search distinctive lyric fragments online, identify the song, then use song title and verified context for subtitle correction and metadata.
+- For long copyrighted lyric sections, annotate the song fragment instead of pasting full lyrics.
+
 Non-polished subtitles used:
 
 - Cause: published original transcript or reused an old output.
@@ -655,7 +788,7 @@ Also mention whether:
 
 - polished subtitles were used;
 - subtitles were burned;
-- LazyEdit logo was enabled;
+- LazyEdit logo was enabled and which position was used;
 - no code changes were made;
 - any platform was intentionally skipped.
 

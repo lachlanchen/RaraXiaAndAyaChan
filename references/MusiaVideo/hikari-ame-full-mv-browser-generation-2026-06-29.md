@@ -100,3 +100,25 @@ scripts/musia_mv_finalize.sh \
 ```
 
 Use `$MUSIA_ROOT` and `$LALACHAN_ROOT` in public reusable docs or skills.
+
+## Publish Follow-Up
+
+The final public publish used the portrait blur-fill song-locked master:
+
+```text
+Videos/aya_chan_hikari_ame_full_mv_song_locked_portrait_blurfill_fg30_2026-06-29.mp4
+```
+
+Publish record:
+
+```text
+references/MusiaVideo/hikari-ame-full-mv-publish-run-2026-06-29.md
+```
+
+Important reusable lessons:
+
+- For MV vertical outputs, prefer LazyEdit's built-in portrait blur-fill and normal reburn when available.
+- Default MV logo placement should be `top-right`.
+- Use `publish_category: lalamv` for LALACHAN music videos.
+- YouTube playlist `LalaMV` is best effort; if YouTube's playlist UI is unstable, do not block publishing.
+- Shipinhao `LalaMV` collection was not visible in the current account UI; the post still published successfully without the collection.
