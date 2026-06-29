@@ -61,11 +61,17 @@ GitHub Release video URL:
 https://github.com/lachlanchen/LalaMedias/releases/download/media-v1/aya-chan-hikari-ame-full-mv-c371e7d0.mp4
 ```
 
-Expected LalaMedias website URL if GitHub Pages is enabled:
+Public LalaMedias website URLs:
 
 ```text
+Archive homepage:
+https://lachlanchen.github.io/LalaMedias/
+
+MV page:
 https://lachlanchen.github.io/LalaMedias/videos/aya-chan-hikari-ame-full-mv-c371e7d0.html
 ```
+
+Verified on 2026-06-29 with `HTTP 200`.
 
 ## Original Clean Video
 
@@ -205,4 +211,3 @@ http://127.0.0.1:9174/#aya-chan-hikari-ame-full-mv
 ```
 
 Do not publish until the video plays, the current timed line changes correctly, and the Japanese furigana issue is either fixed or explicitly marked as a known caveat.
-
