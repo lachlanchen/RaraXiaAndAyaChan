@@ -192,6 +192,50 @@ Repair:
 
 Avoid repeating the same warning many times.
 
+### 11. Forced Cute Language In Everyday Stories
+
+Problem: a simple daily-life scene becomes strange because every line tries to
+sound whimsical. The story stops feeling like normal speech.
+
+Bad examples:
+
+```text
+我只带了一点点睡前勇气。
+痒一下！再痒一下！
+战斗结束。被窝恢复柔软。
+```
+
+Repair:
+
+```text
+我就吃了一小口饼干，真的只有一小口。
+灰尘小怪抱着饼干屑，在被子缝里蹦来蹦去。
+好了，床又干净了。可以睡了。
+```
+
+Rule: start with the normal sentence a character would actually say, then add
+only one small cartoon exaggeration. Do not make pests, props, or background
+objects shout slogans unless that joke has been clearly set up.
+
+### 12. First-Draft Acceptance
+
+Problem: the first story can look cute but still contain strange phrasing, weak
+causality, sudden props, or report-like lines.
+
+Repair workflow:
+
+```text
+draft -> exact-line critique -> rewrite -> second critique -> final
+```
+
+Stop only when:
+
+- every event has a visible cause;
+- every line sounds like normal spoken Chinese;
+- each character has a distinct voice;
+- props are used by a character instead of appearing magically;
+- the ending pays off the scene rather than adding decorative text.
+
 ## Critic Checklist
 
 Before saving a final prompt, answer:
@@ -204,13 +248,14 @@ Before saving a final prompt, answer:
 - Is the duration realistic for the amount of dialogue?
 - Are there any words like `结论`, `本质`, `版本`, `真正的`, `系统`, `意义` that should be removed?
 - Does the prompt keep story and technical constraints separate?
+- Did the story pass at least two critique/rewrite loops if any line felt strange?
 
 ## Workflow
 
 Use this sequence:
 
 ```text
-draft -> critic pass -> rewrite -> Xiaoyunque prompt -> path-leak check -> submit
+draft -> critic pass -> rewrite -> second critic pass -> Xiaoyunque prompt -> path-leak check -> submit
 ```
 
 If using AgInTi writer:
@@ -220,4 +265,3 @@ AgInTi writing_specialist draft -> human/critic review -> final v2 file
 ```
 
 Do not treat AgInTi's summary as proof of writing quality. Read the story.
-
