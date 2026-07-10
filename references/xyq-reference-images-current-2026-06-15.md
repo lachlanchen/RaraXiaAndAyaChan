@@ -2,8 +2,9 @@
 
 Use this as the default LALACHAN image memory after the 2026-06-15 filename
 update. These local paths are for upload commands only. In Xiaoyunque prompts,
-refer to the uploaded images as `图1` through `图8`; never paste paths or
-filenames into the prompt.
+refer only to actually uploaded images: normally `图1` through `图8`, or
+`图1` through `图7` when `Trio.png` is intentionally omitted. Never paste paths
+or filenames into the prompt.
 
 | Label | Local file | Meaning |
 | --- | --- | --- |
@@ -39,5 +40,32 @@ Prompt wording:
 图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；
 图5 是啦啦侠单人参考；图6 是阿芽酱单人参考；
 图7 是飒飒君单人参考；图8 是三人组合角色参考。
+请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
+```
+
+## No-Trio Variant
+
+If the user says not to upload `Trio.png`, skip only `Trio.png`. Still upload
+the supporting assets unless separately excluded:
+
+- `words-card.jpg`
+- `LazyingArtRobot.png`
+- `display.png`
+- `patchwork-leather-notebook-luxury-clean-v2.png`
+- `raraxia.jpeg`
+- `ayachan.png`
+- `sasakun.jpeg`
+
+In this case the prompt labels stop at `图7`. Do not mention `图8` or a group
+reference image. "No Trio" does not mean "only the three character photos"
+unless the user explicitly says that.
+
+No-Trio prompt wording:
+
+```text
+参考图顺序：图1 是小白屏学习卡风格参考；图2 是机器人庄子；
+图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；
+图5 是啦啦侠单人参考；图6 是阿芽酱单人参考；
+图7 是飒飒君单人参考。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
 ```
