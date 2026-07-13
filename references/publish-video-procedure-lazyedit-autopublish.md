@@ -351,7 +351,17 @@ For generated videos, the script or prompt is background context, not the final 
 
 Do not let metadata become a full script summary, a scene-by-scene storyboard, or an over-detailed dump of every line. Metadata should be platform-facing: concise, attractive, searchable, and faithful to the actual video.
 
-Important operational rule: split subtitle context from metadata context. Use the full script with `--correction-prompt-file`, and create a short temporary metadata brief for `--metadata-prompt-file`. Avoid `--prompt-file FULL_SCRIPT.md` when the processing step includes `metadata_zh` or `metadata_en`, because that can make the generated metadata read like the entire script.
+Important operational rule: normal publication is one LazyEdit command. Give
+the pipeline a reviewed story/context note with `--prompt-file`; LazyEdit uses
+that evidence for subtitle correction and its own metadata generation. The
+context should state the correct characters, setting, action, tone, and payoff,
+but should not contain unrelated production chatter or ask the model to copy a
+storyboard into metadata.
+
+Do not routinely pre-generate or hand-edit metadata. Split
+`--correction-prompt-file` and `--metadata-prompt-file`, or provide direct
+metadata JSON, only as a documented recovery/debug path after the normal command
+has produced a specific verified failure.
 
 Use the script to understand:
 
@@ -386,7 +396,9 @@ Good metadata pattern:
 A playful Dragon Boat Festival animation where Lala Xia, Aya Chan, Sasa Kun, and robot Zhuangzi turn a race into a teamwork rescue mission. Cute festival energy, zongzi chaos, and a warm shared ending.
 ```
 
-When a generated-video prompt is long, compress it before metadata generation mentally or in a temporary note. Keep the essence, not the full storyboard. The metadata should sell and explain the finished video, not expose the production script.
+Give LazyEdit accurate story context and let its metadata stage select the
+viewer-facing essence. Do not manually author or replace metadata in the normal
+path.
 
 ## Why `--no-correct-subtitles` Is Often Used for New Uploads
 
@@ -395,13 +407,12 @@ For a brand-new video, standalone subtitle correction may require an existing tr
 For new uploads, the safer default is:
 
 ```bash
---correction-prompt-file PROMPT.md
---metadata-prompt-file temp/metadata_brief.md
+--prompt-file PROMPT.md
 --no-correct-subtitles
 --steps keyframes,caption,transcribe,polish,translate,burn,metadata_zh,metadata_en,cover
 ```
 
-This uses the full prompt as context for polish and the short metadata brief for metadata during the pipeline, after transcription exists.
+This gives the normal pipeline one source of truth after transcription exists.
 
 Use `--correct-subtitles` only when the video already has a transcript or when the correction endpoint is known to operate after transcription in the selected flow.
 
@@ -423,8 +434,7 @@ python scripts/lazyedit_publish.py \
   --expect-min-size-mb MIN_MB \
   --expect-max-size-mb MAX_MB \
   --use-current-settings \
-  --correction-prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
-  --metadata-prompt-file temp/metadata_brief.md \
+  --prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
   --no-correct-subtitles \
   --steps keyframes,caption,transcribe,polish,translate,burn,metadata_zh,metadata_en,cover \
   --platforms shipinhao,youtube,instagram \
@@ -450,8 +460,7 @@ python scripts/lazyedit_publish.py \
   --expect-duration DURATION_SECONDS \
   --duration-tolerance 0.2 \
   --use-current-settings \
-  --correction-prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
-  --metadata-prompt-file temp/metadata_brief.md \
+  --prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
   --no-correct-subtitles \
   --steps keyframes,caption,transcribe,polish,translate,burn,metadata_zh,metadata_en,cover \
   --platforms youtube,instagram \
@@ -496,8 +505,7 @@ Then process and publish:
 python scripts/lazyedit_publish.py \
   --video-id VIDEO_ID \
   --use-current-settings \
-  --correction-prompt-file /absolute/path/to/full-script-or-context.md \
-  --metadata-prompt-file temp/metadata_brief.md \
+  --prompt-file /absolute/path/to/reviewed-story-or-context.md \
   --no-correct-subtitles \
   --steps keyframes,caption,transcribe,polish,translate,burn,metadata_zh,metadata_en,cover \
   --platforms shipinhao,youtube,instagram \

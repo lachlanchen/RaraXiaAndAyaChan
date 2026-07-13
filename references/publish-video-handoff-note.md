@@ -21,6 +21,12 @@ Use `scripts/lazyedit_publish.py` so the webapp queue stays synchronized.
 - Burn subtitles unless the user explicitly disables it.
 - Burn the existing LazyEdit webapp logo. Current LALACHAN/MV default is top-right.
 - Use the corresponding LALACHAN prompt/story markdown as context.
+- Submit a normal publication as one `lazyedit_publish.py` command. Pass the
+  reviewed context through `--prompt-file` and let LazyEdit perform subtitle
+  correction, metadata generation, rendering, packaging, and platform queueing.
+- Do not hand-write or replace metadata during the normal path. Separate
+  subtitle/metadata prompts and direct metadata JSON are fallback tools only
+  after an inspected LazyEdit run demonstrates a specific failure.
 - Publish only to the platforms requested by the user.
 - For Xiaoyunque/LALACHAN generation tasks, always auto-download the finished
   MP4, copy it to `Videos/`, and submit it to LazyEdit. Direct CLI upload is
@@ -42,12 +48,13 @@ Bridge-video lesson: `IMG_4379_2026_06_09_07_35_11_COMPLETED` should have been t
 
 For metadata, the script is background context only. Do not turn metadata into a script dump. Avoid listing every scene beat, every line, or every production instruction. Metadata should be concise, viewer-facing, and platform-appropriate.
 
-Operational rule: do not pass the full script through `--prompt-file` when metadata will be regenerated. Split the inputs:
+Operational rule: prepare one reviewed context note and pass it through
+`--prompt-file`. The note should identify the real characters, setting, central
+action, tone, and payoff. It gives LazyEdit enough information to infer metadata;
+it is not metadata text and must not instruct LazyEdit to copy the entire story.
 
-- `--correction-prompt-file`: full story/script/prompt, used for subtitle correction.
-- `--metadata-prompt-file`: a short temporary metadata brief, used for title, descriptions, captions, and tags.
-
-The metadata brief should contain only the hook, characters, setting, central joke or emotion, final payoff, and a small keyword/hashtag list.
+Use `--correction-prompt-file` and `--metadata-prompt-file` separately only when
+debugging a demonstrated failure that genuinely requires different evidence.
 
 Good metadata should include:
 
@@ -69,8 +76,7 @@ python scripts/lazyedit_publish.py \
   --expect-duration DURATION_SECONDS \
   --duration-tolerance 0.2 \
   --use-current-settings \
-  --correction-prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
-  --metadata-prompt-file temp/metadata_brief.md \
+  --prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
   --no-correct-subtitles \
   --steps keyframes,caption,transcribe,polish,translate,burn,metadata_zh,metadata_en,cover \
   --platforms shipinhao,youtube,instagram \
