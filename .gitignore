@@ -3,6 +3,7 @@
 !.aginti/.env.example
 .aginti-sessions/
 .sessions/
+.lalastudio/
 .env
 .env.*
 !.env.example

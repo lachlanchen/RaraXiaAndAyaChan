@@ -53,6 +53,8 @@ Check at least:
 
 This repository has no established commit history yet. Use short imperative commit messages, such as `Add blur-fill video script` or `Document watermark workflow`.
 
+For completed repository work, choose the appropriate tracked scope, ignore private or disposable generated artifacts, commit the finished changes, and push the current branch. Report the resulting GitHub commit or file URL. Do not include unrelated working-tree changes in the same commit.
+
 Pull requests should include:
 
 - A short summary of changed scripts or docs.
