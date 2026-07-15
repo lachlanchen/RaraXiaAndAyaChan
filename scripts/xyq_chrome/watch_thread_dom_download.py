@@ -34,7 +34,18 @@ PROBE_JS = rf"""
   const text = document.body ? (document.body.innerText || '') : '';
   const tail = text.slice(-2500);
   const status = (tail.match(/{STATUS_RE}/g) || []).slice(-100);
-  const videos = [...document.querySelectorAll('video')].map((v, i) => ({{
+  const visible = element => {{
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    return rect.width > 2 && rect.height > 2 && style.display !== 'none' && style.visibility !== 'hidden';
+  }};
+  const hasVisibleDownload = [...document.querySelectorAll('button')].some(button =>
+    visible(button) && !button.disabled && (button.innerText || button.textContent || '').trim() === '下载'
+  );
+  const resultVideos = [...document.querySelectorAll('video')].filter(video =>
+    video.closest('.ag-ui-x-biz-video-part') || (visible(video) && hasVisibleDownload)
+  );
+  const videos = resultVideos.map((v, i) => ({{
     i,
     src: v.currentSrc || v.src || '',
     poster: v.poster || '',
@@ -47,7 +58,8 @@ PROBE_JS = rf"""
       return {{x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height)}};
     }})()
   }}));
-  const anchors = [...document.querySelectorAll('a[href]')]
+  const resultRoots = [...document.querySelectorAll('.ag-ui-x-biz-video-part')];
+  const anchors = resultRoots.flatMap(root => [...root.querySelectorAll('a[href]')])
     .map(a => a.href)
     .filter(h => /mp4|download|media|video|everphoto|tos/i.test(h))
     .slice(-100);
@@ -234,7 +246,16 @@ def click_page_download_button(page: CdpPage) -> dict[str, Any]:
   const button =
     visible.find(b => String(b.className || '').includes('artifactPreviewDownloadButton')) ||
     visible[visible.length - 1];
-  if (!button) return {ok: false, reason: 'download button not found'};
+  if (!button) {
+    const cards = [...document.querySelectorAll('.ag-ui-x-biz-video-part')].filter(card => {
+      const r = card.getBoundingClientRect();
+      return r.width > 2 && r.height > 2;
+    });
+    const card = cards[cards.length - 1];
+    if (!card) return {ok: false, reason: 'download button and result card not found'};
+    card.click();
+    return {ok: false, reason: 'opened result preview'};
+  }
   const r = button.getBoundingClientRect();
   const x = r.x + r.width / 2;
   const y = r.y + r.height / 2;
@@ -272,6 +293,48 @@ def ffprobe(path: Path) -> str:
     return result.stdout.strip()
 
 
+def media_duration(path: Path) -> float | None:
+    if not shutil.which("ffprobe"):
+        return None
+    result = subprocess.run(
+        [
+            "ffprobe",
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            str(path),
+        ],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    try:
+        return float(result.stdout.strip())
+    except ValueError:
+        return None
+
+
+def duration_matches(path: Path, expected: float | None, tolerance: float) -> bool:
+    if expected is None:
+        return True
+    actual = media_duration(path)
+    if actual is None:
+        print(f"candidate rejected: cannot verify duration for {path}", flush=True)
+        return False
+    if abs(actual - expected) <= tolerance:
+        return True
+    print(
+        f"candidate rejected: duration {actual:.3f}s is outside "
+        f"{expected:.3f}s +/- {tolerance:.3f}s for {path}",
+        flush=True,
+    )
+    return False
+
+
 def finish_from_file(source: Path, output: Path, copy_to: list[Path]) -> None:
     if source.resolve() != output.resolve():
         shutil.copy2(source, output)
@@ -297,6 +360,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--interval", type=float, default=30)
     parser.add_argument("--max-polls", type=int, default=240)
     parser.add_argument("--min-bytes", type=int, default=200_000)
+    parser.add_argument("--expected-duration", type=float)
+    parser.add_argument("--duration-tolerance", type=float, default=5.0)
     parser.add_argument("--reload-every", type=float, default=600)
     return parser
 
@@ -393,8 +458,9 @@ def main() -> int:
         downloaded = newest_downloaded_mp4_since(start, args.min_bytes)
         if downloaded and ("完成" in status or "下载" in status or videos):
             print(f"found browser download: {downloaded}", flush=True)
-            finish_from_file(downloaded, output, args.copy_to)
-            return 0
+            if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+                finish_from_file(downloaded, output, args.copy_to)
+                return 0
 
         urls = [
             video.get("src") or ""
@@ -407,9 +473,26 @@ def main() -> int:
             urls.extend(data.get("resources") or [])
 
         for url in urls:
-            if not url or url in seen or url.startswith("blob:"):
+            if not url or url in seen:
                 continue
             seen.add(url)
+            if url.startswith("blob:"):
+                download_name = f"{output.stem}.browser.{int(time.time())}{output.suffix}"
+                try:
+                    triggered = trigger_browser_blob_download(page, url, download_name)
+                except Exception as exc:  # noqa: BLE001 - keep trying other candidates.
+                    print(f"browser blob download failed: {type(exc).__name__}: {exc}", flush=True)
+                    continue
+                print(f"browser blob download: {json.dumps(triggered, ensure_ascii=False)}", flush=True)
+                if not triggered.get("ok"):
+                    continue
+                downloaded = wait_for_browser_download(download_name, args.min_bytes)
+                if not downloaded or not duration_matches(
+                    downloaded, args.expected_duration, args.duration_tolerance
+                ):
+                    continue
+                finish_from_file(downloaded, output, args.copy_to)
+                return 0
             content_type, content_length = head_type(url)
             print(f"candidate: {content_type} {content_length} {url[:180]}", flush=True)
             if content_type.startswith("ERR:") or content_type.startswith("text/html"):
@@ -434,8 +517,9 @@ def main() -> int:
                         if not downloaded:
                             print(f"browser download not found: {download_name}", flush=True)
                             continue
-                        finish_from_file(downloaded, output, args.copy_to)
-                        return 0
+                        if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+                            finish_from_file(downloaded, output, args.copy_to)
+                            return 0
                 continue
             if "video" not in content_type.lower() and ".mp4" not in url.lower():
                 continue
@@ -449,8 +533,9 @@ def main() -> int:
                 print(f"download too small: {output.stat().st_size}", flush=True)
                 continue
 
-            finish_from_file(output, output, args.copy_to)
-            return 0
+            if duration_matches(output, args.expected_duration, args.duration_tolerance):
+                finish_from_file(output, output, args.copy_to)
+                return 0
 
         if videos and ("完成" in status or "下载" in status) and page_download_attempts < 3:
             page_download_attempts += 1
@@ -467,8 +552,9 @@ def main() -> int:
                     downloaded = newest_downloaded_mp4_since(click_time, args.min_bytes)
                     if downloaded:
                         print(f"found browser download: {downloaded}", flush=True)
-                        finish_from_file(downloaded, output, args.copy_to)
-                        return 0
+                        if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+                            finish_from_file(downloaded, output, args.copy_to)
+                            return 0
                     time.sleep(1)
 
         time.sleep(args.interval)
