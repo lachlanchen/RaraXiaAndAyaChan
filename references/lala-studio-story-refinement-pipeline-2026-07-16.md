@@ -26,7 +26,7 @@ scripts/launch_studio_novnc.sh start --project-root /path/to/LALACHAN
 Open:
 
 ```text
-http://127.0.0.1:6116/vnc_lite.html?host=127.0.0.1&port=6116&autoconnect=1&resize=remote
+http://127.0.0.1:6116/vnc_lite.html?host=127.0.0.1&port=6116&autoconnect=1&scale=1
 ```
 
 Create, refine, apply, and save through visible browser controls:

@@ -9,7 +9,7 @@ The Studio browser is isolated from Xiaoyunque, JLCEDA, and AgenticApp automatio
 | Service | Address |
 | --- | --- |
 | Lala Studio | `http://127.0.0.1:4412` |
-| noVNC | `http://127.0.0.1:6116/vnc_lite.html?host=127.0.0.1&port=6116&autoconnect=1&resize=remote` |
+| noVNC | `http://127.0.0.1:6116/vnc_lite.html?host=127.0.0.1&port=6116&autoconnect=1&scale=1` |
 | Chrome CDP | `http://127.0.0.1:9466` |
 | X display | `:96` |
 | Browser profile | `${XDG_CACHE_HOME:-$HOME/.cache}/lala-studio-browser` |
