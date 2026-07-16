@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -144,18 +145,77 @@ def head_type(url: str) -> tuple[str, str]:
         return f"ERR:{type(exc).__name__}", ""
 
 
-def download(url: str, output: Path) -> None:
-    request = urllib.request.Request(
-        url,
-        headers={"User-Agent": "Mozilla/5.0", "Referer": "https://xyq.jianying.com/"},
-    )
+def _response_total_bytes(response: Any, start: int) -> int | None:
+    content_range = response.headers.get("content-range", "")
+    if "/" in content_range:
+        total = content_range.rsplit("/", 1)[-1]
+        if total.isdigit():
+            return int(total)
+    content_length = response.headers.get("content-length", "")
+    if content_length.isdigit():
+        return start + int(content_length)
+    return None
+
+
+def download(url: str, output: Path, expected_bytes: int | None = None, retries: int = 8) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
-    with urllib.request.urlopen(request, timeout=600) as response, output.open("wb") as handle:
-        while True:
-            chunk = response.read(1024 * 1024)
-            if not chunk:
-                break
-            handle.write(chunk)
+    partial = output.with_name(f"{output.name}.part")
+    # Only a .part file is resumable. An existing final-name file may belong to
+    # an older candidate URL, so never append a new response to it.
+    if output.exists() and not partial.exists():
+        output.unlink()
+
+    for attempt in range(1, retries + 1):
+        start = partial.stat().st_size if partial.exists() else 0
+        headers = {"User-Agent": "Mozilla/5.0", "Referer": "https://xyq.jianying.com/"}
+        if start:
+            headers["Range"] = f"bytes={start}-"
+        request = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(request, timeout=600) as response:
+                status = getattr(response, "status", response.getcode())
+                if start and status != 206:
+                    start = 0
+                    partial.unlink(missing_ok=True)
+                response_total = _response_total_bytes(response, start)
+                target_bytes = expected_bytes or response_total
+                mode = "ab" if start and status == 206 else "wb"
+                with partial.open(mode) as handle:
+                    while True:
+                        chunk = response.read(1024 * 1024)
+                        if not chunk:
+                            break
+                        handle.write(chunk)
+        except Exception as exc:  # noqa: BLE001 - resume an interrupted signed transfer.
+            print(
+                f"download attempt {attempt}/{retries} interrupted at "
+                f"{partial.stat().st_size if partial.exists() else 0} bytes: "
+                f"{type(exc).__name__}: {exc}",
+                flush=True,
+            )
+            if attempt == retries:
+                raise
+            time.sleep(min(attempt * 2, 10))
+            continue
+
+        size = partial.stat().st_size
+        if target_bytes is not None and size < target_bytes:
+            print(
+                f"download attempt {attempt}/{retries} ended early: "
+                f"{size}/{target_bytes} bytes; resuming",
+                flush=True,
+            )
+            if attempt == retries:
+                raise RuntimeError(f"incomplete download: {size}/{target_bytes} bytes")
+            time.sleep(min(attempt * 2, 10))
+            continue
+        if target_bytes is not None and size > target_bytes:
+            raise RuntimeError(f"download exceeded expected size: {size}/{target_bytes} bytes")
+
+        os.replace(partial, output)
+        return
+
+    raise RuntimeError("download retries exhausted")
 
 
 def browser_fetch_info(page: CdpPage, url: str) -> dict[str, Any]:
@@ -318,7 +378,47 @@ def media_duration(path: Path) -> float | None:
         return None
 
 
+def fully_decodes(path: Path) -> bool:
+    if not shutil.which("ffmpeg"):
+        return True
+    try:
+        result = subprocess.run(
+            [
+                "ffmpeg",
+                "-nostdin",
+                "-v",
+                "error",
+                "-xerror",
+                "-i",
+                str(path),
+                "-map",
+                "0:v:0",
+                "-map",
+                "0:a:0?",
+                "-f",
+                "null",
+                "-",
+            ],
+            check=False,
+            text=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            timeout=600,
+        )
+    except subprocess.TimeoutExpired:
+        print(f"candidate rejected: full-stream decode timed out for {path}", flush=True)
+        return False
+    errors = result.stderr.strip()
+    if result.returncode == 0 and not errors:
+        return True
+    detail = errors.splitlines()[-1] if errors else f"ffmpeg exit {result.returncode}"
+    print(f"candidate rejected: incomplete or corrupt media stream for {path}: {detail}", flush=True)
+    return False
+
+
 def duration_matches(path: Path, expected: float | None, tolerance: float) -> bool:
+    if not fully_decodes(path):
+        return False
     if expected is None:
         return True
     actual = media_duration(path)
@@ -525,7 +625,8 @@ def main() -> int:
                 continue
 
             try:
-                download(url, output)
+                expected_bytes = int(content_length) if content_length.isdigit() else None
+                download(url, output, expected_bytes=expected_bytes)
             except Exception as exc:  # noqa: BLE001 - protected URLs can expire or require page-only access.
                 print(f"download failed: {type(exc).__name__}: {exc}", flush=True)
                 continue
