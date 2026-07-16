@@ -100,14 +100,17 @@ Never paste local filesystem paths into the Xiaoyunque prompt. Paths are only
 for browser upload commands. In the prompt, refer to uploaded references as
 `图1`, `图2`, ..., in this exact order.
 
-For `图1`, generate a new word or concept for each new video. The card content
-must include English, Japanese, and furigana. The card should look like a real
+For `图1`, generate a new concept for each new video. Keep language labels only
+in the authoring metadata. The rendered card face contains only the correctly
+written multilingual values, one per line, with no language names, field
+labels, colons, bullets, or numbering. Validate every language equally for
+spelling, script, reading, and meaning. The card should look like a real
 in-scene learning prop, not a subtitle.
 
 Two words-card methods are valid:
 
-- Pre-generate a new card image first with AgInTi/image generation and upload it
-  as `图1`.
+- Pre-generate a new card image first with image generation, inspect the text at
+  original resolution, and upload it as `图1`.
 - Use the existing card as a style/example upload and provide Xiaoyunque the
   exact English/Japanese/furigana content to render in the scene.
 
@@ -163,6 +166,29 @@ scripts/xyq_chrome/watch_thread_dom_download.py \
   --copy-to '/home/lachlan/Nutstore Files/AutoPublish/AutoPublish' \
   --interval 30 --max-polls 240 --reload-every 300 \
   2>&1 | tee -a outputs/xyq-run/watch.log"
+```
+
+After the final MP4 is downloaded, always verify it with `ffprobe`, copy it to
+`Videos/`, and hand it to LazyEdit. Prefer direct LazyEdit CLI upload; use
+Nutstore AutoPublish import as a fallback. If the user did not explicitly ask
+to publish to a real platform, run LazyEdit with `--no-publish` so the video is
+imported/processed but not posted.
+
+Direct handoff pattern:
+
+```bash
+cd /home/lachlan/DiskMech/Projects/lazyedit
+python scripts/lazyedit_publish.py \
+  --video /home/lachlan/ProjectsLFS/LALACHAN/Videos/VIDEO.mp4 \
+  --title VIDEO_COMPLETED \
+  --use-current-settings \
+  --correction-prompt-file /home/lachlan/ProjectsLFS/LALACHAN/references/prompts/PROMPT.md \
+  --metadata-prompt-file temp/METADATA_BRIEF.md \
+  --correct-subtitles \
+  --correction-source polished \
+  --no-publish \
+  --wait \
+  --poll-seconds 10
 ```
 
 Check progress:

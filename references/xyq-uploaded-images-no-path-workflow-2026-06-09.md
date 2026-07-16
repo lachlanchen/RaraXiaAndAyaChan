@@ -22,14 +22,18 @@ LALACHAN image set:
 
 Prompt text should refer to these only as `图1` through `图8`. Do not include
 `/home`, `ProjectsLFS`, `artifacts/`, `.png`, `.jpg`, or `.jpeg` in the prompt.
-For `图1`, choose a new story-relevant word/concept every time. The visible card
-content must include English, Japanese, and Japanese furigana.
-The most reliable prompt style is to describe it as a real prop: `图1 是小白屏学习卡风格参考，可作为场景边缘、桌面、道具架或实验台上的小道具，卡片内容是 English: WORD；Japanese: 日本語；Furigana: ふりがな；中文：中文含义。它只是场景里的真实道具，不是字幕。`
+For `图1`, choose a new story-relevant concept every time. The visible card
+must contain the multilingual values only, with no language names, field
+labels, colons, bullets, or numbering. Check every value equally for correct
+spelling, script, reading, and meaning. All values must represent the same
+concept.
+
+The reliable prompt style is: `图1 是已经制作好的小白屏学习卡，可作为场景边缘、桌面、道具架或实验台上的小道具。卡面依次显示 WORD、日本語、ふりがな、目标语言含义，不带语言标签。它只是场景里的真实道具，不是字幕。`
 
 Two implementation paths are valid:
 
-- Generate a new words-card image first with AgInTi/image generation and upload
-  that new card as `图1`.
+- Generate a new words-card image first with image generation, inspect the
+  rendered text at original resolution, and upload that new card as `图1`.
 - Upload the existing words-card as the `图1` style/example reference, then give
   Xiaoyunque the exact English/Japanese/furigana content and let it render the
   card in-scene.
@@ -121,7 +125,8 @@ The corrected prompt pattern is:
 
 ```text
 参考图顺序：图1 是小白屏学习卡风格参考，可作为场景边缘、桌面、道具架或实验台上的小道具。
-本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文：简短含义。
+本集单词卡已经制作完成，卡面依次显示：TOPIC_WORD、日本語、ふりがな、目标语言含义。
+卡面不要显示语言名称、字段标签、冒号、编号或项目符号。
 它只是场景里的真实道具，不是字幕。图2 是 LazyingArtRobot，机器人庄子；
 图3 是 LightMind AI 眼镜；图4 是拼皮笔记本；图5 是啦啦侠单人参考；
 图6 是阿芽酱单人参考；图7 是飒飒君单人参考；图8 是啦啦侠、阿芽酱、飒飒君三人角色参考。

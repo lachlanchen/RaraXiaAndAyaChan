@@ -77,10 +77,11 @@ Content rule:
 - One main word or concept per episode.
 - Generate a new word for every new story/video. Do not reuse the previous
   episode's word unless the user asks for continuity.
-- English in large readable type.
-- Japanese below it.
-- Furigana for the Japanese reading.
-- Optional third language only when it fits the story.
+- Multilingual values in large readable type, one value per line.
+- Japanese and its correct furigana reading may appear on adjacent lines.
+- Add a target-language equivalent when it fits the story.
+- Do not print language names, field labels, colons, bullets, or numbering on
+  the physical card face.
 - Keep it short enough that the card remains visually credible.
 
 Example:
@@ -88,9 +89,13 @@ Example:
 ```text
 yield
 歩留まり
-ふりがな: ぶどまり
-meaning: good chips / total chips
+ぶどまり
+良品率
 ```
+
+Treat any language labels as off-image authoring metadata. Before using the
+card, verify every line equally for correct spelling, script, reading, and
+semantic equivalence. Regenerate if any value is wrong or unclear.
 
 ## Prompt Usage
 
@@ -110,10 +115,9 @@ When using the word card in Xiaoyunque prompts:
 
 ```text
 Place a small physical desktop e-ink word-card widget on the lab table. The card
-is part of the scene, not a subtitle. It displays one readable learning word in
-English and Japanese with furigana. Choose a new word that matches this episode.
-Card content: English = TOPIC_WORD; Japanese = 日本語; Furigana = ふりがな;
-Chinese meaning = 简短中文解释.
+is part of the scene, not a subtitle. It displays four correctly written values
+for the same concept, one per line: TOPIC_WORD, 日本語, ふりがな, 目标语言含义.
+Do not display language names, field labels, colons, bullets, or numbering.
 ```
 
 If the model tends to create subtitles, add:
@@ -128,5 +132,5 @@ For Xiaoyunque prompts, prefer this reference mapping:
 参考图顺序：图1 是小白屏学习卡，每集显示新的主题词；图2 是机器人庄子；图3 是 LightMind AI 眼镜；
 图4 是拼皮笔记本；图5 是啦啦侠服装参考；图6 是飒飒君服装参考；
 图7 是啦啦侠、阿芽酱、飒飒君三人角色参考。
-本集单词卡内容：English: TOPIC_WORD；Japanese: 日本語；Furigana: ふりがな；中文含义：简短解释。
+本集单词卡已经制作完成，卡面依次显示 TOPIC_WORD、日本語、ふりがな、目标语言含义，不带语言标签。
 ```

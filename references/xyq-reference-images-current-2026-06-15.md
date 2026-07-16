@@ -8,7 +8,7 @@ or filenames into the prompt.
 
 | Label | Local file | Meaning |
 | --- | --- | --- |
-| 图1 | `/home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg` | 小白屏学习卡 style reference; use a fresh English/Japanese/furigana word each episode |
+| 图1 | `/home/lachlan/ProjectsLFS/LALACHAN/words-card.jpg` | 小白屏学习卡 style reference; pre-generate a fresh, accurately written, unlabeled multilingual card for each episode |
 | 图2 | `/home/lachlan/ProjectsLFS/LALACHAN/LazyingArtRobot.png` | LazyingArt Robot, named `庄子`; preserve the chest logo |
 | 图3 | `/home/lachlan/ProjectsLFS/LALACHAN/display.png` | LightMind AI glasses |
 | 图4 | `/home/lachlan/ProjectsLFS/LALACHAN/patchwork-leather-notebook-luxury-clean-v2.png` | handmade patchwork notebook/tool prop |
@@ -42,6 +42,11 @@ Prompt wording:
 图7 是飒飒君单人参考；图8 是三人组合角色参考。
 请只根据这些已经上传的图片参考，不要把任何文件名或路径画进视频。
 ```
+
+The actual upload should preferably be a fresh image generated from the 图1
+style reference. Its face shows only the language values, one per line, without
+language names, field labels, colons, bullets, or numbering. Verify every value
+equally for spelling, script, reading, and meaning before upload.
 
 ## No-Trio Variant
 
