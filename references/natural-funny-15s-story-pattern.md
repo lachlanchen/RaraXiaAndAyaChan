@@ -176,3 +176,4 @@ not double the cast, lore, props, or lessons.
 - [Writing problems ledger](writing-problems-ledger.md)
 - [Story quality audit](story-script-quality-audit-2026-06-07.md)
 - [Repeated improvement workflow](lalachan-story-improvement-loop-codex-exec.md)
+- [Lala Studio refinement pipeline](lala-studio-story-refinement-pipeline-2026-07-16.md)
