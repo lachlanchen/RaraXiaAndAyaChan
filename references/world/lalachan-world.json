@@ -1,0 +1,785 @@
+{
+  "schemaVersion": 1,
+  "revision": 5,
+  "id": "cloud-harbor-world",
+  "name": "云港万象",
+  "tagline": "四个伙伴从一间云边小屋出发，把每次迷路都变成下一条路。",
+  "premise": "云港是一座连接人间、森林、云海与星路的港湾。啦啦侠、阿芽酱、飒飒君和庄子机器人住在云港小屋，平日做饭、学习、修东西，也会沿着风门去陌生地方。每次旅程都解决一个具体的小麻烦，并在拼皮笔记本里留下一个旅印；最近，一些旅印正在褪色，一只蓝尾纸鸟却总在关键时刻出现。",
+  "updatedAt": "2026-07-21T06:06:01.533Z",
+  "storyEngine": {
+    "episodePromise": "每集先让观众看懂一个具体愿望或麻烦，再让四人的性格推动行动、笑点和温暖结局。",
+    "connectionRule": "每集至少复用一个熟悉地点、工具、衣服或人物关系；新设定必须通过动作出现，不靠旁白解释。",
+    "hookRule": "本集主要问题必须解决。连续线索只占最后一个清楚的画面或一句自然台词，不能抢走本集故事。",
+    "continuityRules": [
+      "啦啦侠和阿芽酱彼此在意，有自然的情侣感；啦啦侠会先护住她，阿芽酱通常更冷静也更能打。",
+      "飒飒君用速度、好奇心和身体喜剧推动情节，但不是只会闯祸。",
+      "庄子机器人提供实用帮助和克制笑点，不说系统日志式台词，也不代替伙伴作决定。",
+      "LightMind 眼镜负责观察、记录或翻译，不直接给出答案；拼皮笔记本保存旅印和手写线索，不凭空解决困难。",
+      "短片只讲一条因果链。先看得懂，再可爱，再留下余味。",
+      "视觉保持写实收藏级手办质感；四位主角的脸、体型和身份以各自单人参考图为准。"
+    ]
+  },
+  "characters": [
+    {
+      "id": "raraxia",
+      "name": "啦啦侠",
+      "role": "热心的行动派，也是阿芽酱最信任的搭档",
+      "personality": "热情、护朋友、偶尔馋嘴；先冲出去，发现误会后会认真补救。",
+      "voice": "说话直接、短、带一点憨厚，不讲大道理。",
+      "visualRules": [
+        "男大熊猫角色，保持单人参考图的脸、体型与黑白毛色",
+        "表情清楚，动作勇敢但可以有一瞬间手忙脚乱",
+        "不要变成人类男孩、普通玩偶或另一只熊猫"
+      ],
+      "relationshipNotes": [
+        "会本能地保护阿芽酱，但尊重她更强的判断和行动能力",
+        "和飒飒君互相起哄，也会在危险时立刻配合",
+        "把庄子当作真正的伙伴，不把他当工具"
+      ],
+      "defaultOutfitId": "daily-raraxia-v1",
+      "assetIds": [
+        "raraxia"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ayachan",
+      "name": "阿芽酱",
+      "role": "观察最细、临场最稳的情感中心",
+      "personality": "温柔、细心、有主见；会轻轻吐槽，也会在朋友需要时果断出手。",
+      "voice": "自然、简洁、有生活感；关心别人时不说教。",
+      "visualRules": [
+        "女小熊猫角色，保持单人参考图的脸、体型与棕红毛色",
+        "可爱但不幼弱，关键动作要利落",
+        "不要变成人类女孩、普通玩偶或其他动物"
+      ],
+      "relationshipNotes": [
+        "喜欢啦啦侠的真诚，也会及时拉住他过快的冲动",
+        "和飒飒君像可靠姐姐与活泼朋友",
+        "理解庄子的冷幽默，常是第一个接住他话的人"
+      ],
+      "defaultOutfitId": "daily-ayachan-v1",
+      "assetIds": [
+        "ayachan"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "sasakun",
+      "name": "飒飒君",
+      "role": "最快发现新鲜事、也最快把大家带进现场的伙伴",
+      "personality": "好奇、灵活、爱尝试；笑点来自动作和反应，不靠刻意说傻话。",
+      "voice": "短促、兴奋、像朋友随口喊出来的话。",
+      "visualRules": [
+        "男性角色，保持单人参考图的脸、连体服和身形",
+        "动作快但画面中身份始终清楚",
+        "不要复制成多个角色或换成人类陌生脸"
+      ],
+      "relationshipNotes": [
+        "最爱逗啦啦侠，但从不拿阿芽酱的难过当笑点",
+        "遇到真正危险会立刻收起玩笑",
+        "经常和庄子组成速度与精度的搭档"
+      ],
+      "defaultOutfitId": "daily-sasakun-v1",
+      "assetIds": [
+        "sasakun"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "zhuangzi",
+      "name": "庄子机器人",
+      "role": "会修理、记录和飞行的第四位伙伴",
+      "personality": "冷静、实用、偶尔一本正经地好笑；也会好奇、害怕和开心。",
+      "voice": "像可靠朋友一样说普通话，句子短，不报参数，不宣读结论。",
+      "visualRules": [
+        "严格保持 LazyingArtRobot 参考图的机器人轮廓",
+        "胸前 LazyingArt 标志清晰一致",
+        "可以展开机械夹、小翼或护盾，但主体不能变成另一台机器人"
+      ],
+      "relationshipNotes": [
+        "会提醒风险，但不会阻止伙伴体验生活",
+        "接受伙伴照顾，也能参与吃饭、音乐和游戏",
+        "常用一个实用小动作完成笑点"
+      ],
+      "defaultOutfitId": "zhuangzi-shell-v1",
+      "assetIds": [
+        "zhuangzi"
+      ],
+      "status": "active"
+    }
+  ],
+  "places": [
+    {
+      "id": "cloud-harbor-home",
+      "name": "云港小屋",
+      "role": "四个伙伴共同生活和每次旅程归来的家",
+      "summary": "木屋建在云港边缘，厨房、工作桌、露台和小型风门月台彼此相连。这里安静、温暖，能看见云海与远处灯塔。",
+      "visualAnchors": [
+        "温暖木材",
+        "临云露台",
+        "四人共用长桌",
+        "能看见远处灯塔的圆窗"
+      ],
+      "recurringUses": [
+        "做饭和吃饭",
+        "修理道具",
+        "出发前争论",
+        "旅程后的安静收尾"
+      ],
+      "connectedPlaceIds": [
+        "star-bridge-market",
+        "wind-gate-platform"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "star-bridge-market",
+      "name": "星桥集市",
+      "role": "熟悉的日常街区和食物、手艺、消息的交汇处",
+      "summary": "沿着发光石桥铺开的市场，白天卖食物与工具，夜里桥下会有小星沿云河漂过。",
+      "visualAnchors": [
+        "发光石桥",
+        "窄小木摊",
+        "云河",
+        "会随风轻响的招牌"
+      ],
+      "recurringUses": [
+        "找食材",
+        "学习新词",
+        "认识常驻邻居",
+        "发现旅程线索"
+      ],
+      "connectedPlaceIds": [
+        "cloud-harbor-home",
+        "moonshadow-forest",
+        "sky-palace-route"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "moonshadow-forest",
+      "name": "月影森林",
+      "role": "自然冒险与小动物故事的常驻地点",
+      "summary": "巨树穿过低云，林地在雨后发亮，树根间藏着潮池、洞穴和古老石门。危险通常来自误会、天气或贪玩。",
+      "visualAnchors": [
+        "穿云巨树",
+        "湿润苔藓",
+        "月光水洼",
+        "远处萤火洞"
+      ],
+      "recurringUses": [
+        "采集食材",
+        "帮助动物",
+        "迷路与辨路",
+        "发现旧风门"
+      ],
+      "connectedPlaceIds": [
+        "star-bridge-market",
+        "aginti-garden-lab"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "sky-palace-route",
+      "name": "云海天城",
+      "role": "宏大奇观、飞行和连续谜团的主舞台",
+      "summary": "古典亭台从海面一路连到云层和星空，飞桥、瀑布与观星灯塔组成一条垂直城市。",
+      "visualAnchors": [
+        "跨越海云星三层的古典建筑",
+        "飞桥",
+        "云海瀑布",
+        "最高处的无窗蓝灯塔"
+      ],
+      "recurringUses": [
+        "骑鸟飞行",
+        "云上节日",
+        "寻找褪色旅印",
+        "追踪蓝尾纸鸟"
+      ],
+      "connectedPlaceIds": [
+        "star-bridge-market",
+        "wind-gate-platform"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "aginti-garden-lab",
+      "name": "AgInTi 林间实验室",
+      "role": "科学、制作和机器人技能的常驻地点",
+      "summary": "整洁实验室嵌在森林温室里，工作台、光学台、机械臂和小型无人机围绕中央庭院布置。",
+      "visualAnchors": [
+        "干净光学台",
+        "玻璃温室",
+        "桌面机械臂",
+        "AgInTi 标志仅出现在实验室和机器人设备上"
+      ],
+      "recurringUses": [
+        "生物实验",
+        "3D 打印",
+        "修理装备",
+        "让伙伴亲手教机器人动作"
+      ],
+      "connectedPlaceIds": [
+        "moonshadow-forest",
+        "wind-gate-platform"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "wind-gate-platform",
+      "name": "风门月台",
+      "role": "通往人间旅行地和星路的出发站",
+      "summary": "月台停靠小云号，也有通往东京、千叶、雪山、月球和其他世界的风门。每扇门只在路线稳定时开启。",
+      "visualAnchors": [
+        "圆形风门",
+        "铜制路线牌",
+        "小云号泊位",
+        "云港时钟"
+      ],
+      "recurringUses": [
+        "旅程开场",
+        "路线失灵",
+        "带回纪念物",
+        "连续线索交汇"
+      ],
+      "connectedPlaceIds": [
+        "cloud-harbor-home",
+        "sky-palace-route",
+        "aginti-garden-lab"
+      ],
+      "status": "active"
+    }
+  ],
+  "tools": [
+    {
+      "id": "patchwork-notebook",
+      "name": "拼皮旅印笔记本",
+      "ownerIds": [
+        "ayachan",
+        "raraxia",
+        "sasakun",
+        "zhuangzi"
+      ],
+      "purpose": "保存大家亲手写下的地图、菜单、实验记录和每次旅程留下的旅印。",
+      "rule": "它能保留已经发现的线索，也会被风翻到重要旧页，但不会凭空给答案。",
+      "limitation": "页面会受水、风和旅印褪色影响，需要伙伴观察和行动。",
+      "assetIds": [
+        "notebook"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "lightmind-glasses",
+      "name": "LightMind AI 眼镜",
+      "ownerIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun"
+      ],
+      "purpose": "记录手势、观察微小痕迹、翻译短语和保存旅程片段。",
+      "rule": "只提供看见的事实或记录，不代替人物判断。",
+      "limitation": "强光、暴雨和不稳定风门会让显示暂时失灵。",
+      "assetIds": [
+        "lightmind"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "words-card",
+      "name": "小白屏学习卡",
+      "ownerIds": [
+        "ayachan"
+      ],
+      "purpose": "把每集一个真实主题词留在场景里，成为旅程纪念。",
+      "rule": "每次只显示准确的英文、日文、假名和中文正文，不显示语言标签。",
+      "limitation": "只是实体道具，不是字幕，也不解释剧情。",
+      "assetIds": [
+        "word-card"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "zhuangzi-toolbay",
+      "name": "庄子工具舱",
+      "ownerIds": [
+        "zhuangzi"
+      ],
+      "purpose": "展开机械夹、小翼、护盾、照明和修理工具。",
+      "rule": "每集最多突出一个主要功能，让动作清楚。",
+      "limitation": "需要伙伴判断什么时候使用，也可能被风、泥或水暂时卡住。",
+      "assetIds": [
+        "zhuangzi"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "sasa-bamboo",
+      "name": "飒飒竹",
+      "ownerIds": [
+        "sasakun"
+      ],
+      "purpose": "可以撑、钩、搭小桥，也能在动作场面里当作轻巧长杆。",
+      "rule": "用途来自真实动作，不凭空变成万能武器。",
+      "limitation": "太短够不到高处，太急使用会先把飒飒君自己弹出去。",
+      "assetIds": [
+        "sasakun"
+      ],
+      "status": "active"
+    }
+  ],
+  "outfits": [
+    {
+      "id": "daily-raraxia-v1",
+      "name": "啦啦侠日常装 v1",
+      "characterIds": [
+        "raraxia"
+      ],
+      "use": "云港生活、食物和普通旅行",
+      "visualRules": [
+        "以 raraxia.jpeg 为身份和服装基准",
+        "换配件时保留脸、体型、黑白毛色"
+      ],
+      "assetIds": [
+        "raraxia"
+      ],
+      "version": 1,
+      "status": "active"
+    },
+    {
+      "id": "daily-ayachan-v1",
+      "name": "阿芽酱日常装 v1",
+      "characterIds": [
+        "ayachan"
+      ],
+      "use": "云港生活、食物和普通旅行",
+      "visualRules": [
+        "以 ayachan.png 为身份和服装基准",
+        "保持温暖棕红毛色和清楚面部特征"
+      ],
+      "assetIds": [
+        "ayachan"
+      ],
+      "version": 1,
+      "status": "active"
+    },
+    {
+      "id": "daily-sasakun-v1",
+      "name": "飒飒君日常装 v1",
+      "characterIds": [
+        "sasakun"
+      ],
+      "use": "云港生活、食物和普通旅行",
+      "visualRules": [
+        "以 sasakun.jpeg 为身份和连体服基准",
+        "不要换成陌生人脸"
+      ],
+      "assetIds": [
+        "sasakun"
+      ],
+      "version": 1,
+      "status": "active"
+    },
+    {
+      "id": "zhuangzi-shell-v1",
+      "name": "庄子标准机身 v1",
+      "characterIds": [
+        "zhuangzi"
+      ],
+      "use": "所有日常和旅行场景",
+      "visualRules": [
+        "保持 LazyingArtRobot.png 主体轮廓",
+        "胸前保留 LazyingArt 标志"
+      ],
+      "assetIds": [
+        "zhuangzi"
+      ],
+      "version": 1,
+      "status": "active"
+    },
+    {
+      "id": "wind-travel-clothes-v1",
+      "name": "风门旅行装 v1",
+      "characterIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun"
+      ],
+      "use": "高空、雪山、雨夜和长距离风门旅行",
+      "visualRules": [
+        "在各自日常装外加同系列短斗篷与安全扣",
+        "阿芽酱与啦啦侠可交换小头像护符",
+        "不遮住脸和主要身份特征"
+      ],
+      "assetIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun"
+      ],
+      "version": 1,
+      "status": "active"
+    }
+  ],
+  "arcs": [
+    {
+      "id": "fading-journey-marks",
+      "name": "正在褪色的旅印",
+      "premise": "拼皮笔记本里一些旧旅印开始褪色，风门也偶尔通向错误地点。四个伙伴一边过日常生活，一边找出是谁或什么在擦掉路线。",
+      "audienceQuestion": "褪色的旅印会让哪一条重要回家路消失？",
+      "knownClues": [
+        "迷宫里只有风知道出口",
+        "失去光的小星会寻找云海天城",
+        "蓝尾纸鸟能穿过尚未稳定的风门"
+      ],
+      "nextBeat": "蓝尾纸鸟借走一页地图去救被困的小云兽，归还时页面多出无窗蓝灯塔的旅印。",
+      "status": "open"
+    },
+    {
+      "id": "cloud-harbor-festival",
+      "name": "云港万灯节",
+      "premise": "伙伴们逐集收集食物、音乐、手艺和朋友，准备让云港万灯节重新亮起来。",
+      "audienceQuestion": "万灯节当天，褪色的主灯塔还能不能点亮？",
+      "knownClues": [
+        "每次帮助别人都会得到一枚不同颜色的小灯片"
+      ],
+      "nextBeat": "在星桥集市认识第一位长期邻居，并得到一枚蓝色灯片。",
+      "status": "open"
+    }
+  ],
+  "topics": [
+    {
+      "id": "home",
+      "name": "家与归来",
+      "promise": "无论去了多远，观众都知道他们会一起回到熟悉的长桌。"
+    },
+    {
+      "id": "friendship",
+      "name": "四人伙伴关系",
+      "promise": "每个人都能帮忙，也都可以被别人照顾。"
+    },
+    {
+      "id": "rara-aya",
+      "name": "啦啦侠与阿芽酱",
+      "promise": "用拉住手、递食物、挡风和自然玩笑建立可持续的情侣感。"
+    },
+    {
+      "id": "wonder",
+      "name": "日常里的奇观",
+      "promise": "先从一件看得懂的小事出发，再打开宏大的世界。"
+    },
+    {
+      "id": "craft",
+      "name": "亲手解决",
+      "promise": "工具提供帮助，但答案来自观察、合作和实际动作。"
+    },
+    {
+      "id": "food",
+      "name": "一起吃饭",
+      "promise": "食物是具体愿望、视觉笑点和伙伴关系的落点。"
+    },
+    {
+      "id": "mystery",
+      "name": "下一扇门",
+      "promise": "主线只留下一个具体可见的疑问，让观众想看下一集。"
+    }
+  ],
+  "episodes": [
+    {
+      "storyId": "2026-07-18-story-20260718095036",
+      "title": "迷宫里的风",
+      "duration": 15,
+      "characterIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun",
+        "zhuangzi"
+      ],
+      "placeIds": [
+        "moonshadow-forest"
+      ],
+      "toolIds": [
+        "patchwork-notebook"
+      ],
+      "outfitIds": [
+        "daily-raraxia-v1",
+        "daily-ayachan-v1",
+        "daily-sasakun-v1",
+        "zhuangzi-shell-v1"
+      ],
+      "arcIds": [
+        "fading-journey-marks"
+      ],
+      "topicIds": [
+        "friendship",
+        "craft",
+        "mystery"
+      ],
+      "hook": "风能指出一本旧地图没有画出的路。",
+      "continuityNote": "确认笔记本保存线索但不会直接给答案。",
+      "status": "written",
+      "createdAt": "2026-07-18T00:00:00.000Z",
+      "updatedAt": "2026-07-18T00:00:00.000Z"
+    },
+    {
+      "storyId": "2026-07-19-story-20260719120341",
+      "title": "星星的港湾",
+      "duration": 15,
+      "characterIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun",
+        "zhuangzi"
+      ],
+      "placeIds": [
+        "sky-palace-route"
+      ],
+      "toolIds": [
+        "zhuangzi-toolbay"
+      ],
+      "outfitIds": [
+        "wind-travel-clothes-v1",
+        "zhuangzi-shell-v1"
+      ],
+      "arcIds": [
+        "fading-journey-marks"
+      ],
+      "topicIds": [
+        "friendship",
+        "wonder",
+        "mystery"
+      ],
+      "hook": "迷路的小星会把云海天城逐层点亮。",
+      "continuityNote": "云海天城成为旅印主线的固定奇观地点。",
+      "status": "written",
+      "createdAt": "2026-07-19T00:00:00.000Z",
+      "updatedAt": "2026-07-19T00:00:00.000Z"
+    },
+    {
+      "storyId": "2026-07-20-story-20260720133400",
+      "title": "飞走的烤肉",
+      "duration": 15,
+      "characterIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun",
+        "zhuangzi"
+      ],
+      "placeIds": [
+        "cloud-harbor-home",
+        "sky-palace-route"
+      ],
+      "toolIds": [
+        "zhuangzi-toolbay"
+      ],
+      "outfitIds": [
+        "daily-raraxia-v1",
+        "daily-ayachan-v1",
+        "daily-sasakun-v1",
+        "zhuangzi-shell-v1"
+      ],
+      "arcIds": [],
+      "topicIds": [
+        "food",
+        "rara-aya",
+        "friendship",
+        "home"
+      ],
+      "hook": "无",
+      "continuityNote": "确立云边露台是四人一起吃饭的熟悉空间。",
+      "status": "generated",
+      "createdAt": "2026-07-20T00:00:00.000Z",
+      "updatedAt": "2026-07-20T00:00:00.000Z"
+    },
+    {
+      "storyId": "2026-07-21-story-20260721052016",
+      "title": "蓝尾纸鸟借来的桥",
+      "duration": 15,
+      "characterIds": [
+        "raraxia",
+        "ayachan",
+        "sasakun",
+        "zhuangzi"
+      ],
+      "placeIds": [
+        "cloud-harbor-home",
+        "star-bridge-market"
+      ],
+      "toolIds": [
+        "patchwork-notebook",
+        "zhuangzi-toolbay",
+        "sasa-bamboo"
+      ],
+      "outfitIds": [
+        "daily-raraxia-v1",
+        "daily-ayachan-v1",
+        "daily-sasakun-v1",
+        "zhuangzi-shell-v1"
+      ],
+      "arcIds": [
+        "fading-journey-marks"
+      ],
+      "topicIds": [
+        "friendship",
+        "craft",
+        "mystery",
+        "rara-aya"
+      ],
+      "hook": "归还的地图页上出现一座从未见过的无窗蓝灯塔。",
+      "continuityNote": "",
+      "status": "generated",
+      "createdAt": "2026-07-21T05:20:16.863Z",
+      "updatedAt": "2026-07-21T06:06:01.532Z"
+    }
+  ],
+  "media": [
+    {
+      "id": "words-card-reference-v1",
+      "label": "小白屏学习卡参考 v1",
+      "kind": "prop-reference",
+      "version": 1,
+      "relativePath": "words-card.jpg",
+      "sha256": "e3e076027f5ef621dec235f2bd6383cd364a84344706d4d49143647faadc13ea",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "words-card"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "zhuangzi-reference-v1",
+      "label": "庄子机器人参考 v1",
+      "kind": "character-reference",
+      "version": 1,
+      "relativePath": "LazyingArtRobot.png",
+      "sha256": "e193ae77e1c4a3d03efb247e7eaaa44c8f2eb27b363ff713b46b35b9d44fc13c",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "zhuangzi",
+        "zhuangzi-toolbay",
+        "zhuangzi-shell-v1"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "lightmind-reference-v1",
+      "label": "LightMind AI 眼镜参考 v1",
+      "kind": "prop-reference",
+      "version": 1,
+      "relativePath": "display.png",
+      "sha256": "ae83ccb58710e1488617ae7cbab5ef275f9e80a4537a0dfd2e603ba20ad8a9b9",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "lightmind-glasses"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "notebook-reference-v1",
+      "label": "拼皮旅印笔记本参考 v1",
+      "kind": "prop-reference",
+      "version": 1,
+      "relativePath": "patchwork-leather-notebook-luxury-clean-v2.png",
+      "sha256": "9192c5130d258e4b72305902ea39875a8cde59333dd9afb56d336f3a28a36b6d",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "patchwork-notebook"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "raraxia-reference-v1",
+      "label": "啦啦侠单人参考 v1",
+      "kind": "character-reference",
+      "version": 1,
+      "relativePath": "raraxia.jpeg",
+      "sha256": "6001eb5bba71f05568f36151ba6a414eae84fffa3aa1596a4a4bca99f551b73f",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "raraxia",
+        "daily-raraxia-v1"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "ayachan-reference-v1",
+      "label": "阿芽酱单人参考 v1",
+      "kind": "character-reference",
+      "version": 1,
+      "relativePath": "ayachan.png",
+      "sha256": "d651c65feb9605ff12c6b5240c778ce298de7bbf216d21bbf2f3bb4513b16dd4",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "ayachan",
+        "daily-ayachan-v1"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "sasakun-reference-v1",
+      "label": "飒飒君单人参考 v1",
+      "kind": "character-reference",
+      "version": 1,
+      "relativePath": "sasakun.jpeg",
+      "sha256": "a26e456993fbccbf6408cae17d25754c2073c8ca524b216f1dc8259d90d49500",
+      "sourceStoryId": null,
+      "sourceEntityIds": [
+        "sasakun",
+        "daily-sasakun-v1"
+      ],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "2026-07-21-story-20260721052016-word-card-v001",
+      "label": "2026-07-21-story-20260721052016 word-card v1",
+      "kind": "word-card",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-21-story-20260721052016/word-card-v001.png",
+      "sha256": "401bf841e4e032b30d2eadbf0a37335a01fed448079231ed79a742c717e1bbed",
+      "sourceStoryId": "2026-07-21-story-20260721052016",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T05:43:42.007Z"
+    },
+    {
+      "id": "2026-07-21-story-20260721052016-scene-reference-v001",
+      "label": "2026-07-21-story-20260721052016 scene-reference v1",
+      "kind": "scene-reference",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-21-story-20260721052016/scene-reference-v001.png",
+      "sha256": "e77118ea92fce802f54c2fdb21d129fbefd7f9f9225fa58aea52a055a33bf626",
+      "sourceStoryId": "2026-07-21-story-20260721052016",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-21T05:43:42.010Z"
+    },
+    {
+      "id": "2026-07-21-story-20260721052016-episode-video-v001",
+      "label": "2026-07-21-story-20260721052016 episode-video v1",
+      "kind": "video",
+      "version": 1,
+      "relativePath": "Videos/2026-07-21-story-20260721052016.mp4",
+      "sha256": "253973348403d4aab7dc53e7d905e57c1bfd5429476440043e304fcf19c1ef78",
+      "sourceStoryId": "2026-07-21-story-20260721052016",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": false,
+      "createdAt": "2026-07-21T06:06:01.532Z"
+    }
+  ]
+}
