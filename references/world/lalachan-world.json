@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "revision": 5,
+  "revision": 10,
   "id": "cloud-harbor-world",
   "name": "云港万象",
   "tagline": "四个伙伴从一间云边小屋出发，把每次迷路都变成下一条路。",
   "premise": "云港是一座连接人间、森林、云海与星路的港湾。啦啦侠、阿芽酱、飒飒君和庄子机器人住在云港小屋，平日做饭、学习、修东西，也会沿着风门去陌生地方。每次旅程都解决一个具体的小麻烦，并在拼皮笔记本里留下一个旅印；最近，一些旅印正在褪色，一只蓝尾纸鸟却总在关键时刻出现。",
-  "updatedAt": "2026-07-21T06:06:01.533Z",
+  "updatedAt": "2026-07-22T10:12:43.973Z",
   "storyEngine": {
     "episodePromise": "每集先让观众看懂一个具体愿望或麻烦，再让四人的性格推动行动、笑点和温暖结局。",
     "connectionRule": "每集至少复用一个熟悉地点、工具、衣服或人物关系；新设定必须通过动作出现，不靠旁白解释。",
@@ -780,6 +780,32 @@
       "supersedes": null,
       "tracked": false,
       "createdAt": "2026-07-21T06:06:01.532Z"
+    },
+    {
+      "id": "2026-07-22-star-village-gyugyu-hug-scene-reference-v001",
+      "label": "2026-07-22-star-village-gyugyu-hug scene-reference v1",
+      "kind": "scene-reference",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-22-star-village-gyugyu-hug/scene-reference-v001.png",
+      "sha256": "2041fcb412a0240f668b3ee0dd1ac6594f5f9dbf03e4ec90d340cbc34b2b005f",
+      "sourceStoryId": "2026-07-22-star-village-gyugyu-hug",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-22T09:02:54.095Z"
+    },
+    {
+      "id": "2026-07-22-star-village-gyugyu-hug-episode-video-v001",
+      "label": "2026-07-22-star-village-gyugyu-hug episode-video v1",
+      "kind": "video",
+      "version": 1,
+      "relativePath": "Videos/2026-07-22-star-village-gyugyu-hug.mp4",
+      "sha256": "2e3b3fc3b12ae132d44ce10c4414dd5252b4e244d1ca186f06681bf0b4773862",
+      "sourceStoryId": "2026-07-22-star-village-gyugyu-hug",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": false,
+      "createdAt": "2026-07-22T10:12:43.972Z"
     }
   ]
 }
