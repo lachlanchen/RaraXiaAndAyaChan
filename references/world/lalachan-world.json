@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "revision": 10,
+  "revision": 11,
   "id": "cloud-harbor-world",
   "name": "云港万象",
   "tagline": "四个伙伴从一间云边小屋出发，把每次迷路都变成下一条路。",
   "premise": "云港是一座连接人间、森林、云海与星路的港湾。啦啦侠、阿芽酱、飒飒君和庄子机器人住在云港小屋，平日做饭、学习、修东西，也会沿着风门去陌生地方。每次旅程都解决一个具体的小麻烦，并在拼皮笔记本里留下一个旅印；最近，一些旅印正在褪色，一只蓝尾纸鸟却总在关键时刻出现。",
-  "updatedAt": "2026-07-22T10:12:43.973Z",
+  "updatedAt": "2026-07-23T14:32:32.506Z",
   "storyEngine": {
     "episodePromise": "每集先让观众看懂一个具体愿望或麻烦，再让四人的性格推动行动、笑点和温暖结局。",
     "connectionRule": "每集至少复用一个熟悉地点、工具、衣服或人物关系；新设定必须通过动作出现，不靠旁白解释。",
@@ -806,6 +806,32 @@
       "supersedes": null,
       "tracked": false,
       "createdAt": "2026-07-22T10:12:43.972Z"
+    },
+    {
+      "id": "2026-07-23-strawberry-hunt-15s-word-card-v001",
+      "label": "2026-07-23-strawberry-hunt-15s word-card v1",
+      "kind": "word-card",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-23-strawberry-hunt-15s/word-card-v001.png",
+      "sha256": "12ce262f559538110fe3e976bccb8830d0572e460d7b63905d0de24ab1850e60",
+      "sourceStoryId": "2026-07-23-strawberry-hunt-15s",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-23T14:32:32.492Z"
+    },
+    {
+      "id": "2026-07-23-strawberry-hunt-15s-episode-video-v001",
+      "label": "2026-07-23-strawberry-hunt-15s episode-video v1",
+      "kind": "video",
+      "version": 1,
+      "relativePath": "Videos/2026-07-23-strawberry-hunt-15s.mp4",
+      "sha256": "6bcb943bc57a42dfbf081d7cf0c06e0ffbaf968b9b33751923d014fcbfc6be1f",
+      "sourceStoryId": "2026-07-23-strawberry-hunt-15s",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": false,
+      "createdAt": "2026-07-23T14:32:32.505Z"
     }
   ]
 }
