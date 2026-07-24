@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "revision": 11,
+  "revision": 13,
   "id": "cloud-harbor-world",
   "name": "云港万象",
   "tagline": "四个伙伴从一间云边小屋出发，把每次迷路都变成下一条路。",
   "premise": "云港是一座连接人间、森林、云海与星路的港湾。啦啦侠、阿芽酱、飒飒君和庄子机器人住在云港小屋，平日做饭、学习、修东西，也会沿着风门去陌生地方。每次旅程都解决一个具体的小麻烦，并在拼皮笔记本里留下一个旅印；最近，一些旅印正在褪色，一只蓝尾纸鸟却总在关键时刻出现。",
-  "updatedAt": "2026-07-23T14:32:32.506Z",
+  "updatedAt": "2026-07-24T12:45:47.119Z",
   "storyEngine": {
     "episodePromise": "每集先让观众看懂一个具体愿望或麻烦，再让四人的性格推动行动、笑点和温暖结局。",
     "connectionRule": "每集至少复用一个熟悉地点、工具、衣服或人物关系；新设定必须通过动作出现，不靠旁白解释。",
@@ -832,6 +832,45 @@
       "supersedes": null,
       "tracked": false,
       "createdAt": "2026-07-23T14:32:32.505Z"
+    },
+    {
+      "id": "2026-07-24-story-20260724120736-word-card-v001",
+      "label": "2026-07-24-story-20260724120736 word-card v1",
+      "kind": "word-card",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-24-story-20260724120736/word-card-v001.png",
+      "sha256": "d5ae2117ef9dc4cbe9d642fbfd3790ebffd5ed2fd046c2db7b23153816763383",
+      "sourceStoryId": "2026-07-24-story-20260724120736",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-24T12:10:03.188Z"
+    },
+    {
+      "id": "2026-07-24-story-20260724120736-scene-reference-v001",
+      "label": "2026-07-24-story-20260724120736 scene-reference v1",
+      "kind": "scene-reference",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-24-story-20260724120736/scene-reference-v001.png",
+      "sha256": "45fd3f5e83f2442d5e7f65c02fddbd98ba9a5e066389da9047e916f7ae3e4ba2",
+      "sourceStoryId": "2026-07-24-story-20260724120736",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-24T12:10:03.193Z"
+    },
+    {
+      "id": "2026-07-24-story-20260724120736-episode-video-v001",
+      "label": "2026-07-24-story-20260724120736 episode-video v1",
+      "kind": "video",
+      "version": 1,
+      "relativePath": "Videos/2026-07-24-story-20260724120736.mp4",
+      "sha256": "76dd063772cdcfd3737dab0f7ad7be57b297dc7c15c62bb8f648ca41c9e87444",
+      "sourceStoryId": "2026-07-24-story-20260724120736",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": false,
+      "createdAt": "2026-07-24T12:45:47.119Z"
     }
   ]
 }
