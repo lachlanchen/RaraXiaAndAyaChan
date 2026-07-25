@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "revision": 13,
+  "revision": 15,
   "id": "cloud-harbor-world",
   "name": "云港万象",
   "tagline": "四个伙伴从一间云边小屋出发，把每次迷路都变成下一条路。",
   "premise": "云港是一座连接人间、森林、云海与星路的港湾。啦啦侠、阿芽酱、飒飒君和庄子机器人住在云港小屋，平日做饭、学习、修东西，也会沿着风门去陌生地方。每次旅程都解决一个具体的小麻烦，并在拼皮笔记本里留下一个旅印；最近，一些旅印正在褪色，一只蓝尾纸鸟却总在关键时刻出现。",
-  "updatedAt": "2026-07-24T12:45:47.119Z",
+  "updatedAt": "2026-07-25T11:24:20.212Z",
   "storyEngine": {
     "episodePromise": "每集先让观众看懂一个具体愿望或麻烦，再让四人的性格推动行动、笑点和温暖结局。",
     "connectionRule": "每集至少复用一个熟悉地点、工具、衣服或人物关系；新设定必须通过动作出现，不靠旁白解释。",
@@ -871,6 +871,32 @@
       "supersedes": null,
       "tracked": false,
       "createdAt": "2026-07-24T12:45:47.119Z"
+    },
+    {
+      "id": "2026-07-25-story-20260725103311-word-card-v001",
+      "label": "2026-07-25-story-20260725103311 word-card v1",
+      "kind": "word-card",
+      "version": 1,
+      "relativePath": "references/world/media/2026-07-25-story-20260725103311/word-card-v001.png",
+      "sha256": "4175d4d9958ad1eaebc95f30fd593089a4d408bf82875386f65ad4fa537dfbcf",
+      "sourceStoryId": "2026-07-25-story-20260725103311",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-25T11:10:55.428Z"
+    },
+    {
+      "id": "2026-07-25-story-20260725103311-scene-reference-v002",
+      "label": "2026-07-25-story-20260725103311 scene-reference v2",
+      "kind": "scene-reference",
+      "version": 2,
+      "relativePath": "references/world/media/2026-07-25-story-20260725103311/scene-reference-v002.png",
+      "sha256": "3315fa9803caef19756e7bed0dd88fa9a53b8a9df967af498ca40f93e6ceae45",
+      "sourceStoryId": "2026-07-25-story-20260725103311",
+      "sourceEntityIds": [],
+      "supersedes": null,
+      "tracked": true,
+      "createdAt": "2026-07-25T11:10:55.434Z"
     }
   ]
 }
