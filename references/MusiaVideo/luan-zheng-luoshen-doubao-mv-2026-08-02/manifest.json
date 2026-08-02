@@ -1,0 +1,21 @@
+{
+  "project": "luan-zheng-luoshen-doubao-mv-2026-08-02",
+  "workflow": "external-audio-to-doubao-video",
+  "audio": "/home/lachlan/ProjectsLFS/Musia/data/creative_projects/luoshenfu-original-excerpt-preview-20260729/selected/luoshenfu-original-excerpt-pronunciation-v2-seed729403.mp3",
+  "audio_duration_seconds": 136.032,
+  "prompt": "references/MusiaVideo/luan-zheng-luoshen-doubao-mv-2026-08-02/DOUBAO_PROMPT.md",
+  "visual_references": [
+    "references/MusiaVideo/luan-zheng-luoshen-doubao-mv-2026-08-02/luoshen-goddess-palace-reference.png"
+  ],
+  "accepted_prompt": "references/MusiaVideo/luan-zheng-luoshen-doubao-mv-2026-08-02/DOUBAO_TEXT_TO_VIDEO_PROMPT_10S.md",
+  "raw_video": "Videos/luan_zheng_luoshen_doubao_visual_10s_2026-08-02.mp4",
+  "song_locked_video": "Videos/luan_zheng_luoshen_doubao_music_locked_10s_2026-08-02.mp4",
+  "result_duration_seconds": 10.08,
+  "result_dimensions": "1280x720",
+  "submit_policy": "prepare-and-validate-before-single-paid-submit",
+  "run_notes": [
+    "Direct external-audio upload was unavailable in Doubao video mode.",
+    "The realistic face reference was rejected, so the accepted retry used text-to-video in the same conversation.",
+    "The reviewed external soundtrack was restored after download."
+  ]
+}
