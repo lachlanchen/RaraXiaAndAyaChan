@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updated": "2026-08-12",
+  "sequence": [
+    "world-countries",
+    "china-hk-macau-taiwan",
+    "solar-system",
+    "universe",
+    "industries"
+  ],
+  "referenceEpisode": "C001",
+  "episodes": [
+    {
+      "id": "C001",
+      "series": "world-countries",
+      "destination": "Iran",
+      "title": "风把波斯翻到下一页",
+      "status": "completed",
+      "story": "references/stories/2026-08-12-iran-pages-of-time-30s.md",
+      "prompt": "references/prompts/2026-08-12-iran-pages-of-time-30s-mini.md",
+      "video": "Videos/2026-08-12-iran-pages-of-time-30s.mp4",
+      "durationSeconds": 32.434,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "qualityReference": true
+    },
+    {
+      "id": "C002",
+      "series": "world-countries",
+      "destination": "Morocco",
+      "title": null,
+      "status": "planned",
+      "brief": "references/series-roadmap/morocco-next-episode.md"
+    }
+  ]
+}
