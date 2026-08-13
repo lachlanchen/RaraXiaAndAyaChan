@@ -29,9 +29,32 @@
       "id": "C002",
       "series": "world-countries",
       "destination": "Morocco",
-      "title": null,
+      "title": "马拉喀什那双会走路的鞋",
+      "status": "story-ready",
+      "story": "references/stories/2026-08-13-marrakech-walking-slipper-30s.md",
+      "brief": "references/series-roadmap/morocco-next-episode.md",
+      "plannedDurationSeconds": 30
+    },
+    {
+      "id": "C003",
+      "series": "world-countries",
+      "destination": "Ghana",
       "status": "planned",
-      "brief": "references/series-roadmap/morocco-next-episode.md"
+      "theme": "cacao and chocolate"
+    },
+    {
+      "id": "C004",
+      "series": "world-countries",
+      "destination": "Austria",
+      "status": "planned",
+      "theme": "Mozart and music"
+    },
+    {
+      "id": "C005",
+      "series": "world-countries",
+      "destination": "Turkey",
+      "status": "planned",
+      "theme": "grapes and traditional storage"
     }
   ]
 }
