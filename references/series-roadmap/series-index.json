@@ -83,10 +83,11 @@
         ],
         "remoteJobIds": [
           "job-1786680085622-1",
-          "job-1786681237558-1"
+          "job-1786681237558-1",
+          "job-1786685935093-2"
         ],
         "youtubeUrl": "https://youtube.com/shorts/oRvClExxJsM",
-        "note": "Douyin and Shipinhao accepted their submissions before delayed management-page indexing; YouTube and Instagram completed in the recovery job."
+        "note": "Douyin was confirmed by the user. YouTube and Instagram completed in the first recovery job; Shipinhao completed in a browser-restart recovery job and was verified by an exact title match in the management page."
       }
     },
     {
