@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-13",
+  "updated": "2026-08-14",
   "sequence": [
     "world-countries",
     "china-hk-macau-taiwan",
@@ -58,8 +58,36 @@
       "id": "C003",
       "series": "world-countries",
       "destination": "Ghana",
-      "status": "planned",
-      "theme": "cacao and chocolate"
+      "title": "巧克力还要坐几站",
+      "status": "completed",
+      "theme": "cacao and chocolate",
+      "story": "references/stories/2026-08-14-ghana-cocoa-how-many-stops-30s.md",
+      "prompt": "references/prompts/2026-08-14-ghana-cocoa-how-many-stops-30s-mini.md",
+      "video": "Videos/ghana_cocoa_how_many_stops_30s_2026-08-14.mp4",
+      "durationSeconds": 35.334,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "xyqThread": "https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=b8dbfda1-e0e9-4f08-808d-9efb6cc82377&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home",
+      "publish": {
+        "status": "done",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditJobIds": [
+          350,
+          351
+        ],
+        "remoteJobIds": [
+          "job-1786680085622-1",
+          "job-1786681237558-1"
+        ],
+        "youtubeUrl": "https://youtube.com/shorts/oRvClExxJsM",
+        "note": "Douyin and Shipinhao accepted their submissions before delayed management-page indexing; YouTube and Instagram completed in the recovery job."
+      }
     },
     {
       "id": "C004",
