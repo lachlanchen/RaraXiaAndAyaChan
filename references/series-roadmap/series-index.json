@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-14",
+  "updated": "2026-08-15",
   "sequence": [
     "world-countries",
     "china-hk-macau-taiwan",
@@ -94,8 +94,34 @@
       "id": "C004",
       "series": "world-countries",
       "destination": "Austria",
-      "status": "planned",
-      "theme": "Mozart and music"
+      "title": "奥地利最后一位乐手",
+      "status": "completed",
+      "theme": "palaces, Mozart, Alpine lakes, and a travel waltz",
+      "story": "references/stories/2026-08-15-austria-last-musician-30s.md",
+      "prompt": "references/prompts/2026-08-15-austria-last-musician-30s-mini.md",
+      "video": "Videos/2026-08-15-austria-last-musician-30s.mp4",
+      "durationSeconds": 31.367,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "creditsUsed": 124,
+      "xyqThread": "https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=85c5fc96-0077-46ef-9c7d-98d7c754b3b9&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home",
+      "publish": {
+        "status": "done",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditVideoId": 519,
+        "publicationSessionId": 66,
+        "lazyEditBurnId": 716,
+        "lazyEditJobId": 352,
+        "remoteJobId": "job-1786767998028-3",
+        "youtubeUrl": "https://youtube.com/shorts/jC8e06llc2I",
+        "note": "Shipinhao was verified by exact title, Instagram confirmed the post, YouTube returned the public Short URL, and Douyin accepted the publish submission while its management index was still updating."
+      }
     },
     {
       "id": "C005",
