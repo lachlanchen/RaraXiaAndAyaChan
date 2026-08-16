@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-15",
+  "updated": "2026-08-16",
   "sequence": [
     "world-countries",
     "china-hk-macau-taiwan",
@@ -125,6 +125,46 @@
     },
     {
       "id": "C005",
+      "series": "world-countries",
+      "destination": "France",
+      "title": "巴黎的面包桶宴会",
+      "status": "completed",
+      "theme": "Paris landmarks, baguette culture, and a baguette/bucket language joke",
+      "story": "references/stories/2026-08-16-paris-baguette-bucket-banquet-30s.md",
+      "prompt": "references/prompts/2026-08-16-paris-baguette-bucket-banquet-30s-mini.md",
+      "publishContext": "references/publish-context/2026-08-16-paris-baguette-bucket-banquet.md",
+      "wordsCard": "references/images/2026-08-16-paris-baguette-bucket-banquet/words-card-baguette.png",
+      "brief": "references/series-roadmap/france-paris-episode-success-method.md",
+      "video": "Videos/paris-baguette-bucket-banquet-2026-08-16.mp4",
+      "durationSeconds": 43.467,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "xyqThread": "https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=30049a58-a9cf-4e57-a4f8-5c8c8485f941&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home",
+      "publish": {
+        "status": "done",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditVideoId": 520,
+        "publicationSessionId": 67,
+        "lazyEditJobId": 353,
+        "remoteJobId": "job-1786853802989-4",
+        "youtubeUrl": "https://youtube.com/shorts/u9ZwPwG-b-s",
+        "subtitleRowsTopToBottom": [
+          "en",
+          "ja",
+          "zh-Hant",
+          "fr"
+        ],
+        "note": "Shipinhao and Instagram were verified in their platform UIs; YouTube returned the public Short URL; Douyin accepted the submission while its management index was still updating."
+      }
+    },
+    {
+      "id": "C006",
       "series": "world-countries",
       "destination": "Turkey",
       "status": "planned",

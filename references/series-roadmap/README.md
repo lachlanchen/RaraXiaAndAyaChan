@@ -18,11 +18,13 @@
 | C002 | 世界国家 | 摩洛哥 | 已完成 | 马拉喀什老城、百货商店和会走路的拖鞋 |
 | C003 | 世界国家 | 加纳 | 已完成 | 可可从果实变成巧克力的旅程 |
 | C004 | 世界国家 | 奥地利 | 已完成 | 美泉宫、萨尔茨堡、哈尔施塔特与旅行圆舞曲 |
-| C005 | 世界国家 | 土耳其 | 排队中 | 葡萄与传统保鲜方法 |
+| C005 | 世界国家 | 法国 | 已完成 | 巴黎地标、法棍文化与 baguette/bucket 误会 |
+| C006 | 世界国家 | 土耳其 | 排队中 | 葡萄与传统保鲜方法 |
 
 ## 参考文件
 
 - [伊朗篇成功方法](iran-episode-success-method.md)
+- [法国巴黎篇成功记录](france-paris-episode-success-method.md)
 - [世界国家清单](world-countries.md)
 - [中国与港澳台路线](china-hk-macau-taiwan.md)
 - [日本 47 都道府县路线](japan-47-prefectures.md)
