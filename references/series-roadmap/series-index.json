@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "sequence": [
     "world-countries",
     "china-hk-macau-taiwan",
@@ -165,6 +165,45 @@
     },
     {
       "id": "C006",
+      "series": "world-countries",
+      "destination": "Switzerland",
+      "title": "瑞士的奶酪导航",
+      "status": "completed",
+      "theme": "Swiss road trip, Chapel Bridge, Lauterbrunnen waterfalls, Gruyères, and cheese fondue",
+      "story": "references/stories/2026-08-17-switzerland-cheese-navigation-30s.md",
+      "prompt": "references/prompts/2026-08-17-switzerland-cheese-navigation-30s-mini.md",
+      "publishContext": "references/publish-context/2026-08-17-switzerland-cheese-navigation.md",
+      "wordsCard": "references/images/2026-08-17-switzerland-cheese-navigation/words-card-cheese-fr.png",
+      "sceneReference": "references/images/2026-08-17-switzerland-cheese-navigation/switzerland-road-trip-scene-reference.png",
+      "brief": "references/series-roadmap/switzerland-episode-success-method.md",
+      "video": "Videos/switzerland_cheese_navigation_30s_2026-08-17.mp4",
+      "durationSeconds": 32.367,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "creditsUsed": 128,
+      "publish": {
+        "status": "running",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditVideoId": 522,
+        "publicationSessionId": 69,
+        "lazyEditJobId": 356,
+        "remoteJobId": "job-1786960573459-6",
+        "subtitleRowsTopToBottom": [
+          "en",
+          "ja",
+          "zh-Hant",
+          "fr"
+        ]
+      }
+    },
+    {
+      "id": "C007",
       "series": "world-countries",
       "destination": "Turkey",
       "status": "planned",
