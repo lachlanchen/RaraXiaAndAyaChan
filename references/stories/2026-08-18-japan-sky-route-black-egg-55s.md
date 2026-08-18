@@ -100,3 +100,19 @@ Ciel
 - https://www.japan.travel/en/spot/2087/
 - https://www.hakonenavi.jp/international/en/spot/99
 - https://www.hakonenavi.jp/international/en/course/244
+
+## 制作与发布记录
+
+- 小云雀模式：创作 Agent
+- 模型：Seedance 2.0 Mini 体验版
+- 成片规格：4:3，55.7 秒，968x720
+- 消耗积分：220
+- 小云雀线程：`aae64473-f8ff-454b-8a85-e0ed4fa9afa3`
+- 原始成片：`Videos/japan_sky_route_black_egg_55s_2026-08-18.mp4`
+- 原始成片 SHA-256：`1a203a2cdbae78fa8746a4f667ee9ca911c8718ae5c57616f10b73661884a60e`
+- LazyEdit 视频 ID：526
+- LazyEdit 发布任务：362
+- AutoPublish 任务：`job-1787033609705-5`
+- 发布结果：抖音、视频号、Instagram、YouTube 全部完成
+- YouTube：https://youtube.com/shorts/lTQ4Rg7PIic
+- 发布处理：LALACHAN 竖屏模糊背景填充、右上角 Logo、英语/日语/繁体中文/法语四语字幕

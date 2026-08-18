@@ -208,6 +208,43 @@
       "destination": "Turkey",
       "status": "planned",
       "theme": "grapes and traditional storage"
+    },
+    {
+      "id": "C008",
+      "series": "world-countries",
+      "destination": "Japan",
+      "title": "日本天空航线：黑洞原来是黑鸡蛋",
+      "status": "completed",
+      "theme": "near-space flight, Tsukuba, Asakusa, Sawara, Hakone, and Owakudani black eggs",
+      "story": "references/stories/2026-08-18-japan-sky-route-black-egg-55s.md",
+      "prompt": "references/prompts/2026-08-18-japan-sky-route-black-egg-55s.md",
+      "video": "Videos/japan_sky_route_black_egg_55s_2026-08-18.mp4",
+      "durationSeconds": 55.7,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "creditsUsed": 220,
+      "xyqThread": "https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=aae64473-f8ff-454b-8a85-e0ed4fa9afa3&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home",
+      "publish": {
+        "status": "done",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditVideoId": 526,
+        "lazyEditJobId": 362,
+        "remoteJobId": "job-1787033609705-5",
+        "youtubeUrl": "https://youtube.com/shorts/lTQ4Rg7PIic",
+        "subtitleRowsTopToBottom": [
+          "en",
+          "ja",
+          "zh-Hant",
+          "fr"
+        ],
+        "note": "Douyin accepted the publish submission, Shipinhao matched the exact title in its management page, Instagram confirmed the post, and YouTube returned the public Short URL."
+      }
     }
   ]
 }
