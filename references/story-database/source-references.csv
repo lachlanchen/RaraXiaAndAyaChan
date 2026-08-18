@@ -33,3 +33,8 @@ foxconn-ai-factory,web-primary,Foxconn AI factory partnership,https://www.foxcon
 nvidia-gr00t,web-primary,NVIDIA Isaac GR00T,https://developer.nvidia.com/isaac/gr00t,"Use as current technical reference","Humanoid robotics foundation-model platform"
 dji-mini-4-pro,web-primary,DJI Mini 4 Pro,https://www.dji.com/mini-4-pro,"Use as current technical reference","Obstacle sensing and ActiveTrack"
 shadow-robot,web-primary,Shadow Robot,https://shadowrobot.com/,"Use as current technical reference","Dexterous hands and tactile sensing"
+jaxa-tsukuba,web-primary,JAXA Tsukuba Space Center,https://global.jaxa.jp/activity/pr/brochure/files/centers01_e.pdf,"Use for Tsukuba Space Center identity and visual context","Official JAXA source"
+jnto-asakusa,web-primary,JNTO Asakusa,https://www.japan.travel/en/spot/ma_36/,"Use for Asakusa landmarks and street atmosphere","Official Japan tourism source"
+jnto-sawara,web-primary,JNTO Sawara,https://www.japan.travel/en/spot/2087/,"Use for Sawara location and Edo-period canal townscape","Official Japan tourism source"
+hakone-owakudani,web-primary,Hakone Navi Owakudani,https://www.hakonenavi.jp/international/en/spot/99,"Use for Owakudani volcanic landscape and black eggs","Official Hakone tourism source"
+hakone-lake-ashi,web-primary,Hakone Navi Lake Ashi Course,https://www.hakonenavi.jp/international/en/course/244,"Use for Lake Ashi and Mount Fuji visual context","Official Hakone tourism source"
