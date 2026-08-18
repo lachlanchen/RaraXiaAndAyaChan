@@ -237,6 +237,8 @@
         "lazyEditJobId": 362,
         "remoteJobId": "job-1787033609705-5",
         "youtubeUrl": "https://youtube.com/shorts/lTQ4Rg7PIic",
+        "subtitleStatus": "published-with-timeline-drift",
+        "subtitleIncident": "references/subtitle-alignment-incident-2026-08-18.md",
         "subtitleRowsTopToBottom": [
           "en",
           "ja",

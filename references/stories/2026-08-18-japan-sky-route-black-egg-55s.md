@@ -116,3 +116,4 @@ Ciel
 - 发布结果：抖音、视频号、Instagram、YouTube 全部完成
 - YouTube：https://youtube.com/shorts/lTQ4Rg7PIic
 - 发布处理：LALACHAN 竖屏模糊背景填充、右上角 Logo、英语/日语/繁体中文/法语四语字幕
+- 已知问题：发布字幕的润色结果改变了原 ASR 时间轴并发生台词重复，字幕与声音不同步；后续发布必须通过 `references/subtitle-alignment-incident-2026-08-18.md` 记录的时间轴校验，不能复用本次纠错方式。
