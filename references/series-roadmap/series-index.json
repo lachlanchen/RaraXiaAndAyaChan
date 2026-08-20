@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-17",
+  "updated": "2026-08-20",
   "sequence": [
     "world-countries",
     "china-hk-macau-taiwan",
@@ -246,6 +246,45 @@
           "fr"
         ],
         "note": "Douyin accepted the publish submission, Shipinhao matched the exact title in its management page, Instagram confirmed the post, and YouTube returned the public Short URL."
+      }
+    },
+    {
+      "id": "C009",
+      "series": "world-countries",
+      "destination": "Japan",
+      "title": "新宿没吃到麻婆豆腐，却等到了银河",
+      "status": "completed",
+      "theme": "Shinjuku dinner miss, Hakone Romancecar, Tanabata wishes, and a night under the Milky Way",
+      "story": "references/stories/2026-08-20-shinjuku-hakone-tanabata-30s.md",
+      "prompt": "references/prompts/2026-08-20-shinjuku-hakone-tanabata-30s-mini.md",
+      "publishContext": "references/publish-context/2026-08-20-shinjuku-hakone-tanabata.md",
+      "wordsCard": "references/images/2026-08-20-shinjuku-hakone-tanabata/words-card-wish.png",
+      "sceneReference": "references/images/2026-08-20-shinjuku-hakone-tanabata/hakone-tanabata-star-camp-scene-reference.png",
+      "video": "Videos/shinjuku_hakone_tanabata_30s_2026-08-20.mp4",
+      "durationSeconds": 30.234,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "xyqThread": "https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=54923117-8d50-49a2-936a-b0374ac8286d&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home",
+      "publish": {
+        "status": "done",
+        "platforms": [
+          "douyin",
+          "shipinhao",
+          "youtube",
+          "instagram"
+        ],
+        "lazyEditVideoId": 527,
+        "lazyEditJobId": 363,
+        "remoteJobId": "job-1787201689788-6",
+        "youtubeUrl": "https://youtube.com/shorts/DjSL-eN91Zw",
+        "subtitleTimelineCues": 15,
+        "subtitleRowsTopToBottom": [
+          "en",
+          "ja",
+          "zh-Hant"
+        ],
+        "note": "Douyin accepted the publish submission, Shipinhao was verified in its management page, Instagram confirmed the post, YouTube returned the public Short URL, and the corrected 15-cue subtitle timeline passed validation before publishing."
       }
     }
   ]
