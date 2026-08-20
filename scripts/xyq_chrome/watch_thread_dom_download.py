@@ -43,6 +43,9 @@ PROBE_JS = rf"""
   const hasVisibleDownload = [...document.querySelectorAll('button')].some(button =>
     visible(button) && !button.disabled && (button.innerText || button.textContent || '').trim() === '下载'
   );
+  const activeExecutions = [...document.querySelectorAll('button[aria-label]')]
+    .map(button => (button.getAttribute('aria-label') || '').trim())
+    .filter(label => /执行中|生成中|进行中/.test(label));
   const resultVideos = [...document.querySelectorAll('video')].filter(video =>
     video.closest('.ag-ui-x-biz-video-part') || (visible(video) && hasVisibleDownload)
   );
@@ -74,6 +77,7 @@ PROBE_JS = rf"""
     href: location.href,
     points: (document.querySelector('[class*=pointsBadgeButton]')?.innerText || '').trim(),
     status,
+    activeExecutions,
     videos,
     anchors,
     resources,
@@ -466,7 +470,13 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def has_blocking_status(status: str, tail: str) -> bool:
+def has_blocking_status(status: str, tail: str, active_executions: list[str] | None = None) -> bool:
+    # Threads keep earlier failure messages in the DOM after the agent has
+    # already retried and advanced. A currently executing step is stronger
+    # evidence than stale transcript text, so keep monitoring in that case.
+    if active_executions:
+        return False
+
     blocking_tokens = ("失败", "内部错误", "审核", "合规")
     if any(token in status for token in blocking_tokens):
         return True
@@ -551,7 +561,11 @@ def main() -> int:
             flush=True,
         )
 
-        if has_blocking_status(status, str(data.get("tail") or "")):
+        if has_blocking_status(
+            status,
+            str(data.get("tail") or ""),
+            list(data.get("activeExecutions") or []),
+        ):
             print("blocking status seen; not retrying automatically", flush=True)
             return 43
 

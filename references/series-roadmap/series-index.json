@@ -206,8 +206,43 @@
       "id": "C007",
       "series": "world-countries",
       "destination": "Turkey",
-      "status": "planned",
-      "theme": "grapes and traditional storage"
+      "title": "葡萄在天花板上过冬",
+      "status": "completed",
+      "theme": "Istanbul, Cappadocia, grapes, and traditional winter storage",
+      "story": "references/stories/2026-08-21-turkey-grapes-on-the-ceiling-30s.md",
+      "prompt": "references/prompts/2026-08-21-turkey-grapes-on-the-ceiling-30s-mini.md",
+      "video": "Videos/turkey_grapes_on_the_ceiling_30s_2026-08-21.mp4",
+      "durationSeconds": 34.32,
+      "ratio": "4:3",
+      "mode": "creative-agent",
+      "model": "Seedance 2.0 Mini trial",
+      "assets": [
+        "references/images/2026-08-21-turkey-grapes-on-the-ceiling/words-card-grape.png",
+        "references/images/2026-08-21-turkey-grapes-on-the-ceiling/cappadocia-balloon-scene-reference.png"
+      ],
+      "publish": {
+        "category": "lalachan",
+        "platformsCompleted": [
+          "youtube",
+          "instagram"
+        ],
+        "platformsPending": [
+          "douyin"
+        ],
+        "platformsSkipped": [
+          "shipinhao"
+        ],
+        "lazyEditVideoId": 528,
+        "publicationSessionId": 73,
+        "remoteJobId": "job-1787266563963-2",
+        "youtubeUrl": "https://youtube.com/shorts/2JOhBYw_Kdc",
+        "subtitleRowsTopToBottom": [
+          "en",
+          "ja",
+          "zh-Hant",
+          "tr"
+        ]
+      }
     },
     {
       "id": "C008",
