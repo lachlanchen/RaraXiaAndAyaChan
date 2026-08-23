@@ -11,11 +11,15 @@
 保留小云雀 Agent / Skill API 作为可用后备方案，用于上传素材、提交任务和轮询进度，但默认不直接用 API 代替网页操作，除非明确需要批量上传或自动轮询。
 
 ```text
-Chrome Driver endpoint: http://127.0.0.1:9222
+Chrome Driver endpoint: http://127.0.0.1:9344
 Chrome profile: /home/lachlan/.cache/xyq-chrome
 Launch script: scripts/xyq_chrome/launch_chrome.sh
 CDP helper: scripts/xyq_chrome/xyq_cdp.py
 ```
+
+`9344` is the current canonical Xiaoyunque profile endpoint. Do not assume that
+another responsive CDP port belongs to the logged-in Xiaoyunque browser; verify
+the Chrome process profile, current page URL, and noVNC display together.
 
 Skill install command, saved for availability:
 
@@ -56,7 +60,8 @@ https://xyq.jianying.com/novel/list?enter_from=small_tool
 - 用户未指定时长时，默认目标为 `30秒`，不要因为 `沉浸式短片` 上限是 `15秒` 就静默压缩故事。
 - 用户明确说 `15秒`、`快速测试`、`cheapest`、`least credits` 时，才使用 `沉浸式短片` 的 `15秒` 低成本流程。
 - 如果用户要 30 秒，而 `沉浸式短片` 被限制在 `15秒`，改用 30 秒可行的 `Agent 模式` / integrated workflow。
-- 明确走 15 秒低成本流程时，选择满足要求的最低积分非 VIP 模型；如果用户要求非 Fast 或更高质量，再切换普通 `Seedance 2.0`。
+- 模型名称和积分价格会变化，不把历史型号写成永远默认。每次以网页当前可见选项为准，选择满足时长、画幅、参考图和质量要求的最低积分型号，并在提交前截图证明实际型号、档位和积分；提示词里的型号名称不算证明。
+- `VIP` 是硬性阻断条件：模型下拉、工具栏、确认消息、积分预览或扣费记录里出现 `Seedance2.0Fast VIP` / `Fast VIP` / `VIP通道` 时，不要继续提交或渲染，先切换到可证明的非 VIP 模型；如果找不到非 VIP 选项，停止并报告。
 - 用户没有指定模式时，默认使用能稳定生成 `30秒` 的 `Agent 模式` / integrated workflow。
 - 只有用户明确要求 `1分钟`、`长视频` 或更长剧情时，才把 `Agent 模式` 按 `1分钟以上` 或平台允许的最长稳定长度处理。
 - 用户明确说 `智能长视频 2.0` 或 `zhineng changshipin 2.0` 时，从首页模式下拉选择 `智能长视频 2.0`。
@@ -83,9 +88,9 @@ scripts/xyq_chrome/test_modes.py --output references/xyq-mode-test-results.md
 references/xyq-mode-test-results.md
 ```
 
-## 固定参考素材
+## 历史三素材配置
 
-生成 Lala/Aya/Sasa 相关视频时，默认使用这三张图片作为参考：
+以下三素材配置仅用于理解旧任务。新任务使用本文后面的当前单人角色参考顺序，不要把这个历史段落当成默认上传清单：
 
 ```text
 /home/lachlan/ProjectsLFS/LALACHAN/display.png
@@ -139,6 +144,8 @@ Lala-Aya-Sasa-draft/duanju-agent-chatgpt-sushi.txt
 5. 上传或引用三张固定图片。
 6. 如有参考视频，再一起上传参考视频。
 7. 提交任务后，通过 Chrome Driver 检查页面状态、分镜确认和积分提示。
+8. 视频生成完成后，默认自动下载 MP4，`ffprobe` 验证时长和尺寸，复制到 `Videos/`。
+9. 下载验证后默认提交到 LazyEdit。优先用 LazyEdit CLI 直接上传；如果直接上传不方便，可以复制到 Nutstore AutoPublish 文件夹。用户没有明确要求发布到平台时，只导入/处理 LazyEdit，使用 `--no-publish`，不要自动发布到 YouTube/Instagram/视频号。
 
 2026-05-09 historical update for short-video reference assets:
 

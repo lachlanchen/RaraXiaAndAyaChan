@@ -49,6 +49,19 @@ Check at least:
 - Duration is close to the source duration.
 - Sample frames visually confirm watermark handling and composition.
 
+## Paid Video Generation Safety
+
+Treat every Xiaoyunque render click as a paid action. Before submitting, capture visible evidence for the actual selected workflow, model, duration, ratio, attachment count and order, and displayed credit cost. A model name written only inside the prompt is not proof that the renderer selected that model.
+
+- Keep Xiaoyunque's `automatic generation countdown` disabled. Paid generation requires one deliberate click after preflight.
+- Save a preflight screenshot that shows the real toolbar state and attachment previews. Do not rely on an agent's textual claim that it selected the requested settings.
+- Reject a storyboard before rendering when its visible style, duration, shot count, or character mapping differs from the request. Agent claims are not evidence; inspect the storyboard/editor state.
+- For LALACHAN character videos, verify the individual reference mapping and sample frames. Generic humans, mascot substitutes, duplicate leads, or a switch from figurine realism to 2D cartoon block acceptance.
+- Do not regenerate a failed paid output without explicit user approval. Preserve the failed artifact as evidence, report the remaining credits, and propose the least-cost recovery.
+- Do not publish an output that failed character or story acceptance unless the user explicitly asks to publish that exact output.
+- When a long Agent workflow cannot keep reference identity stable, prefer a proven direct workflow. A multi-clip recovery must have a fixed visible total cost, preflight each clip, and stop after the first clip unless its sampled frames pass character and style acceptance.
+- After download, validate duration, dimensions, audio, complete decode, and a contact sheet before starting another paid clip or publication.
+
 ## Commit & Pull Request Guidelines
 
 This repository has no established commit history yet. Use short imperative commit messages, such as `Add blur-fill video script` or `Document watermark workflow`.
