@@ -67,3 +67,21 @@ When a direct short-video workflow is safer than a drifting long Agent flow:
 
 This makes the first clip a quality gate rather than spending the whole budget
 before discovering the same failure in every segment.
+
+## Recovery Gate Result
+
+The first 15-second direct-workflow recovery clip proved why the gate is
+required:
+
+- visible preflight: Mini trial model, 4:3, 15 seconds, seven uploaded previews,
+  60-credit estimate, and 193-point balance;
+- downloaded result: 15.105 seconds, 966x720, H.264 video and AAC audio;
+- complete decode passed;
+- realistic figurine style and the four intended characters appeared;
+- contact-sheet review found an extra unhooded boy beside Sasa Kun in the middle
+  shots, creating a duplicate/replacement lead.
+
+The clip was rejected. The planned second clip was not submitted and the
+rejected clip was not copied to `Videos/` or any publication queue. The visible
+balance still displayed 193 after completion, so no unobserved charge is
+claimed.
