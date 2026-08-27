@@ -62,6 +62,12 @@ Treat every Xiaoyunque render click as a paid action. Before submitting, capture
 - When a long Agent workflow cannot keep reference identity stable, prefer a proven direct workflow. A multi-clip recovery must have a fixed visible total cost, preflight each clip, and stop after the first clip unless its sampled frames pass character and style acceptance.
 - After download, validate duration, dimensions, audio, complete decode, and a contact sheet before starting another paid clip or publication.
 
+## Default Publication Languages
+
+- LALACHAN publication subtitles default to English, Japanese, Chinese, and French when the user does not name a destination or local language.
+- When a specific destination language is requested, use that language as the fourth/local-language row instead of French. Keep the established English, Japanese, and Chinese rows unless the user explicitly requests a different set.
+- For LazyEdit CLI publication, languages are ordered bottom-to-top. The French fallback is therefore `fr,zh-Hant,ja,en`, which renders top-to-bottom as English, Japanese, Chinese, and French.
+
 ## Commit & Pull Request Guidelines
 
 This repository has no established commit history yet. Use short imperative commit messages, such as `Add blur-fill video script` or `Document watermark workflow`.
