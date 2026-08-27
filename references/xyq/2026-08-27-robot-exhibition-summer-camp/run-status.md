@@ -1,0 +1,42 @@
+# Xiaoyunque Run Status
+
+Date: 2026-08-27
+
+- Story and prompt: completed and critic-checked
+- Fresh words card: `references/images/2026-08-27-robot-exhibition-summer-camp/words-card-teamwork.png`
+- Words-card SHA-256: `67cfbff2421e9861f31fa3c6ffb5f56d8913360dbe8f54dbf6ba6f28b916ba93`
+- Browser preflight: passed
+  - Browser: canonical Xiaoyunque profile on CDP `9344`
+  - Workflow: single-segment short video
+  - Model: `Seedance 2.0 Mini 体验版`
+  - Ratio: `4:3`
+  - Duration: `15s`
+  - Balance before submit: `261`
+  - Attachments: five-image UI maximum, prioritized as 庄子机器人, LightMind AI 眼镜, 啦啦侠, 阿芽酱, 飒飒君
+  - Evidence: `.lalastudio/video-runs/2026-08-27-robot-exhibition-summer-camp/06-mini-selected.png`
+- Video generation and validation: passed
+  - Source: `Videos/robot_exhibition_summer_camp_buddies_2026-08-27.mp4`
+  - SHA-256: `f37093913799eb7197bd23ca23b8d7de3df313822749705115507339f235c121`
+  - Media: `15.104s`, `966x720`, H.264 video and AAC audio
+  - Complete decode: passed
+  - Character/story contact sheet: `.lalastudio/video-runs/2026-08-27-robot-exhibition-summer-camp/contact-sheet.png`
+  - Result evidence: `.lalastudio/video-runs/2026-08-27-robot-exhibition-summer-camp/09-video-finished.png`
+- LazyEdit validation: passed
+  - Video ID: `539`
+  - Portrait blur fill: enabled, LALACHAN layout
+  - Subtitle languages: Traditional Chinese, Japanese, English
+  - Subtitle correction: `帐棚` to `帐篷`; `衣物站` to `医务站`
+  - Original and polished subtitle cue counts and timestamps: exact match
+  - Logo: enabled at top-right
+- LazyEdit publication: completed
+  - Local job: `378`
+  - Remote job: `job-1787841645293-14`
+  - Final status: `done`, no error
+  - Finished: `2026-08-27 23:03 HKT`
+  - Shipinhao: published and verified in content management
+  - Douyin: publish submit accepted; management indexing was still delayed during verification
+  - Instagram: published and confirmed
+  - YouTube: published at `https://youtube.com/shorts/OZZfOC0-67U`
+  - YouTube playlist: `LALACHAN`
+  - Shipinhao collection: published without collection because the requested `啦啦侠` collection was not present in the account selector
+- Requested platforms: Shipinhao, Douyin, Instagram, YouTube
