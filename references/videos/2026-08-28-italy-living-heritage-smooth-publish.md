@@ -15,7 +15,7 @@
 - Session 85 was a non-publishing inspection run. It exposed ASR errors and was never submitted to AutoPublish.
 - The corrected subtitle file preserves all 22 original ASR cue start and end timestamps.
 - Session 86 was generated from the corrected polished subtitles.
-- Visible subtitle order, top to bottom: English, Japanese, Traditional Chinese, Italian.
+- Visible subtitle order, top to bottom: English, Japanese, Chinese, Italian.
 - CLI language order, bottom to top: `it,zh-Hant,ja,en`.
 - Italian replaces French and occupies the bottom slot.
 - LALACHAN portrait blur-fill and the configured top-right logo are enabled.
