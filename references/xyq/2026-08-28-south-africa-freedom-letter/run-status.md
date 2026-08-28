@@ -36,5 +36,5 @@
 - AutoPublish local job: 381
 - AutoPublish remote job: `job-1787907147120-17`
 - Published platforms: Shipinhao, Douyin, YouTube, Instagram
-- Publication completed: 2026-08-28 17:01 HKT; local and remote status both `done`
+- Publication completed: remote at 2026-08-28 17:01 HKT and local monitor at 17:04 HKT; both statuses are `done`
 - Acceptance: passed without regeneration
