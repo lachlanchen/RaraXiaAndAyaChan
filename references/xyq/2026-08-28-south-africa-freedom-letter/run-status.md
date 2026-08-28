@@ -1,0 +1,40 @@
+# Run Status
+
+- Date: 2026-08-28
+- Story: `references/stories/2026-08-28-south-africa-freedom-letter-30s.md`
+- Prompt: `references/prompts/2026-08-28-south-africa-freedom-letter-30s-mini.md`
+- Target workflow: 创作 Agent
+- Target model: Seedance 2.0 Mini 体验版, or the cheapest visibly suitable model
+- Target duration: about 30 seconds
+- Target ratio: 4:3
+- Actual selected model: Seedance 2.0 Mini 体验版, visibly selected
+- Actual duration: custom 30 seconds
+- Actual ratio: 4:3
+- Actual mode: 正常模式; automatic mode is off
+- Visible credit estimate: 120 points
+- Visible balance before submit: 235 points
+- Upload count: 8, no `Trio.png`
+- Attachment evidence: `after-upload-complete.png`
+- Preference evidence: `preferences-preflight.png`
+- Prompt and cost evidence: `paid-preflight-composer.png`
+- Submission: submitted once at 2026-08-28 15:51 HKT
+- Thread: `https://xyq.jianying.com/home?tab_name=integrated-agent&thread_id=48b29528-b340-41ed-a70a-b477047c912d&agent_name=pippit_nest_agent&source=home_prompt&entrance_from=home`
+- Agent progress: completed as one paid task; Xiaoyunque assembled `12s + 12s + 6s` into one 30-second output
+- Paid generation attempts: 1; no automatic countdown and no regeneration
+- Downloaded output: `Videos/south_africa_freedom_letter_30s_2026-08-28.mp4`
+- Working output: `outputs/xyq/2026-08-28-south-africa-freedom-letter/south_africa_freedom_letter_30s_2026-08-28.mp4`
+- Duration and format: 30.20 seconds, 968x720, H.264 video, AAC stereo audio
+- SHA-256: `d35aa3ae0a37c51d4ed729cf53c69339c8e320666b40c1269c7bf8d9a48e2d3b`
+- Decode validation: complete
+- Visual validation: passed; the four named characters remain distinct, historical guards are secondary characters, and the Table Mountain, Robben Island, prison reconstruction, and Boulders Beach beats are present
+- Contact sheets: `validation/contact-sheet.jpg` and `validation/contact-sheet-20.jpg`
+- LazyEdit video ID: 542
+- LazyEdit publication session: 84
+- Processed publish master: `/home/lachlan/DiskMech/Projects/lazyedit/DATA/south_africa_freedom_letter_30s_2026-08-28/publications/session_84/south_africa_freedom_letter_30s_2026-08-28_session_84_portrait_subtitles_logo.mp4`
+- Publication master validation: 1080x1920, 30.186 seconds, H.264/AAC, complete decode
+- Publication treatment: LALACHAN portrait blur-fill, corrected subtitles in English/Japanese/Traditional Chinese/French, and top-right logo
+- AutoPublish local job: 381
+- AutoPublish remote job: `job-1787907147120-17`
+- Published platforms: Shipinhao, Douyin, YouTube, Instagram
+- Publication completed: 2026-08-28 17:01 HKT; local and remote status both `done`
+- Acceptance: passed without regeneration
