@@ -10,6 +10,7 @@ copies it to requested folders.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -382,6 +383,59 @@ def media_duration(path: Path) -> float | None:
         return None
 
 
+def media_dimensions(path: Path) -> tuple[int, int] | None:
+    if not shutil.which("ffprobe"):
+        return None
+    result = subprocess.run(
+        [
+            "ffprobe",
+            "-v",
+            "error",
+            "-select_streams",
+            "v:0",
+            "-show_entries",
+            "stream=width,height",
+            "-of",
+            "csv=p=0:s=x",
+            str(path),
+        ],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    value = result.stdout.strip()
+    if "x" not in value:
+        return None
+    try:
+        width, height = value.split("x", 1)
+        return int(width), int(height)
+    except ValueError:
+        return None
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def parse_aspect_ratio(value: str | None) -> float | None:
+    if not value:
+        return None
+    separator = ":" if ":" in value else "/" if "/" in value else None
+    if not separator:
+        ratio = float(value)
+    else:
+        width, height = value.split(separator, 1)
+        ratio = float(width) / float(height)
+    if ratio <= 0:
+        raise ValueError("aspect ratio must be positive")
+    return ratio
+
+
 def fully_decodes(path: Path) -> bool:
     if not shutil.which("ffmpeg"):
         return True
@@ -420,23 +474,50 @@ def fully_decodes(path: Path) -> bool:
     return False
 
 
-def duration_matches(path: Path, expected: float | None, tolerance: float) -> bool:
+def media_matches(
+    path: Path,
+    expected_duration: float | None,
+    duration_tolerance: float,
+    expected_aspect_ratio: float | None,
+    aspect_ratio_tolerance: float,
+    excluded_sha256: set[str],
+) -> bool:
+    digest = file_sha256(path) if excluded_sha256 else ""
+    if digest and digest in excluded_sha256:
+        print(f"candidate rejected: SHA-256 matches an excluded input asset: {path}", flush=True)
+        return False
     if not fully_decodes(path):
         return False
-    if expected is None:
-        return True
-    actual = media_duration(path)
-    if actual is None:
-        print(f"candidate rejected: cannot verify duration for {path}", flush=True)
-        return False
-    if abs(actual - expected) <= tolerance:
-        return True
-    print(
-        f"candidate rejected: duration {actual:.3f}s is outside "
-        f"{expected:.3f}s +/- {tolerance:.3f}s for {path}",
-        flush=True,
-    )
-    return False
+
+    if expected_duration is not None:
+        actual_duration = media_duration(path)
+        if actual_duration is None:
+            print(f"candidate rejected: cannot verify duration for {path}", flush=True)
+            return False
+        if abs(actual_duration - expected_duration) > duration_tolerance:
+            print(
+                f"candidate rejected: duration {actual_duration:.3f}s is outside "
+                f"{expected_duration:.3f}s +/- {duration_tolerance:.3f}s for {path}",
+                flush=True,
+            )
+            return False
+
+    if expected_aspect_ratio is not None:
+        dimensions = media_dimensions(path)
+        if not dimensions or dimensions[1] == 0:
+            print(f"candidate rejected: cannot verify dimensions for {path}", flush=True)
+            return False
+        actual_ratio = dimensions[0] / dimensions[1]
+        if abs(actual_ratio - expected_aspect_ratio) > aspect_ratio_tolerance:
+            print(
+                f"candidate rejected: dimensions {dimensions[0]}x{dimensions[1]} give aspect "
+                f"{actual_ratio:.4f}, expected {expected_aspect_ratio:.4f} "
+                f"+/- {aspect_ratio_tolerance:.4f} for {path}",
+                flush=True,
+            )
+            return False
+
+    return True
 
 
 def finish_from_file(source: Path, output: Path, copy_to: list[Path]) -> None:
@@ -445,9 +526,13 @@ def finish_from_file(source: Path, output: Path, copy_to: list[Path]) -> None:
     probe = ffprobe(output)
     if probe:
         print(probe, flush=True)
-    for folder in copy_to:
-        folder.mkdir(parents=True, exist_ok=True)
-        target = folder / output.name
+    for destination in copy_to:
+        if destination.suffix.lower() in {".mp4", ".mov", ".mkv", ".webm"}:
+            target = destination
+            target.parent.mkdir(parents=True, exist_ok=True)
+        else:
+            destination.mkdir(parents=True, exist_ok=True)
+            target = destination / output.name
         shutil.copy2(output, target)
         print(f"copied: {target}", flush=True)
     print(f"DONE output={output}", flush=True)
@@ -466,6 +551,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--min-bytes", type=int, default=200_000)
     parser.add_argument("--expected-duration", type=float)
     parser.add_argument("--duration-tolerance", type=float, default=5.0)
+    parser.add_argument(
+        "--expected-aspect-ratio",
+        help="Expected output ratio such as 4:3, 16:9, or 1.3333.",
+    )
+    parser.add_argument("--aspect-ratio-tolerance", type=float, default=0.03)
+    parser.add_argument(
+        "--exclude-sha256",
+        action="append",
+        default=[],
+        help="Reject a downloaded candidate whose SHA-256 matches this value.",
+    )
     parser.add_argument("--reload-every", type=float, default=600)
     return parser
 
@@ -509,6 +605,11 @@ def has_blocking_status(status: str, tail: str, active_executions: list[str] | N
 
 def main() -> int:
     args = build_parser().parse_args()
+    try:
+        expected_aspect_ratio = parse_aspect_ratio(args.expected_aspect_ratio)
+    except (TypeError, ValueError, ZeroDivisionError) as exc:
+        raise SystemExit(f"invalid --expected-aspect-ratio: {exc}") from exc
+    excluded_sha256 = {value.lower().strip() for value in args.exclude_sha256 if value.strip()}
     args.output_dir.mkdir(parents=True, exist_ok=True)
     output = args.output_dir / args.filename
     page_id = args.page_id
@@ -572,7 +673,14 @@ def main() -> int:
         downloaded = newest_downloaded_mp4_since(start, args.min_bytes)
         if downloaded and ("完成" in status or "下载" in status or videos):
             print(f"found browser download: {downloaded}", flush=True)
-            if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+            if media_matches(
+                downloaded,
+                args.expected_duration,
+                args.duration_tolerance,
+                expected_aspect_ratio,
+                args.aspect_ratio_tolerance,
+                excluded_sha256,
+            ):
                 finish_from_file(downloaded, output, args.copy_to)
                 return 0
 
@@ -601,8 +709,13 @@ def main() -> int:
                 if not triggered.get("ok"):
                     continue
                 downloaded = wait_for_browser_download(download_name, args.min_bytes)
-                if not downloaded or not duration_matches(
-                    downloaded, args.expected_duration, args.duration_tolerance
+                if not downloaded or not media_matches(
+                    downloaded,
+                    args.expected_duration,
+                    args.duration_tolerance,
+                    expected_aspect_ratio,
+                    args.aspect_ratio_tolerance,
+                    excluded_sha256,
                 ):
                     continue
                 finish_from_file(downloaded, output, args.copy_to)
@@ -631,7 +744,14 @@ def main() -> int:
                         if not downloaded:
                             print(f"browser download not found: {download_name}", flush=True)
                             continue
-                        if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+                        if media_matches(
+                            downloaded,
+                            args.expected_duration,
+                            args.duration_tolerance,
+                            expected_aspect_ratio,
+                            args.aspect_ratio_tolerance,
+                            excluded_sha256,
+                        ):
                             finish_from_file(downloaded, output, args.copy_to)
                             return 0
                 continue
@@ -648,7 +768,14 @@ def main() -> int:
                 print(f"download too small: {output.stat().st_size}", flush=True)
                 continue
 
-            if duration_matches(output, args.expected_duration, args.duration_tolerance):
+            if media_matches(
+                output,
+                args.expected_duration,
+                args.duration_tolerance,
+                expected_aspect_ratio,
+                args.aspect_ratio_tolerance,
+                excluded_sha256,
+            ):
                 finish_from_file(output, output, args.copy_to)
                 return 0
 
@@ -667,7 +794,14 @@ def main() -> int:
                     downloaded = newest_downloaded_mp4_since(click_time, args.min_bytes)
                     if downloaded:
                         print(f"found browser download: {downloaded}", flush=True)
-                        if duration_matches(downloaded, args.expected_duration, args.duration_tolerance):
+                        if media_matches(
+                            downloaded,
+                            args.expected_duration,
+                            args.duration_tolerance,
+                            expected_aspect_ratio,
+                            args.aspect_ratio_tolerance,
+                            excluded_sha256,
+                        ):
                             finish_from_file(downloaded, output, args.copy_to)
                             return 0
                     time.sleep(1)
