@@ -64,6 +64,8 @@ Treat every Xiaoyunque render click as a paid action. Before submitting, capture
 
 ## Default Publication Languages
 
+- Video-generation prompts should request no generated subtitles. If a generated artifact nevertheless contains subtitle pixels and the user accepts that artifact, keep it as source imagery; those pixels do not replace the publication subtitle workflow.
+- LALACHAN publication still burns the normal LazyEdit multilingual subtitles by default, even when the generated source already contains subtitle pixels. Skip LazyEdit subtitles only when the user explicitly requests a subtitle-free publication.
 - LALACHAN publication subtitles default to English, Japanese, Chinese, and French when the user does not name a destination or local language.
 - When a specific destination language is requested, use that language as the fourth/local-language row instead of French. Keep the established English, Japanese, and Chinese rows unless the user explicitly requests a different set.
 - For LazyEdit CLI publication, languages are ordered bottom-to-top. The French fallback is therefore `fr,zh-Hant,ja,en`, which renders top-to-bottom as English, Japanese, Chinese, and French.
