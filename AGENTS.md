@@ -62,6 +62,10 @@ Treat every Xiaoyunque render click as a paid action. Before submitting, capture
 - When a long Agent workflow cannot keep reference identity stable, prefer a proven direct workflow. A multi-clip recovery must have a fixed visible total cost, preflight each clip, and stop after the first clip unless its sampled frames pass character and style acceptance.
 - After download, validate duration, dimensions, audio, complete decode, and a contact sheet before starting another paid clip or publication.
 
+## Default Watermark-Free Export
+
+Prefer the official watermark-free download for generated videos, using included membership benefits when available. Verify the exported file rather than assuming a premium account removes every mark. Check whether an `AI-generated` label is distinct from the platform's branding watermark and report any export limitation. Preserve the original; this preference alone does not authorize paid regeneration or destructive watermark masking. The separate LazyEdit publication-logo settings remain unchanged unless requested.
+
 ## Default Publication Languages
 
 - Video-generation prompts should request no generated subtitles. If a generated artifact nevertheless contains subtitle pixels and the user accepts that artifact, keep it as source imagery; those pixels do not replace the publication subtitle workflow.
