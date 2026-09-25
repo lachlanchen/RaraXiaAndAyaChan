@@ -144,3 +144,6 @@ Preserved the original audio; do not replace it based on ASR orthography alone.
 The same signed-in browser/noVNC stack remains available for review. It was
 preexisting and shared; no additional GUI or model runtime was started. All
 short-lived download/ASR tasks launched here have ended.
+
+Publication requested afterward is tracked separately in the
+[LazyEdit publication record](../publish/2026-09-25-mooncake-together-publication.md).
